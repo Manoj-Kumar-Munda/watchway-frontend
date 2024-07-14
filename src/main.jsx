@@ -19,6 +19,11 @@ import Tweets from "./pages/Channel/Tweet.jsx";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import Policy from "./pages/Policy.jsx";
 import Terms from "./pages/Terms.jsx";
+import LikedVideos from "./pages/LikedVideos.jsx";
+import WatchHistory from "./pages/WatchHistory.jsx";
+import MyCollections from "./pages/MyCollections.jsx";
+import Subscribers from "./pages/Subscribers.jsx";
+import MyContent from "./pages/MyContent.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +49,26 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <AdminDashboard />,
+      },
+      {
+        path: "liked",
+        element: <LikedVideos />,
+      },
+      {
+        path: "history",
+        element: <WatchHistory />,
+      },
+      {
+        path: "collection",
+        element: <MyCollections />,
+      },
+      {
+        path: "content",
+        element: <MyContent />,
+      },
+      {
+        path: "subscribers",
+        element: <Subscribers />,
       },
       {
         path: "channel",
