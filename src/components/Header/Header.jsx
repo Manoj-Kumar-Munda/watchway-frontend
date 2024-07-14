@@ -14,11 +14,11 @@ const Header = () => {
       <div className="flex justify-between items-center px-2 sm:px-4 ">
         <div
           className={cn(
-            "inline-flex items-center gap-4 max-w-56 w-full",
+            "inline-flex items-center gap-4",
             showSearchBar && "hidden"
           )}
         >
-          <button className="sm:hidden">
+          <button className="">
             <RxHamburgerMenu size={24} />
           </button>
           <Logo />
@@ -28,7 +28,7 @@ const Header = () => {
             <button onClick={() => setShowSearchBar(false)} className="hover:bg-gray-200 inline-flex justify-center items-center w-12 h-12 rounded-full text-center">
               <FaArrowLeftLong size={20} />
             </button>
-            <Searchbar className="flex md:hidden" />
+            <Searchbar className="flex sm:hidden" />
           </div>
         )}
         <Searchbar />
@@ -41,7 +41,7 @@ const Header = () => {
         >
           <button
             onClick={() => setShowSearchBar(true)}
-            className="md:hidden hover:bg-gray-200 inline-flex justify-center items-center w-12 h-12 rounded-full text-center"
+            className="sm:hidden hover:bg-gray-200 inline-flex justify-center items-center w-12 h-12 rounded-full text-center"
           >
             <IoIosSearch size={24} />
           </button>
