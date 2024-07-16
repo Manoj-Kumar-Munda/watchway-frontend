@@ -24,6 +24,11 @@ import WatchHistory from "./pages/WatchHistory.jsx";
 import MyCollections from "./pages/MyCollections.jsx";
 import Subscribers from "./pages/Subscribers.jsx";
 import MyContent from "./pages/MyContent.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -125,7 +130,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </QueryClientProvider>
 );
