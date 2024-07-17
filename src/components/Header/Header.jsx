@@ -34,7 +34,10 @@ const Header = () => {
           )}
         >
           {noSidebarPaths.includes(pathname) ? (
-            <button className="hidden md:inline-block" onClick={() => handleSmSidebar()}>
+            <button
+              className="hidden md:inline-block"
+              onClick={() => handleSmSidebar()}
+            >
               <RxHamburgerMenu size={24} />
             </button>
           ) : (
