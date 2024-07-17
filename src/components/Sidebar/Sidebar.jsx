@@ -11,6 +11,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { cn } from "../../utils/cn";
 import { useDispatch } from "react-redux";
 import { toggleMenu, toggleSmSidebar } from "../../store/slices/appSlice";
+import SidebarItems from "./SidebarItems";
 
 const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
   const dispatch = useDispatch();
@@ -40,26 +41,7 @@ const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
           <Logo />
         </div>
 
-        <div className="flex flex-col gap-2 w-full">
-          <SidebarLinks title={"Home"} link={"/"}>
-            <MdHomeFilled size={24} />
-          </SidebarLinks>
-          <SidebarLinks title={"Liked Videos"} link={"/liked"}>
-            <BiLike size={24} />
-          </SidebarLinks>
-          <SidebarLinks title={"Watch History"} link={"/history"}>
-            <MdHistory size={24} />
-          </SidebarLinks>
-          <SidebarLinks title={"My Content"} link={"/content"}>
-            <BiSolidVideos size={24} />
-          </SidebarLinks>
-          <SidebarLinks title={"Collection"} link={"/collection"}>
-            <IoFolderOpen size={24} />
-          </SidebarLinks>
-          <SidebarLinks title={"Subscribers"} link={"/subscribers"}>
-            <FaUsers size={24} />
-          </SidebarLinks>
-        </div>
+        <SidebarItems />
       </div>
     </div>
   );
@@ -84,26 +66,7 @@ export const LgSidebar = ({ isMenuOpen = true, className = "" }) => {
         <Logo />
       </div>
 
-      <div className="flex flex-col gap-2 w-full">
-        <SidebarLinks title={"Home"} link={"/"}>
-          <MdHomeFilled size={24} />
-        </SidebarLinks>
-        <SidebarLinks title={"Liked Videos"} link={"/liked"}>
-          <BiLike size={24} />
-        </SidebarLinks>
-        <SidebarLinks title={"Watch History"} link={"/history"}>
-          <MdHistory size={24} />
-        </SidebarLinks>
-        <SidebarLinks title={"My Content"} link={"/content"}>
-          <BiSolidVideos size={24} />
-        </SidebarLinks>
-        <SidebarLinks title={"Collection"} link={"/collection"}>
-          <IoFolderOpen size={24} />
-        </SidebarLinks>
-        <SidebarLinks title={"Subscribers"} link={"/subscribers"}>
-          <FaUsers size={24} />
-        </SidebarLinks>
-      </div>
+      <SidebarItems />
     </div>
   );
 };
