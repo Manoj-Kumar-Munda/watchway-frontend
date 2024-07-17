@@ -7,14 +7,22 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { cn } from "../../utils/cn";
 import { useDispatch } from "react-redux";
-import { toggleMenu } from "../../store/slices/appSlice";
+import { toggleMenu, toggleSmSidebar } from "../../store/slices/appSlice";
+import { useLocation } from "react-router-dom";
+import { noSidebarPaths } from "../../utils/constants";
 
 const Header = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const dispatch = useDispatch();
 
+  const { pathname } = useLocation();
+
   const handleSidebar = () => {
     dispatch(toggleMenu());
+  };
+
+  const handleSmSidebar = () => {
+    dispatch(toggleSmSidebar());
   };
   return (
     <header className="sticky top-0 bg-white py-2 z-10">
@@ -25,9 +33,22 @@ const Header = () => {
             showSearchBar && "hidden"
           )}
         >
-          <button className="" onClick={() => handleSidebar()}>
+          {noSidebarPaths.includes(pathname) ? (
+            <button className="hidden md:inline-block" onClick={() => handleSmSidebar()}>
+              <RxHamburgerMenu size={24} />
+            </button>
+          ) : (
+            <button
+              className="hidden md:inline-block"
+              onClick={() => handleSidebar()}
+            >
+              <RxHamburgerMenu size={24} />
+            </button>
+          )}
+          <button className="md:hidden" onClick={() => handleSmSidebar()}>
             <RxHamburgerMenu size={24} />
           </button>
+
           <Logo />
         </div>
         {showSearchBar && (
