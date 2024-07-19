@@ -1,6 +1,6 @@
 export const noSidebarPaths = [
     "/login",
-    "/egister",
+    "/register",
     "/dashboard",
     "/terms",
     "/policy",

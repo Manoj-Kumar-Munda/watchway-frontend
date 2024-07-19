@@ -2,17 +2,20 @@ import React, { useId } from "react";
 import { twMerge } from "tailwind-merge";
 
 const Input = React.forwardRef(
-  ({ label = "", type = "text", className = "", ...props }, ref) => {
+  ({ label = "", type = "text", required, className = "", ...props }, ref) => {
     const id = useId();
     return (
       <div className="w-full">
         {label && (
-          <label
-            className="inline-block mb-1 pl-1 font-Poppins text-sm  text-gray-500"
-            htmlFor={id}
-          >
-            {label}
-          </label>
+          <>
+            <label
+              className="inline-block mb-1 pl-1 font-Poppins text-sm  text-gray-500"
+              htmlFor={id}
+            >
+              {label}
+            </label>
+            {required && <span className="text-red-500">*</span>}
+          </>
         )}
         <input
           type={type}

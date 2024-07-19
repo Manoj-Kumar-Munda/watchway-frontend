@@ -4,7 +4,6 @@ const client = axios.create({ baseURL: "http://localhost:8000/api/v1" });
 
 export const request = async ({ ...options }) => {
   const onSuccess = (response) => {
-    console.log(response);
     return response;
   };
   const onError = (error) => {

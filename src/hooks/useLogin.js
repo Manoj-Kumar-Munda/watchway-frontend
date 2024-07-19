@@ -6,8 +6,11 @@ const loginUser = async(user) => {
   return await request({ url: "/users/login", method: "post", data: user });
 };
 
-export const useLogin = () => {
+const useLogin = () => {
   return useMutation({
+    mutationKey: ["login"],
     mutationFn: loginUser,
   });
 };
+
+export default useLogin;
