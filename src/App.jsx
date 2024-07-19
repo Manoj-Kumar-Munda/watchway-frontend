@@ -3,17 +3,13 @@ import MainLayout from "./components/MainLayout";
 
 import { request } from "./utils/axios-utils";
 import { useQuery } from "@tanstack/react-query";
+import useCurrentUser from "./hooks/useCurrentUser";
 
 function App() {
-  const { data, isError, error, isLoading } = useQuery({
-    queryKey: ["currentUser"],
-    queryFn: async () => {
-      return await request({ url: "/users/current-user", method: "get" });
-    },
-  });
+  const { data, isError, error, isLoading } = useCurrentUser();
 
-  console.log("isError", error);
-  console.log("data :", data);
+  console.log(data);
+
   return (
     <MainLayout>
       <Outlet />

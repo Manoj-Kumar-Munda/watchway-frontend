@@ -4,8 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.layout{
-    min-height: 100svh;
-    display: grid;
-    grid-template-rows: auto 1fr;
+.layout {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+@layer components {
+  .error-input {
+    @apply ring-1 ring-red-400 focus:ring-red-400;
+  }
+
+}
+
+@layer utilities{
+  .hover-effect{
+    @apply duration-300 transition-all hover:border-gray-300 hover:bg-gray-300/30 backdrop-blur-xl
+  }
 }
