@@ -12,6 +12,7 @@ import { cn } from "../../utils/cn";
 import { useDispatch } from "react-redux";
 import { toggleMenu, toggleSmSidebar } from "../../store/slices/appSlice";
 import SidebarItems from "./SidebarItems";
+import LogoutBtn from "./LogoutBtn";
 
 const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
   const dispatch = useDispatch();
@@ -19,8 +20,6 @@ const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
   const handleSmSidebar = () => {
     dispatch(toggleSmSidebar());
   };
-
-  console.log(isSmMenuOpen);
   return (
     <div
       className={cn(
@@ -55,7 +54,7 @@ export const LgSidebar = ({ isMenuOpen = true, className = "" }) => {
   return (
     <div
       className={cn(
-        "hidden  bg-white fixed top-0 bottom-0 z-50 transition-all duration-300 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
+        "hidden   bg-white fixed top-0 bottom-0 z-50 transition-all duration-300 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
         isMenuOpen && "md:left-0"
       )}
     >
@@ -67,6 +66,7 @@ export const LgSidebar = ({ isMenuOpen = true, className = "" }) => {
       </div>
 
       <SidebarItems />
+     
     </div>
   );
 };
