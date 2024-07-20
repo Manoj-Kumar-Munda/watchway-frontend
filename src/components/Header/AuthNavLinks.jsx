@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import ProfileCircle from "./ProfileCircle";
 
 const AuthNavLinks = () => {
-  const authStatus = useSelector((store) => store.auth.status);
+  const { user ,status} = useSelector((store) => store.auth);
+  console.log(user);
 
   return (
     <>
-      {authStatus ? (
-        <ProfileCircle className="w-12 h-12" />
+      {status ? (
+        <ProfileCircle className="w-12 h-12" imgSrc={user.avatar} />
       ) : (
         <div className="flex gap-2 items-center">
           <Link
