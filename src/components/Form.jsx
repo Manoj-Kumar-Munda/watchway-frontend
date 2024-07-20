@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidation } from "../utils/formValidations";
 import Input from "./Input";
 import Button from "../pages/Button";
 import useLogin from "../hooks/useLogin";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import ErrorText from "./ErrorText";
 
 const Form = () => {
-  const { mutate, isError, isPending, error, data } = useLogin();
+  const { mutate, data } = useLogin();
+  const navigate = useNavigate();
 
-  if (isPending) {
-    console.log("pending...");
-  }
+  console.log("error", data);
 
-  if (isError) {
-    console.log("error: ", error);
-  }
+  useEffect(() => {
+    let timer;
+    if (data && data?.data) {
+      toast.success("Logged in");
+      timer = setTimeout(() => {
+        navigate("/");
+      }, 2200);
+    }
 
-  console.log(data);
+    return () => clearTimeout(timer);
+  }, [data]);
+
   const {
     register,
     handleSubmit,
@@ -27,28 +36,45 @@ const Form = () => {
   });
 
   const submitHandler = (data) => {
-    console.log(data);
     mutate(data);
   };
-  return (
-    <form className="space-y-4" onSubmit={handleSubmit(submitHandler)}>
-      <Input
-        label="Username or Email"
-        type="text"
-        placeholder="Enter username or email"
-        {...register("userId")}
-      />
-      <Input
-        label="Password"
-        type="password"
-        placeholder="Enter your password"
-        {...register("password")}
-      />
 
-      <Button type="submit" className="mt-4">
-        Submit
-      </Button>
-    </form>
+  console.log(errors);
+  return (
+    <>
+      <Toaster />
+      <form className="space-y-4" onSubmit={handleSubmit(submitHandler)}>
+        <div>
+          <Input
+            label="Username or Email"
+            type="text"
+            placeholder="Enter username or email"
+            {...register("userId")}
+          />
+          {errors.userId && <ErrorText>{errors.userId.message}</ErrorText>}
+        </div>
+
+        <div>
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            {...register("password")}
+          />
+          {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
+        </div>
+
+        {data && data?.response && (
+          <ErrorText className="text-sm">
+            {data.response.data.message}
+          </ErrorText>
+        )}
+
+        <Button type="submit" className="mt-4">
+          Submit
+        </Button>
+      </form>
+    </>
   );
 };
 

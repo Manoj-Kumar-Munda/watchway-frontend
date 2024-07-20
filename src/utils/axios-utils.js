@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const client = axios.create({ baseURL: "http://localhost:8000/api/v1" });
+const client = axios.create({ baseURL: "/api/v1" });
 
 export const request = async ({ ...options }) => {
   const onSuccess = (response) => {
