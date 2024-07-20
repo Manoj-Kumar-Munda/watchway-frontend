@@ -13,8 +13,6 @@ const Form = () => {
   const { mutate, data } = useLogin();
   const navigate = useNavigate();
 
-  console.log("error", data);
-
   useEffect(() => {
     let timer;
     if (data && data?.data) {
@@ -38,8 +36,6 @@ const Form = () => {
   const submitHandler = (data) => {
     mutate(data);
   };
-
-  console.log(errors);
   return (
     <>
       <Toaster />
