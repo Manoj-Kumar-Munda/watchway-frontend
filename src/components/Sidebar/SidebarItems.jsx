@@ -22,7 +22,7 @@ const SidebarItems = () => {
         <SidebarLinks title={"Watch History"} link={"/history"}>
           <MdHistory size={24} />
         </SidebarLinks>
-        <SidebarLinks title={"My Content"} link={"/content"}>
+        <SidebarLinks title={"My Content"} link={"/channel"}>
           <BiSolidVideos size={24} />
         </SidebarLinks>
         <SidebarLinks title={"Collection"} link={"/collection"}>
