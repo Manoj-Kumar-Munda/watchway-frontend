@@ -27,6 +27,7 @@ import MyContent from "./pages/MyContent.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export const queryClient = new QueryClient();
 
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
         element: <Subscribers />,
       },
       {
-        path: "channel",
+        path: "channel/:username",
         element: <Channel />,
         children: [
           {
@@ -131,6 +132,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools initialIsOpen={false} />
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
