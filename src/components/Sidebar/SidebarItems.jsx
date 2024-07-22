@@ -7,9 +7,9 @@ import SidebarLinks from "./SidebarLinks";
 import { useSelector } from "react-redux";
 import LogoutBtn from "./LogoutBtn";
 
+
 const SidebarItems = () => {
-  const authStatus = useSelector((store) => store.auth.status);
-  console.log(authStatus);
+  const { user, status } = useSelector( store => store.auth);
   return (
     <>
       <div className="flex flex-col gap-2 w-full">
@@ -22,9 +22,12 @@ const SidebarItems = () => {
         <SidebarLinks title={"Watch History"} link={"/history"}>
           <MdHistory size={24} />
         </SidebarLinks>
-        <SidebarLinks title={"My Content"} link={"/channel"}>
-          <BiSolidVideos size={24} />
-        </SidebarLinks>
+        {status && (
+          <SidebarLinks title={"My Content"} link={`/channel/${user.username}`}>
+            <BiSolidVideos size={24} />
+          </SidebarLinks>
+        )}
+
         <SidebarLinks title={"Collection"} link={"/collection"}>
           <IoFolderOpen size={24} />
         </SidebarLinks>
@@ -33,7 +36,7 @@ const SidebarItems = () => {
         </SidebarLinks>
       </div>
 
-      {authStatus && <LogoutBtn />}
+      {status && <LogoutBtn />}
     </>
   );
 };

@@ -1,21 +1,14 @@
-import React from "react";
-import { MdHomeFilled } from "react-icons/md";
-import { BiLike } from "react-icons/bi";
-import { MdHistory } from "react-icons/md";
-import { BiSolidVideos } from "react-icons/bi";
-import { IoFolderOpen } from "react-icons/io5";
-import { FaUsers } from "react-icons/fa";
-import SidebarLinks from "./SidebarLinks";
 import Logo from "../Header/Logo";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { cn } from "../../utils/cn";
 import { useDispatch } from "react-redux";
 import { toggleMenu, toggleSmSidebar } from "../../store/slices/appSlice";
 import SidebarItems from "./SidebarItems";
-import LogoutBtn from "./LogoutBtn";
+import { memo } from "react";
 
 const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
   const dispatch = useDispatch();
+  console.log("sidebar rendered");
 
   const handleSmSidebar = () => {
     dispatch(toggleSmSidebar());
@@ -29,7 +22,7 @@ const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
     >
       <div
         className={cn(
-          "bg-white fixed top-0 bottom-0 z-50 transition-all duration-300 -left-full  max-w-56 px-2 sm:px-4 flex flex-col gap-2 w-full",
+          "bg-white fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 flex flex-col gap-2 w-full",
           isSmMenuOpen && "left-0"
         )}
       >
@@ -46,7 +39,7 @@ const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
   );
 };
 
-export const LgSidebar = ({ isMenuOpen = true, className = "" }) => {
+export const LgSidebar = memo(({ isMenuOpen = true, className = "" }) => {
   const dispatch = useDispatch();
   const handleLgSidebar = () => {
     dispatch(toggleMenu());
@@ -54,7 +47,7 @@ export const LgSidebar = ({ isMenuOpen = true, className = "" }) => {
   return (
     <div
       className={cn(
-        "hidden   bg-white fixed top-0 bottom-0 z-50 transition-all duration-300 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
+        "hidden   bg-white fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
         isMenuOpen && "md:left-0"
       )}
     >
@@ -66,9 +59,8 @@ export const LgSidebar = ({ isMenuOpen = true, className = "" }) => {
       </div>
 
       <SidebarItems />
-     
     </div>
   );
-};
+});
 
-export default Sidebar;
+export default memo(Sidebar);

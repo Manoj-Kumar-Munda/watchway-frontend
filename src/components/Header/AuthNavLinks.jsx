@@ -5,8 +5,6 @@ import ProfileCircle from "./ProfileCircle";
 
 const AuthNavLinks = () => {
   const { user ,status} = useSelector((store) => store.auth);
-  console.log(user);
-
   return (
     <>
       {status ? (

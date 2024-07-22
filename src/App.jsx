@@ -7,7 +7,6 @@ import { login, logout } from "./store/slices/authSlice";
 
 function App() {
   const dispatch = useDispatch();
-
   const { data } = useCurrentUser();
   useEffect(() => {
     if (data?.data?.success) {

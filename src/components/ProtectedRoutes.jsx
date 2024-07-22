@@ -1,6 +1,7 @@
 import React from 'react'
 
-const ProtectedRoutes = () => {
+const ProtectedRoutes = ({channel}) => {
+
   return (
     <div>ProtectedRoutes</div>
   )
