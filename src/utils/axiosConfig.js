@@ -24,10 +24,12 @@ client.interceptors.response.use(
 
 export const request = async ({ ...options }) => {
   const onSuccess = (response) => {
-    return response;
+    return response?.data;
   };
   const onError = async (error) => {
-    return await Promise.reject(error?.response);
+    const { success, message, statusCode } = error.response.data;
+    console.log(error.response);
+    return Promise.reject(error.response);
   };
   return client(options).then(onSuccess).catch(onError);
 };

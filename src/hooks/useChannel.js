@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../utils/axios-utils";
+import { request } from "../utils/axiosConfig";
 
 const fetchChannel = async (username) => {
   return await request({ url: `/users/channel/${username}`, method: "get" });

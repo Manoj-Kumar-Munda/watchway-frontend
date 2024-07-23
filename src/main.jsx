@@ -30,7 +30,11 @@ import EditChannelLayout from "./components/Channel/Layouts/EditChannelLayout.js
 import ChannelActivityLayout from "./components/Channel/Layouts/ChannelLayout.jsx";
 import Playlists from "./pages/Channel/Playlists.jsx";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    retry: 2,
+  },
+});
 
 const router = createBrowserRouter([
   {

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../utils/axios-utils";
+import { request } from "../utils/axiosConfig";
 import { queryClient } from "../main";
 
 const logout = async () => {

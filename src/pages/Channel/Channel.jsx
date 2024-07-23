@@ -1,17 +1,16 @@
 import React, { useMemo } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import ChannelHeader from "../../components/Channel/Header/ChannelHeader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useChannel from "../../hooks/useChannel";
 import ChannelLoader from "../../components/Loaders/ChannelLoader";
 import NotFound from "../../components/errorPages/NotFound";
 
 const Channel = () => {
   const { username } = useParams();
-  const { data, isError, isLoading, status, error } = useChannel(username);
+  const { data, isError, isLoading, error, status } = useChannel(username);
   const { user } = useSelector((store) => store.auth);
-
-  console.log("channel :", data);
+  const dispatch = useDispatch();
 
   const isMyChannel = useMemo(() => {
     if (data && user) {
@@ -21,20 +20,20 @@ const Channel = () => {
     return false;
   }, [data, user]);
 
+
   if (isLoading) {
     return <ChannelLoader />;
   }
 
   if (isError) {
-    if (error.status === 404) {
-      return <NotFound errorMsg={"Channel doesn't exist"} />;
+    if (!error?.data?.success) {
+      return <NotFound classname="absolute inset-0" errorMsg={error?.data?.message} />;
     }
-    return <h1>Error...</h1>;
   }
 
   return (
     <div className="relative">
-      <ChannelHeader isMyChannel={isMyChannel} channelInfo={data?.data?.data} />
+      <ChannelHeader isMyChannel={isMyChannel} channelInfo={data?.data} />
       <Outlet />
     </div>
   );

@@ -7,14 +7,15 @@ import { login, logout } from "./store/slices/authSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const { data } = useCurrentUser();
+  const { data, status } = useCurrentUser();
+
   useEffect(() => {
-    if (data?.data?.success) {
-      dispatch(login(data.data.data));
-    } else if (data?.response?.data) {
+    if (status === "success") {
+      dispatch(login(data.data));
+    } else {
       dispatch(logout());
     }
-  }, [data]);
+  }, [status]);
 
   return (
     <MainLayout>
