@@ -27,7 +27,7 @@ export const request = async ({ ...options }) => {
     return response;
   };
   const onError = async (error) => {
-    return error;
+    return await Promise.reject(error?.response);
   };
   return client(options).then(onSuccess).catch(onError);
 };

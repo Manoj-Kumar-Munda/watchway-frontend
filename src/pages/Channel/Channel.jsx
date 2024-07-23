@@ -4,10 +4,11 @@ import ChannelHeader from "../../components/Channel/Header/ChannelHeader";
 import { useSelector } from "react-redux";
 import useChannel from "../../hooks/useChannel";
 import ChannelLoader from "../../components/Loaders/ChannelLoader";
+import NotFound from "../../components/errorPages/NotFound";
 
 const Channel = () => {
   const { username } = useParams();
-  const { data, isError, isLoading } = useChannel(username);
+  const { data, isError, isLoading, status, error } = useChannel(username);
   const { user } = useSelector((store) => store.auth);
 
   console.log("channel :", data);
@@ -22,6 +23,13 @@ const Channel = () => {
 
   if (isLoading) {
     return <ChannelLoader />;
+  }
+
+  if (isError) {
+    if (error.status === 404) {
+      return <NotFound errorMsg={"Channel doesn't exist"} />;
+    }
+    return <h1>Error...</h1>;
   }
 
   return (
