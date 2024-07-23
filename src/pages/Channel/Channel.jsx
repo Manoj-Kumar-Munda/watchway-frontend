@@ -10,6 +10,8 @@ const Channel = () => {
   const { data, isError, isLoading } = useChannel(username);
   const { user } = useSelector((store) => store.auth);
 
+  console.log("channel :", data);
+
   const isMyChannel = useMemo(() => {
     if (data && user) {
       data?.data?.data?.username === user?.username;
@@ -18,7 +20,6 @@ const Channel = () => {
     return false;
   }, [data, user]);
 
-  // console.log(data);
   if (isLoading) {
     return <ChannelLoader />;
   }

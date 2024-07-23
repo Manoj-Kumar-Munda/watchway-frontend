@@ -23,7 +23,7 @@ const tabs = [
 
 const ChannelActivityLayout = () => {
   return (
-    <div>
+    <div className="border  rounded-lg">
       <Tabs tabs={tabs} />
       <Outlet />
     </div>
