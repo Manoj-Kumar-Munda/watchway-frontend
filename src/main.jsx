@@ -11,8 +11,6 @@ import Channel from "./pages/Channel/Channel.jsx";
 import EditChannelInfo from "./pages/Channel/Edit/EditChannelInfo.jsx";
 import ChangePassword from "./pages/Channel/Edit/ChangePassword.jsx";
 import EditProfile from "./pages/Channel/Edit/EditProfile.jsx";
-import ChannelActivityLayout from "./pages/Channel/Layouts/ChannelLayout.jsx";
-import EditChannelLayout from "./pages/Channel/Layouts/EditChannelLayout.jsx";
 import Videos from "./pages/Channel/Videos.jsx";
 import Subscriptions from "./pages/Channel/SubscribedChannels.jsx";
 import Tweets from "./pages/Channel/Tweet.jsx";
@@ -27,7 +25,10 @@ import MyContent from "./pages/MyContent.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import EditChannelLayout from "./components/Channel/Layouts/EditChannelLayout.jsx";
+import ChannelActivityLayout from "./components/Channel/Layouts/ChannelLayout.jsx";
+import Playlists from "./pages/Channel/Playlists.jsx";
 
 export const queryClient = new QueryClient();
 
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
               {
                 path: "tweets",
                 element: <Tweets />,
+              },
+              {
+                path: "playlists",
+                element: <Playlists />,
               },
               {
                 path: "",
