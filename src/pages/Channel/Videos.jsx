@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useChannelVideo } from "../../hooks/useChannel";
-import NoVideoImg from "../../assets/svg/no-video.svg";
-import NoData from "../../components/errorPages/NoData";
+import NoVideo from "../../components/Channel/Videos/NoVideo";
 
 const Videos = () => {
   const { currentChannel } = useSelector((store) => store.channel);
@@ -14,11 +13,7 @@ const Videos = () => {
 
   return (
     <div className="min-h-56 relative">
-      {data?.data?.totalDocs === 0 ? (
-        <NoData message="No Video uploaded" imgSrc={NoVideoImg} className="absolute inset-0" />
-      ) : (
-        <h1>Videos</h1>
-      )}
+      {data?.data?.totalDocs === 0 ? <NoVideo /> : <h1>Videos</h1>}
     </div>
   );
 };
