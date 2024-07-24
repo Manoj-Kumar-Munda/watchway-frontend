@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
-import useCurrentUser from "./hooks/useCurrentUser";
+import useCurrentUser from "./hooks/Auth/useCurrentUser";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./store/slices/authSlice";

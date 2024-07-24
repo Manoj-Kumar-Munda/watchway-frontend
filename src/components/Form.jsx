@@ -4,10 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidation } from "../utils/formValidations";
 import Input from "./Input";
 import Button from "../pages/Button";
-import useLogin from "../hooks/useLogin";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ErrorText from "./ErrorText";
+import useLogin from "../hooks/Auth/useLogin";
 
 const Form = () => {
   const { mutate, data } = useLogin();

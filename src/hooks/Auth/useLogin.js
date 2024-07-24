@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../../utils/axiosConfig";
 import { queryClient } from "../../main";
+import { request } from "../../utils/axiosConfig";
 
 const loginUser = async (user) => {
   return await request({ url: "/users/login", method: "post", data: user });

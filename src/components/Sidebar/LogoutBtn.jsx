@@ -1,6 +1,6 @@
 import React from "react";
 import { FiLogOut } from "react-icons/fi";
-import useLogout from "../../hooks/useLogout";
+import useLogout from "../../hooks/Auth/useLogout"
 const LogoutBtn = () => {
   const { mutate } = useLogout();
 

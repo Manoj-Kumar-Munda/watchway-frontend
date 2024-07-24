@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
-import { queryClient } from "../main";
+import { queryClient } from "../../main";
+import { request } from "../../utils/axiosConfig";
 
 const logout = async () => {
   return await request({ url: "/users/logout", method: "post" });
