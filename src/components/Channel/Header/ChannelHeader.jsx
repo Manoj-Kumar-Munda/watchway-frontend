@@ -2,11 +2,10 @@ import React from "react";
 import CoverPic from "./CoverPic";
 import ProfileCircle from "../../Header/ProfileCircle";
 import { useNavigate } from "react-router-dom";
-import Button, { ChannelBtn } from "../../Button";
+import { ChannelBtn } from "../../Button";
 import { FiEdit2 } from "react-icons/fi";
 
 const ChannelHeader = ({ isMyChannel, channelInfo }) => {
-  console.log(channelInfo);
   const {
     username,
     fullName: channelName,
@@ -49,7 +48,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
               <span className="text-white font-Roboto font-semibold">Edit</span>
             </ChannelBtn>
           ) : (
-            <button>Subscribe</button>
+            <button>{isSubscribed ? "Subscribed " : "Subscribe"}</button>
           )}
         </div>
       </div>
