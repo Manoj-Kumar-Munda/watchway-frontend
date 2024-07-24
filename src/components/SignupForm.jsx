@@ -6,7 +6,7 @@ import Input from "./Input";
 import Button from "../pages/Button";
 import { cn } from "../utils/cn";
 import ErrorText from "./ErrorText";
-import useRegister from "../hooks/useRegister";
+import useRegister from "../hooks/Auth/useRegister";
 import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 
