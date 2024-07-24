@@ -9,7 +9,7 @@ const NotFound = ({ errorMsg, classname = "" }) => {
         <img src={NotFoundSvg} className="w-32 h-auto" />
       </div>
 
-      <p className="font-Poppins text-sm">{errorMsg}</p>
+      <p className="error-text">{errorMsg}</p>
     </div>
   );
 };

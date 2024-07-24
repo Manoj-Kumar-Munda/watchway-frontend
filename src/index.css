@@ -16,6 +16,9 @@
   .sidebar-link {
     @apply inline-flex items-center gap-2 py-2 border border-transparent  rounded-lg hover-effect;
   }
+  .error-text{
+    @apply font-Poppins text-sm font-medium;
+  }
 }
 
 @layer utilities {

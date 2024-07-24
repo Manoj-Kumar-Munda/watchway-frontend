@@ -16,5 +16,5 @@ const channelSlice = createSlice({
   },
 });
 
-export const { setCurrentChannel, setIsAuthorized } = channelSlice.reducer;
-export default channelSlice;
+export const { setCurrentChannel, setIsAuthorized } = channelSlice.actions;
+export default channelSlice.reducer;
