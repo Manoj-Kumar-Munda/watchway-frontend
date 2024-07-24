@@ -2,7 +2,9 @@ import React from 'react'
 
 const UploadVideoModal = () => {
   return (
-    <div>UploadVideoModal</div>
+    <div className='bg-white'>
+
+    </div>
   )
 }
 

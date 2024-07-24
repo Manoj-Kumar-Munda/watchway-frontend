@@ -9,7 +9,7 @@ const Modal = ({ modalId, children }) => {
   return (
     <div
       className={cn(
-        "invisible fixed inset-0 bg-black/40 z-50",
+        "invisible fixed inset-0 bg-black/40 z-50 flex justify-center items-center",
         isOpen && "visible"
       )}
     >
