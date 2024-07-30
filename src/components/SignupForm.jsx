@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import React, { useEffect } from "react";
 import { registerValidation } from "../utils/formValidations";
 import Input from "./Input";
 import Button from "../pages/Button";

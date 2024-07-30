@@ -15,6 +15,27 @@ export const loginValidation = yup.object().shape({
     .min(3, "Password must be at least 3 characters long"),
 });
 
+export const uploadFormValidation = yup.object().shape({
+  video: yup
+    .mixed()
+    .required("Please upload a photo")
+    .test(
+      "isVideoUploaded",
+      "Upload a video",
+      (value) => value && value.length > 0
+    ),
+  title: yup.string().trim().required("Title is required"),
+  description: yup.string().trim().required("Description is required"),
+  thumbnail: yup
+    .mixed()
+    .required("Please upload a photo")
+    .test(
+      "isThumbnailUploaded",
+      "Upload a thumbnail",
+      (value) => value && value.length > 0
+    ),
+});
+
 export const registerValidation = yup.object().shape({
   fullName: yup.string().trim().required("Fullname is required"),
   username: yup
