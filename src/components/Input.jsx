@@ -1,8 +1,9 @@
 import React, { useId } from "react";
 import { twMerge } from "tailwind-merge";
+import ErrorText from "./ErrorText";
 
 const Input = React.forwardRef(
-  ({ label = "", type = "text", required, className = "", ...props }, ref) => {
+  ({ label = "", type = "text", required, error='', className = "", ...props }, ref) => {
     const id = useId();
     return (
       <div className="w-full">
@@ -27,6 +28,7 @@ const Input = React.forwardRef(
           {...props}
           id={id}
         />
+        { error && <ErrorText className="py-1">{error}</ErrorText>}
       </div>
     );
   }

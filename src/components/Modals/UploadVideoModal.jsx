@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import Dropzone, { useDropzone } from "react-dropzone";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { bytesToMegabytes } from "../../utils/helpers";
-import { ChannelBtn } from "../Button";
+import Button, { ChannelBtn } from "../Button";
 import Input from "../Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import { uploadFormValidation } from "../../utils/formValidations";
 
 const UploadVideoModal = () => {
- 
   const {
     control,
     register,
@@ -19,9 +18,7 @@ const UploadVideoModal = () => {
 
   const submitHandler = (data) => {
     console.log("data: ", data);
-  
   };
-
 
   console.log("errors: ", errors);
   return (
@@ -33,34 +30,46 @@ const UploadVideoModal = () => {
         <div className="mt-6 space-y-2">
           <FileInput control={control} name="video" {...register("video")} />
 
+
           <Input
             type="file"
             label="Thumbnail"
             required={true}
             {...register("thumbnail")}
+            error={errors?.thumbnail?.message}
           />
-          <Input label="Title" required={true} {...register("title")} />
+          <Input 
+            label="Title"   
+            required={true} 
+            {...register("title")}
+            error={errors?.title?.message}
+           />
           <Input
             label="Description"
             required={true}
             {...register("description")}
+            error={errors?.description?.message}
           />
         </div>
-        <button className="" type="submit">
-          Submit
-        </button>
+        <div className="flex justify-center mt-4">
+          <Button className="bg-themered-500 text-white px-8" type="submit">
+            <span className="font-medium">
+            Upload
+              </span>
+          </Button>
+        </div>
       </form>
     </div>
   );
 };
 
-const FileInput = ({ control, name, props }) => {
+const FileInput = React.forwardRef( ({ control, name, props }, ref) => {
   return (
     <Controller
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value } }) => (
-        <Dropzone onDrop={onChange} maxFiles={1} >
+        <Dropzone onDrop={onChange} maxFiles={1}>
           {({ getRootProps, getInputProps }) => (
             <div
               {...getRootProps()}
@@ -68,7 +77,7 @@ const FileInput = ({ control, name, props }) => {
                 " text-center h-44 flex items-center justify-center border-dashed border-2  border-black"
               }
             >
-              <input {...getInputProps()} onBlur={onBlur} {...props}  />
+              <input {...getInputProps()} onBlur={onBlur} {...props} />
 
               {!value || value?.length === 0 ? (
                 <p>Drag 'n' drop your file here, or click to select files</p>
@@ -81,6 +90,6 @@ const FileInput = ({ control, name, props }) => {
       )}
     />
   );
-};
+});
 
 export default UploadVideoModal;
