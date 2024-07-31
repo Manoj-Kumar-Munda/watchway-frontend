@@ -82,7 +82,7 @@ const UploadLoader = ({ text, className = "" }) => {
         ></line>
       </svg>
       {text && (
-        <span class="font-Poppins font-medium text-sm text-gray-500">{text}</span>
+        <span class="font-Poppins font-medium text-sm text-gray-560">{text}</span>
       )}
     </div>
   );
