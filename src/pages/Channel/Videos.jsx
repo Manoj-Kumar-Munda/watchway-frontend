@@ -9,15 +9,19 @@ const Videos = () => {
   const { data, status } = useChannelVideo(currentChannel?._id);
   const { uploadStatus } = useSelector((store) => store.app);
 
-  console.log(uploadStatus);
-
   if (!currentChannel || status == "pending") {
     return <h1>Loading...</h1>;
   }
 
-  if (!uploadStatus) {
-    toast(uploadStatus);
-  }
+  useEffect(() => {
+    if (uploadStatus) {
+      if (uploadStatus === "success") {
+        toast.success("Video uploaded.");
+      } else if (uploadStatus === "error") {
+        toast.error("Failed to upload");
+      }
+    }
+  }, [uploadStatus]);
 
   return (
     <>

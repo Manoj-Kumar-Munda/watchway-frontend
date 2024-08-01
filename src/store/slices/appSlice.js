@@ -23,12 +23,7 @@ const appSlice = createSlice({
       state.isSmSidebarOpen = !state.isSmSidebarOpen;
     },
     setUploadStatus: (state, action) => {
-      if (action.payload === "error") {
-        state.uploadStatus = "Failed to upload";
-      }
-      if (action.payload === "success") {
-        state.uploadStatus = "Video uploaded";
-      }
+      state.uploadStatus = action.payload;
     },
   },
 });
