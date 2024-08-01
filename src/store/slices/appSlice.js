@@ -5,6 +5,7 @@ const appSlice = createSlice({
   initialState: {
     isMenuOpen: true,
     isSmSidebarOpen: false,
+    uploadStatus: null,
   },
   reducers: {
     toggleMenu: (state, action) => {
@@ -21,8 +22,17 @@ const appSlice = createSlice({
       }
       state.isSmSidebarOpen = !state.isSmSidebarOpen;
     },
+    setUploadStatus: (state, action) => {
+      if (action.payload === "error") {
+        state.uploadStatus = "Failed to upload";
+      }
+      if (action.payload === "success") {
+        state.uploadStatus = "Video uploaded";
+      }
+    },
   },
 });
 
-export const { toggleMenu, toggleSmSidebar } = appSlice.actions;
+export const { toggleMenu, toggleSmSidebar, setUploadStatus } =
+  appSlice.actions;
 export default appSlice.reducer;

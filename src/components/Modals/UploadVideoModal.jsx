@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
 import Button from "../Button";
 import Input from "../Input";
@@ -7,10 +7,40 @@ import { Controller, useForm } from "react-hook-form";
 import { uploadFormValidation } from "../../utils/formValidations";
 import { bytesToMegabytes } from "../../utils/helpers";
 import UploadingVideoModalPopup from "./UploadingVideoModalPopup";
+import useUpload from "../../hooks/useUpload";
+import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { closeModal } from "../../store/slices/modalsSlice";
+import { setUploadStatus } from "../../store/slices/appSlice";
 
 const UploadVideoModal = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadingVideoData, setuploadingVideoData] = useState();
+  const { data, status, mutate, error } = useUpload();
+  const dispatch = useDispatch();
+
+  console.log("status: ", status);
+  console.log("data: ", data);
+
+  if (status === "success" || status === "error") {
+    dispatch(closeModal("upload"));
+    dispatch(setUploadStatus(status));
+  }
+
+  console.log(data);
+
+  useEffect(() => {
+    let timer;
+    if (status === "success") {
+      toast.success("Video uploaded");
+
+      timer = setTimeout(() => {
+        dispatch(closeModal("upload"));
+      }, 2200);
+    }
+    return () => clearTimeout(timer);
+  }, [status]);
+
   const {
     control,
     register,
@@ -21,15 +51,20 @@ const UploadVideoModal = () => {
   const submitHandler = (data, e) => {
     console.log(data);
     const formData = new FormData(e.target);
-    formData.append("video", data.video);
+    formData.append("video", data.video[0]);
+    mutate(formData);
     setIsUploading(true);
-    setuploadingVideoData(data)
+    setuploadingVideoData(data);
   };
+
+  console.log(status);
+  console.log(data);
 
   return (
     <>
+      <Toaster />
       {isUploading ? (
-        <UploadingVideoModalPopup data={uploadingVideoData}  />
+        <UploadingVideoModalPopup data={uploadingVideoData} />
       ) : (
         <div className="bg-white max-w-screen-sm w-full rounded-md py-3 space-y-2 px-4">
           <div className="">
@@ -86,7 +121,6 @@ const FileInput = React.forwardRef(({ control, name, props }, ref) => {
       render={({ field: { onChange, onBlur, value } }) => (
         <Dropzone
           onDrop={onChange}
-          maxFiles={1}
           accept={{
             "video/*": [".mp4", ".mkv"],
           }}
@@ -98,7 +132,12 @@ const FileInput = React.forwardRef(({ control, name, props }, ref) => {
                 " text-center h-44 flex items-center justify-center border-dashed border-2  border-black"
               }
             >
-              <input {...getInputProps()} onBlur={onBlur} {...props} />
+              <input
+                type="file"
+                {...getInputProps()}
+                onBlur={onBlur}
+                {...props}
+              />
 
               {!value || value?.length === 0 ? (
                 <p>Drag 'n' drop your file here, or click to select files</p>
