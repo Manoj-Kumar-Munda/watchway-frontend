@@ -5,10 +5,8 @@ import { Link } from "react-router-dom";
 
 const VerticalVideoCard = ({ video, isMyChannel }) => {
   return (
-    <div
-      className={cn("max-w-[360px] w-full  pb-1", isMyChannel && "max-w-80")}
-    >
-      <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+    <div className={cn("max-w-[450px] w-full pb-1", isMyChannel && "max-w-80")}>
+      <div className="relative w-full aspect-video rounded-xl overflow-hidden">
         {!video?.isPublished && (
           <div className="absolute inset-0 z-20 bg-black/70 grid place-content-center">
             <span className="text-white text-sm font-medium">
@@ -24,18 +22,18 @@ const VerticalVideoCard = ({ video, isMyChannel }) => {
         </div>
       </div>
 
-      <div className="flex flex-col self-start">
+      <div className="flex flex-col self-start pl-2">
         <Link to={`/watch/${video?._id}`}>
           <span className="font-Roboto font-medium line-clamp-2">
             {video?.title}
           </span>
         </Link>
-      </div>
-      <div className="font-medium flex gap-2 text-sm">
-        <span>{video?.views} views</span>
-        <div className="w-1 h-1 bg-gray-500 self-center rounded-full"></div>
+        <div className="font-medium flex gap-2 text-sm">
+          <span>{video?.views} views</span>
+          <div className="w-1 h-1 bg-gray-500 self-center rounded-full"></div>
 
-        <span>{calculateTimeDifferenceToNow(video?.createdAt)} ago</span>
+          <span>{calculateTimeDifferenceToNow(video?.createdAt)} ago</span>
+        </div>
       </div>
     </div>
   );

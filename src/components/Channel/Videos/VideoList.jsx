@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useChannelVideo } from "../../../hooks/useChannel";
 import VerticalVideoCard from "../../VerticalVideoCard";
+import { cn } from "../../../utils/cn";
+import VerticalVideoCardContainer from "./VerticalVideoCardContainer";
 
 const VideoList = () => {
-  const { currentChannel } = useSelector((store) => store.channel);
+  const { currentChannel, isAuthorized } = useSelector(
+    (store) => store.channel
+  );
   const { data, status } = useChannelVideo(currentChannel?._id);
 
   if (status === "pending") {
@@ -13,17 +17,17 @@ const VideoList = () => {
   }
 
   return (
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-4 pt-2">
+    <VerticalVideoCardContainer>
       {data?.data?.docs.map((video) => {
         return (
           <VerticalVideoCard
             video={video}
             key={video?._id}
-            isMyChannel={true}
+            isMyChannel={isAuthorized}
           />
         );
       })}
-    </div>
+    </VerticalVideoCardContainer>
   );
 };
 

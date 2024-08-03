@@ -11,7 +11,7 @@ const Header = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   return (
-    <header className="sticky top-0 bg-white py-2 z-10">
+    <header className="sticky top-0 bg-white py-2 z-50">
       <div className="flex justify-between items-center px-2 sm:px-4 ">
         <div
           className={cn(

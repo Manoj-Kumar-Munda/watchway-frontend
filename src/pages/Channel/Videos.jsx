@@ -6,15 +6,15 @@ import toast, { Toaster } from "react-hot-toast";
 import VideoList from "../../components/Channel/Videos/VideoList";
 
 const Videos = () => {
-  const { currentChannel } = useSelector((store) => store.channel);
+  const { currentChannel, isAuthorized } = useSelector((store) => store.channel);
   const { data, status } = useChannelVideo(currentChannel?._id);
   const { uploadStatus } = useSelector((store) => store.app);
 
   if (!currentChannel || status == "pending") {
     return <h1>Loading...</h1>;
   }
-
-  if (!uploadStatus) {
+  
+  if (uploadStatus) {
     toast(uploadStatus);
   }
 
@@ -22,7 +22,7 @@ const Videos = () => {
     <>
       <Toaster />
       <div className="min-h-56 relative">
-        {data?.data?.totalDocs === 0 ? <NoVideo /> : <VideoList  />}
+        {data?.data?.totalDocs === 0 ? <NoVideo  /> : <VideoList  />}
       </div>
     </>
   );

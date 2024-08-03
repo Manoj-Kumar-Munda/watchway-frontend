@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import useChannel from "../../hooks/useChannel";
 import ChannelLoader from "../../components/Loaders/ChannelLoader";
 import NotFound from "../../components/errorPages/NotFound";
-import { setCurrentChannel, setIsAuthorized } from "../../store/slices/channelSlice";
+import {
+  setCurrentChannel,
+  setIsAuthorized,
+} from "../../store/slices/channelSlice";
 
 const Channel = () => {
   const { username } = useParams();
@@ -13,14 +16,17 @@ const Channel = () => {
   const { user } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
-  useEffect(
-    () => {
-      if(data && user){
-        dispatch(setCurrentChannel(data?.data));
-        dispatch(setIsAuthorized(data?.data._id === user._id))
-      }
-    }, [data,user]
-  )
+  useEffect(() => {
+    if (data && user) {
+      dispatch(setCurrentChannel(data?.data));
+      dispatch(setIsAuthorized(data?.data._id === user._id));
+    }
+
+    return () => {
+      dispatch(setCurrentChannel(null));
+      dispatch(setIsAuthorized(false));
+    };
+  }, [data, user]);
 
   if (isLoading) {
     return <ChannelLoader />;
@@ -39,7 +45,10 @@ const Channel = () => {
 
   return (
     <div className="relative">
-      <ChannelHeader isMyChannel={data?.data._id === user?._id} channelInfo={data?.data} />
+      <ChannelHeader
+        isMyChannel={data?.data._id === user?._id}
+        channelInfo={data?.data}
+      />
       <Outlet />
     </div>
   );
