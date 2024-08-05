@@ -10,12 +10,11 @@ import SidebarOverLayout from "./SidebarOverLayout";
 const MainLayout = ({ children }) => {
   const { pathname } = useLocation();
   const { isMenuOpen, isSmSidebarOpen } = useSelector((store) => store.app);
-  console.log("rendered");
   return (
     <div className="min-h-screen layout relative">
       <Header />
       <div className="">
-        {noSidebarPaths.includes(pathname) ? (
+        {noSidebarPaths.includes(pathname.split("/")[1]) ? (
           <SidebarOverLayout isSmMenuOpen={isSmSidebarOpen}>
             {children}
           </SidebarOverLayout>
