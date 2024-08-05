@@ -22,6 +22,10 @@ const appSlice = createSlice({
       }
       state.isSmSidebarOpen = !state.isSmSidebarOpen;
     },
+    setSidebarsToDefault: (state, action) => {
+      state.isMenuOpen = true;
+      state.isSmSidebarOpen = false;
+    },
     setUploadStatus: (state, action) => {
       if (action.payload === "error") {
         state.uploadStatus = "Failed to upload";
@@ -33,6 +37,6 @@ const appSlice = createSlice({
   },
 });
 
-export const { toggleMenu, toggleSmSidebar, setUploadStatus } =
+export const { toggleMenu, toggleSmSidebar, setUploadStatus, setSidebarsToDefault } =
   appSlice.actions;
 export default appSlice.reducer;
