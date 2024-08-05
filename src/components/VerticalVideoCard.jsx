@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const VerticalVideoCard = ({ video }) => {
-  console.log(video);
-  
   const { isAuthorized } = useSelector((store) => store.channel);
   return (
     <div className={cn("max-w-[450px] w-full pb-1", isAuthorized && "max-w-80")}>

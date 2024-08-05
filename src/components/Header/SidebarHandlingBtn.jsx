@@ -17,7 +17,7 @@ const SidebarHandlingBtn = () => {
   };
   return (
     <>
-      {noSidebarPaths.includes(pathname) ? (
+      {noSidebarPaths.includes(pathname.split("/")[1]) ? (
         <button
           className="hidden md:inline-block"
           onClick={() => handleSmSidebar()}
