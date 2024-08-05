@@ -17,8 +17,10 @@ const Channel = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (data && user) {
+    if (data) {
       dispatch(setCurrentChannel(data?.data));
+    }
+    if (data && user) {
       dispatch(setIsAuthorized(data?.data._id === user._id));
     }
 

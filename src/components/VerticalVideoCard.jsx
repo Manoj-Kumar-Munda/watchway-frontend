@@ -1,13 +1,13 @@
 import React from "react";
 import { cn } from "../utils/cn";
 import { calculateTimeDifferenceToNow, extractVideoId, formatTime } from "../utils/helpers";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom"
 
 const VerticalVideoCard = ({ video }) => {
-  const { isAuthorized } = useSelector((store) => store.channel);
+  const {pathname} = useLocation();
+  const isChannelPageVideo = pathname.includes('channel');
   return (
-    <div className={cn("max-w-[450px] w-full pb-1", isAuthorized && "max-w-80")}>
+    <div className={cn("max-w-[450px] w-full pb-1", isChannelPageVideo && "max-w-80")}>
       <div className="relative w-full aspect-video rounded-xl overflow-hidden">
         {!video?.isPublished && (
           <div className="absolute inset-0 z-20 bg-black/70 grid place-content-center">

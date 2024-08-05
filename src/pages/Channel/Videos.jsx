@@ -10,6 +10,8 @@ const Videos = () => {
   const { data, status } = useChannelVideo(currentChannel?._id);
   const { uploadStatus } = useSelector((store) => store.app);
 
+  console.log(currentChannel);
+  
   if (!currentChannel || status == "pending") {
     return <h1>Loading...</h1>;
   }

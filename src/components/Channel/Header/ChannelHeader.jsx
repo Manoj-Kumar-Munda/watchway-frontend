@@ -48,7 +48,9 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
               <span className="text-white font-Roboto font-semibold">Edit</span>
             </ChannelBtn>
           ) : (
-            <button>{isSubscribed ? "Subscribed " : "Subscribe"}</button>
+            <ChannelBtn className={"text-white"}>
+              {isSubscribed ? "Subscribed " : "Subscribe"}
+            </ChannelBtn>
           )}
         </div>
       </div>
