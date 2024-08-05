@@ -53,3 +53,7 @@ export function calculateTimeDifferenceToNow(targetDate) {
     return `${months} months`;
   } else return `${years} years`;
 }
+
+export const extractVideoId = (url) => {
+  return url.split('/').at(-1).split('.')[0]
+}

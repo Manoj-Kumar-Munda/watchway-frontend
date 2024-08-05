@@ -6,7 +6,6 @@ import VideoSkeleton from "../components/Loaders/VideoSkeleton";
 
 const Home = () => {
   const { data, status } = useVideos();
-  console.log(status);
   if (status === "pending") {
     return (
       <VerticalVideoCardContainer>

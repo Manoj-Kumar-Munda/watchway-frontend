@@ -1,11 +1,15 @@
 import React from "react";
 import { cn } from "../utils/cn";
-import { calculateTimeDifferenceToNow, formatTime } from "../utils/helpers";
+import { calculateTimeDifferenceToNow, extractVideoId, formatTime } from "../utils/helpers";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const VerticalVideoCard = ({ video, isMyChannel }) => {
+const VerticalVideoCard = ({ video }) => {
+  console.log(video);
+  
+  const { isAuthorized } = useSelector((store) => store.channel);
   return (
-    <div className={cn("max-w-[450px] w-full pb-1", isMyChannel && "max-w-80")}>
+    <div className={cn("max-w-[450px] w-full pb-1", isAuthorized && "max-w-80")}>
       <div className="relative w-full aspect-video rounded-xl overflow-hidden">
         {!video?.isPublished && (
           <div className="absolute inset-0 z-20 bg-black/70 grid place-content-center">
@@ -14,12 +18,18 @@ const VerticalVideoCard = ({ video, isMyChannel }) => {
             </span>
           </div>
         )}
-        <Link to={`/watch/${video?._id}`}>
+        <Link to={`/watch/${extractVideoId(video?.videoFile)}`}>
           <img src={video?.thumbnail} className="w-full object-cover " />
         </Link>
         <div className="absolute z-10 bottom-1 right-1 text-xs py-1 font-bold rounded-md px-2 bg-black text-white">
           {formatTime(video?.duration)}
         </div>
+      </div>
+
+      <div>
+
+
+
       </div>
 
       <div className="flex flex-col self-start pl-2">
