@@ -12,6 +12,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../store/slices/modalsSlice";
 import { setUploadStatus } from "../../store/slices/appSlice";
+import CloseModalBtn from "./CloseModalBtn";
 
 const UploadVideoModal = () => {
   const [isUploading, setIsUploading] = useState(false);
@@ -19,15 +20,10 @@ const UploadVideoModal = () => {
   const { data, status, mutate, error } = useUpload();
   const dispatch = useDispatch();
 
-  console.log("status: ", status);
-  console.log("data: ", data);
-
   if (status === "success" || status === "error") {
     dispatch(closeModal("upload"));
     dispatch(setUploadStatus(status));
   }
-
-  console.log(data);
 
   useEffect(() => {
     let timer;
@@ -49,24 +45,24 @@ const UploadVideoModal = () => {
   } = useForm({ resolver: yupResolver(uploadFormValidation) });
 
   const submitHandler = (data, e) => {
-    console.log(data);
     const formData = new FormData(e.target);
     formData.append("video", data.video[0]);
     mutate(formData);
     setIsUploading(true);
     setuploadingVideoData(data);
   };
-
-  console.log(status);
-  console.log(data);
-
   return (
     <>
       <Toaster />
       {isUploading ? (
         <UploadingVideoModalPopup data={uploadingVideoData} />
       ) : (
-        <div className="bg-white max-w-screen-sm w-full rounded-md py-3 space-y-2 px-4">
+        <div className="bg-white max-w-screen-sm w-full rounded-md py-3 space-y-2 px-4 relative">
+          <CloseModalBtn
+            handleClose={() => {
+              dispatch(closeModal("upload"));
+            }}
+          />
           <div className="">
             <h1 className="font-semibold text-lg font-Poppins">
               Upload Videos
