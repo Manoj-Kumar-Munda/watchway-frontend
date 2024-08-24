@@ -8,7 +8,6 @@ import { memo } from "react";
 
 const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
   const dispatch = useDispatch();
-  console.log("sidebar rendered");
 
   const handleSmSidebar = () => {
     dispatch(toggleSmSidebar());

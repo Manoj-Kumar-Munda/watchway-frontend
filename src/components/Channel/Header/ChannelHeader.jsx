@@ -17,7 +17,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
   } = channelInfo;
 
   const navigate = useNavigate();
-
+  
   return (
     <div>
       <CoverPic cover={coverImage} />
