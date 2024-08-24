@@ -19,7 +19,7 @@ const fetchChannelVideos = async (channelId) => {
   if (!channelId) {
     return Promise.reject("Invalid ChnnaleId");
   }
-  return await request({ url: `/videos?userId=${channelId}`, method: "get" });
+  return await request({ url: `/videos/channel?id=${channelId}`, method: "get" });
 };
 export const useChannelVideo = (channelId) => {
   
