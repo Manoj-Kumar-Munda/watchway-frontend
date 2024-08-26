@@ -29,7 +29,7 @@ const VideoList = () => {
         }}
         className="block ml-auto font-Roboto text-sm my-1.5 mr-1.5 bg-themered-500 rounded-lg text-white py-1.5 px-3"
       >
-        +Upload More
+        +Upload
       </button>
       <VerticalVideoCardContainer>
         {data?.data?.docs.map((video) => {

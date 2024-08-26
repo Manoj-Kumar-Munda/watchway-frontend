@@ -46,6 +46,7 @@ const Tweets = () => {
                 <div className="flex flex-col gap-3">
                   <div>
                     <span className="font-medium">
+                      
                       {tweet?.owner?.fullName}
                     </span>
                     <p>{tweet?.content}</p>

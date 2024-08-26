@@ -1,13 +1,23 @@
 import React from "react";
 import { cn } from "../utils/cn";
-import { calculateTimeDifferenceToNow, extractVideoId, formatTime } from "../utils/helpers";
-import { Link, useLocation } from "react-router-dom"
+import {
+  calculateTimeDifferenceToNow,
+  extractVideoId,
+  formatTime,
+} from "../utils/helpers";
+import { Link, useLocation } from "react-router-dom";
 
 const VerticalVideoCard = ({ video }) => {
-  const {pathname} = useLocation();
-  const isChannelPageVideo = pathname.includes('channel');
+  const { pathname } = useLocation();
+  const isChannelPageVideo = pathname.includes("channel");
+
   return (
-    <div className={cn("max-w-[450px] w-full pb-1", isChannelPageVideo && "max-w-80")}>
+    <div
+      className={cn(
+        "max-w-[450px] w-full pb-1 space-y-1",
+        isChannelPageVideo && "max-w-80"
+      )}
+    >
       <div className="relative w-full aspect-video rounded-xl overflow-hidden">
         {!video?.isPublished && (
           <div className="absolute inset-0 z-20 bg-black/70 grid place-content-center">
@@ -24,23 +34,25 @@ const VerticalVideoCard = ({ video }) => {
         </div>
       </div>
 
-      <div>
+      <div className="flex gap-2">
+        <div className="w-12 h-12 rounded-full border">
+          {/* need to set image for no avatar */}
+          <img src={video?.owner?.avatar} className="w-full h-full" alt="" />
+        </div>
 
+        <div className="flex flex-col self-start pl-2">
+          <Link to={`/watch/${video?._id}`}>
+            <span className="font-Roboto font-semibold line-clamp-2">
+              {video?.title}
+            </span>
+          </Link>
+          <span className="text-sm font-medium">{video?.owner?.fullName}</span>
+          <div className="font-medium flex gap-2 text-sm">
+            <span>{video?.views} views</span>
+            <div className="w-1 h-1 bg-gray-500 self-center rounded-full"></div>
 
-
-      </div>
-
-      <div className="flex flex-col self-start pl-2">
-        <Link to={`/watch/${video?._id}`}>
-          <span className="font-Roboto font-medium line-clamp-2">
-            {video?.title}
-          </span>
-        </Link>
-        <div className="font-medium flex gap-2 text-sm">
-          <span>{video?.views} views</span>
-          <div className="w-1 h-1 bg-gray-500 self-center rounded-full"></div>
-
-          <span>{calculateTimeDifferenceToNow(video?.createdAt)} ago</span>
+            <span>{calculateTimeDifferenceToNow(video?.createdAt)} ago</span>
+          </div>
         </div>
       </div>
     </div>
