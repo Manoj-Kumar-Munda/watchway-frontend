@@ -8,6 +8,7 @@ import NoData from "../../components/errorPages/NoData";
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import { cn } from "../../utils/cn";
+import { calculateTimeDifferenceToNow } from "../../utils/helpers";
 
 const fetchChannelTweets = async (channelId) => {
   if (!channelId) {
@@ -26,6 +27,9 @@ const Tweets = () => {
     queryFn: () => fetchChannelTweets(currentChannel?._id),
   });
 
+  console.log(data?.data);
+  
+
 
   return (
     <div className="my-4">
@@ -39,16 +43,20 @@ const Tweets = () => {
         ) : (
           data?.data.map((tweet) => (
             <div key={tweet?._id} className="p-3 w-full">
-              <div className="flex gap-2">
-                <div className="w-16 h-16 rounded-full bg-gray-600">
-                  <img src={tweet?.owner?.avatar} alt="image" />
+              <div className="flex gap-2 content-start">
+                <div className="shrink-0 w-16 h-16 rounded-full bg-gray-600">
+                  <img src={tweet?.owner?.avatar} className="w-full h-full" alt="image" />
                 </div>
                 <div className="flex flex-col gap-3">
                   <div>
+                    <div className="flex gap-4 items-center">
+
                     <span className="font-medium">
                       
                       {tweet?.owner?.fullName}
                     </span>
+                    <span className="text-sm text-gray-600 tracking-tight">{calculateTimeDifferenceToNow(tweet?.createdAt)} ago</span>
+                    </div>
                     <p>{tweet?.content}</p>
                   </div>
 
