@@ -14,9 +14,26 @@ const usePostTweet = () => {
   return useMutation({
     mutationKey: ["postTweet"],
     mutationFn: postTweet,
+    onMutate: async (newTweet) => {
+      console.log("new : ", newTweet);
+
+      await queryClient.cancelQueries({ queryKey: ['tweets'] });
+
+      const previousTweets = queryClient.getQueryData(['tweets']);
+
+      queryClient.setQueryData(['tweets'], (old) => {
+        return { ...old, data: [...old?.data, newTweet] };
+      });
+
+      return { previousTweets };
+    },
+
+    onError: (err, newTweet, context) => {
+      queryClient.setQueryData(['tweets'], context.previousTweets);
+    },
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ["tweets", currentChannel?._id],
+        queryKey: ['tweets'],
       });
     },
   });

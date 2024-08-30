@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import usePostTweet from "../hooks/usePostTweet";
+import { cn } from "../utils/cn";
 
 const CreateTweet = () => {
   const [tweet, setTweet] = useState("");
@@ -7,11 +8,13 @@ const CreateTweet = () => {
 
   const postTweet = () => {
     mutate(tweet);
+    setTweet("");
   };
   return (
     <>
       <textarea
         onChange={(e) => setTweet(e.target.value)}
+        value={tweet}
         id="message"
         rows="4"
         className="block p-1 w-full text-sm  rounded-lg border border-gray-300 outline-none border-none"
@@ -19,7 +22,10 @@ const CreateTweet = () => {
       />
       <div className="flex justify-end">
         <button
-          className="bg-themered-500 text-white font-Poppins px-6 py-1.5 rounded-md"
+          className={cn(
+            "bg-themered-500 text-white font-Poppins px-6 py-1.5 rounded-md",
+            status == "pending" && "bg-themered-300"
+          )}
           onClick={postTweet}
         >
           Send

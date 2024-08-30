@@ -23,13 +23,9 @@ const Tweets = () => {
   );
 
   const { data, status } = useQuery({
-    queryKey: ["tweets", currentChannel?._id],
+    queryKey: ["tweets"],
     queryFn: () => fetchChannelTweets(currentChannel?._id),
   });
-
-  console.log(data?.data);
-  
-
 
   return (
     <div className="my-4">
@@ -37,7 +33,12 @@ const Tweets = () => {
         {isAuthorized && <CreateTweet />}
       </div>
 
-      <div className={cn(`min-h-48 my-4 font-Roboto border rounded-lg`, data?.data?.length>0 && "min-h-max" )}>
+      <div
+        className={cn(
+          `min-h-48 my-4 font-Roboto border rounded-lg`,
+          data?.data?.length > 0 && "min-h-max"
+        )}
+      >
         {data?.data.length === 0 ? (
           <NoData imgSrc={NoTweetImg} message="No tweets" />
         ) : (
@@ -45,25 +46,27 @@ const Tweets = () => {
             <div key={tweet?._id} className="p-3 w-full">
               <div className="flex gap-2 content-start">
                 <div className="shrink-0 w-16 h-16 rounded-full bg-gray-600">
-                  <img src={tweet?.owner?.avatar} className="w-full h-full" alt="image" />
+                  <img
+                    src={tweet?.owner?.avatar}
+                    className="w-full h-full"
+                    alt="image"
+                  />
                 </div>
                 <div className="flex flex-col gap-3">
                   <div>
                     <div className="flex gap-4 items-center">
-
-                    <span className="font-medium">
-                      
-                      {tweet?.owner?.fullName}
-                    </span>
-                    <span className="text-sm text-gray-600 tracking-tight">{calculateTimeDifferenceToNow(tweet?.createdAt)} ago</span>
+                      <span className="font-medium">
+                        {tweet?.owner?.fullName}
+                      </span>
+                      <span className="text-sm text-gray-600 tracking-tight">
+                        {calculateTimeDifferenceToNow(tweet?.createdAt)} ago
+                      </span>
                     </div>
                     <p>{tweet?.content}</p>
                   </div>
 
                   <div className="inline-flex gap-1 items-center">
-                    {
-                      tweet?.isLiked ? <BiSolidLike /> : <BiLike />
-                    }
+                    {tweet?.isLiked ? <BiSolidLike /> : <BiLike />}
                     <span className="text-sm">{tweet?.likeCount}</span>
                   </div>
                 </div>
