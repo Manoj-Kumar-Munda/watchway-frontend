@@ -9,6 +9,7 @@ import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import { cn } from "../../utils/cn";
 import { calculateTimeDifferenceToNow } from "../../utils/helpers";
+import { useLikeTweet } from "../../hooks/useLikeTweet";
 
 const fetchChannelTweets = async (channelId) => {
   if (!channelId) {
@@ -21,6 +22,9 @@ const Tweets = () => {
   const { currentChannel, isAuthorized } = useSelector(
     (store) => store.channel
   );
+
+  const { data: tweets, mutate, status: likeStatus } = useLikeTweet();
+
 
   const { data, status } = useQuery({
     queryKey: ["tweets"],
@@ -66,7 +70,9 @@ const Tweets = () => {
                   </div>
 
                   <div className="inline-flex gap-1 items-center">
-                    {tweet?.isLiked ? <BiSolidLike /> : <BiLike />}
+                    <button onClick={() => mutate(tweet?._id)}>
+                      {tweet?.isLiked ? <BiSolidLike /> : <BiLike />}
+                    </button>
                     <span className="text-sm">{tweet?.likeCount}</span>
                   </div>
                 </div>
