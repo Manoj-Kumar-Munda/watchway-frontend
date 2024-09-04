@@ -15,13 +15,13 @@ const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
   return (
     <div
       className={cn(
-        " fixed inset-0 z-50 w-0 transition-colors ",
+        " fixed inset-0 z-40 w-0 transition-colors",
         isSmMenuOpen && "w-auto bg-slate-800/60 block"
       )}
     >
       <div
         className={cn(
-          "bg-white fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 flex flex-col gap-2 w-full",
+          "bg-white dark:bg-[#242424]  fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 flex flex-col gap-2 w-full",
           isSmMenuOpen && "left-0"
         )}
       >
@@ -46,7 +46,7 @@ export const LgSidebar = memo(({ isMenuOpen = true, className = "" }) => {
   return (
     <div
       className={cn(
-        "hidden   bg-white fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
+        "hidden   bg-white dark:bg-inherit fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
         isMenuOpen && "md:left-0"
       )}
     >

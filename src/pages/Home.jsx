@@ -17,7 +17,7 @@ const Home = () => {
   }
 
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <VerticalVideoCardContainer>
         {data?.data?.docs?.map((video) => (
           <VerticalVideoCard key={video?._id} video={video} />

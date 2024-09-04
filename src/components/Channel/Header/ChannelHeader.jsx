@@ -17,7 +17,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
   } = channelInfo;
 
   const navigate = useNavigate();
-  
+
   return (
     <div>
       <CoverPic cover={coverImage} />
@@ -44,8 +44,12 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
         <div>
           {isMyChannel ? (
             <ChannelBtn onClick={() => navigate("./edit")}>
-              <FiEdit2 color="white" />
-              <span className="text-white font-Roboto font-semibold">Edit</span>
+              <div className="bg-transparent mix-blend-color-dodge">
+                <FiEdit2 color="white" />
+              </div>
+              <span className="text-white font-Roboto font-semibold bg-transparent">
+                Edit
+              </span>
             </ChannelBtn>
           ) : (
             <ChannelBtn className={"text-white"}>

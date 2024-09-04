@@ -35,7 +35,7 @@ const VerticalVideoCard = ({ video }) => {
       </div>
 
       <div className="flex gap-2">
-        <div className="w-12 h-12 rounded-full border">
+        <div className="w-12 h-12 rounded-full">
           {/* need to set image for no avatar */}
           <img src={video?.owner?.avatar} className="w-full h-full" alt="" />
         </div>
@@ -46,8 +46,8 @@ const VerticalVideoCard = ({ video }) => {
               {video?.title}
             </span>
           </Link>
-          <span className="text-sm font-medium">{video?.owner?.fullName}</span>
-          <div className="font-medium flex gap-2 text-sm">
+          <span className="text-sm font-medium text-gray-400">{video?.owner?.fullName}</span>
+          <div className="font-medium flex gap-2 text-sm text-gray-400">
             <span>{video?.views} views</span>
             <div className="w-1 h-1 bg-gray-500 self-center rounded-full"></div>
 

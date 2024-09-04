@@ -5,7 +5,7 @@ const Searchbar = ({ className = "" }) => {
   return (
     <div
       className={cn(
-        "mx-2 hidden sm:flex pl-4 py-2 justify-center border shadow-md border-gray-300 max-w-[512px] grow rounded-3xl group",
+        "mx-2 hidden sm:flex pl-4 py-2 justify-center border shadow-md border-gray-300 dark:border-white/10 max-w-[512px] grow rounded-3xl group",
         className
       )}
     >

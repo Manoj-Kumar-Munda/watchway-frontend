@@ -22,7 +22,10 @@ const Videos = () => {
 
   return (
     <>
-      <Toaster />
+    <div>
+
+      <Toaster position="top-center" containerStyle={{ background: "transparent"}} />
+    </div>
       <div className="min-h-56 relative">
         {data?.data?.totalDocs === 0 ? <NoVideo /> : <VideoList />}
       </div>
