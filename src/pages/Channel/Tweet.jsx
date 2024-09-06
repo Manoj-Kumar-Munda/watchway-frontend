@@ -26,16 +26,17 @@ const Tweets = () => {
 
   const { data: tweets, mutate, status: likeStatus } = useLikeTweet();
 
-
   const { data, status } = useQuery({
     queryKey: ["tweets"],
     queryFn: () => fetchChannelTweets(currentChannel?._id),
   });
   return (
     <div className="my-4">
-      <div className="border  border-gray-500 dark:border-white/10 rounded-md py-1 px-1 space-y-2 text-center">
-        {isAuthorized && <CreateTweet />}
-      </div>
+      {isAuthorized && (
+        <div className="border  border-gray-500 dark:border-white/10 rounded-md py-1 px-1 space-y-2 text-center">
+          <CreateTweet />
+        </div>
+      )}
 
       <div
         className={cn(
@@ -49,7 +50,10 @@ const Tweets = () => {
           data?.data.map((tweet) => (
             <div key={tweet?._id} className="p-3 w-full">
               <div className="flex gap-2 content-start">
-                <ProfileCircle imgSrc={tweet?.owner?.avatar} className="shrink-0 w-16 h-16 overflow-hidden rounded-full bg-gray-600" />
+                <ProfileCircle
+                  imgSrc={tweet?.owner?.avatar}
+                  className="shrink-0 w-16 h-16 overflow-hidden rounded-full bg-gray-600"
+                />
                 <div className="flex flex-col gap-3">
                   <div>
                     <div className="flex gap-4 items-center">

@@ -6,6 +6,7 @@ import { ChannelBtn } from "../../Button";
 import { FiEdit2 } from "react-icons/fi";
 
 const ChannelHeader = ({ isMyChannel, channelInfo }) => {
+  
   const {
     username,
     fullName: channelName,
