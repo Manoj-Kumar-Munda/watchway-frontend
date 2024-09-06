@@ -31,7 +31,6 @@ const Tweets = () => {
     queryKey: ["tweets"],
     queryFn: () => fetchChannelTweets(currentChannel?._id),
   });
-
   return (
     <div className="my-4">
       <div className="border  border-gray-500 dark:border-white/10 rounded-md py-1 px-1 space-y-2 text-center">

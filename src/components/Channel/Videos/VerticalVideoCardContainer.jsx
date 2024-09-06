@@ -1,11 +1,15 @@
 import React from "react";
 import { cn } from "../../../utils/cn";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const VerticalVideoCardContainer = ({ children }) => {
-  const { isAuthorized } = useSelector((store) => store.channel);
+  const { pathname } = useLocation();
+  console.log(pathname);
+  
+  const isChannelPage = pathname.includes("channel");
   return (
-    <div className={cn("flex justify-center", isAuthorized && "justify-start")}>
+    <div className={cn("flex justify-center", isChannelPage && "justify-start")}>
 
       <div
         className={cn(

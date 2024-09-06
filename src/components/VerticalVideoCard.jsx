@@ -41,7 +41,9 @@ const VerticalVideoCard = ({ video }) => {
             </span>
           </Link>
           <span className="text-sm font-medium text-gray-400">
+            <Link to={`/channel/${video?.owner?.username}`}>
             {video?.owner?.fullName}
+            </Link>
           </span>
           <div className="font-medium flex gap-2 text-sm text-gray-400">
             <span>{video?.views} views</span>
