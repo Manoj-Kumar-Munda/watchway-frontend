@@ -10,7 +10,6 @@ import { Link, useLocation } from "react-router-dom";
 const VerticalVideoCard = ({ video }) => {
   const { pathname } = useLocation();
   const isChannelPageVideo = pathname.includes("channel");
-
   return (
     <div
       className={cn("max-w-96 w-full pb-1 space-y-1", isChannelPageVideo && "max-w-80")}
@@ -27,14 +26,14 @@ const VerticalVideoCard = ({ video }) => {
           <img src={video?.thumbnail} className="w-full object-cover " />
         </Link>
         <div className="absolute z-10 bottom-1 right-1 text-xs py-1 font-bold rounded-md px-2 bg-black text-white">
-          {formatTime(video?.duration)}
+          {formatTime(parseInt(video?.duration))}
         </div>
       </div>
 
       <div className="flex gap-2">
-        <div className="w-12 h-12 rounded-full">
+        <div className="w-12 h-12 rounded-full overflow-hidden">
           {/* need to set image for no avatar */}
-          <img src={video?.owner?.avatar} className="w-full h-full" alt="" />
+          <img src={video?.owner?.avatar} className="w-full h-full object-cover object-center" alt="" />
         </div>
 
         <div className="flex flex-col self-start pl-2">

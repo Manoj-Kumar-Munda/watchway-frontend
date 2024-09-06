@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const VerticalVideoCardContainer = ({ children }) => {
   const { isAuthorized } = useSelector((store) => store.channel);
   return (
-    <div className="flex justify-center">
+    <div className={cn("flex justify-center", isAuthorized && "justify-start")}>
 
       <div
         className={cn(
