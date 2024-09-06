@@ -6,6 +6,7 @@ import {
   formatTime,
 } from "../utils/helpers";
 import { Link, useLocation } from "react-router-dom";
+import ProfileCircle from "./Header/ProfileCircle";
 
 const VerticalVideoCard = ({ video }) => {
   const { pathname } = useLocation();
@@ -31,10 +32,7 @@ const VerticalVideoCard = ({ video }) => {
       </div>
 
       <div className="flex gap-2">
-        <div className="w-12 h-12 rounded-full overflow-hidden">
-          {/* need to set image for no avatar */}
-          <img src={video?.owner?.avatar} className="w-full h-full object-cover object-center" alt="" />
-        </div>
+        <ProfileCircle imgSrc={video?.owner?.avatar} className="w-12 h-12 rounded-full overflow-hidden" />
 
         <div className="flex flex-col self-start pl-2">
           <Link to={`/watch/${video?._id}`}>

@@ -25,7 +25,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
         <div className="flex items-center gap-4">
           <ProfileCircle
             imgSrc={avatar}
-            className="w-16 h-16 md:w-32 md:h-32 border bg-black"
+            className="w-16 h-16 md:w-32 md:h-32  bg-black"
           />
           <div className="flex flex-col">
             <h2 className="text-sm md:text-xl font-Roboto font-semibold">

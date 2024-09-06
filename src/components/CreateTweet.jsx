@@ -17,7 +17,7 @@ const CreateTweet = () => {
         value={tweet}
         id="message"
         rows="4"
-        className="block p-1 w-full text-sm  rounded-lg border border-gray-300 outline-none border-none"
+        className="block p-1 w-full text-sm  rounded-lg border border-gray-300 dark:bg-transparent outline-none border-none"
         placeholder="Write a tweet..."
       />
       <div className="flex justify-end">

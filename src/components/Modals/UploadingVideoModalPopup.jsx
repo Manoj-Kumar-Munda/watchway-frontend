@@ -8,7 +8,7 @@ import { bytesToMegabytes } from "../../utils/helpers";
 const UploadingVideoModalPopup = ({ data }) => {
   const dispatch = useDispatch();
   return (
-    <div className="relative bg-white dark:text-black dark:bg-white/60 dark:backdrop-blur-2xl font-Poppins max-w-lg w-full px-4 py-4 rounded-md ">
+    <div className="relative bg-white dark:text-black dark:bg-white/40 dark:backdrop-blur-2xl font-Poppins max-w-lg w-full px-4 py-4 rounded-md ">
       <button
         className="absolute right-2 top-2"
         onClick={() => dispatch(closeModal("upload"))}

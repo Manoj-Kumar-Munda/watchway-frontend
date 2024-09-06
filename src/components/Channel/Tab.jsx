@@ -6,8 +6,8 @@ const Tab = ({ title, link }) => {
     <NavLink
       className={({ isActive }) =>
         cn(
-          "py-2 px-4 font-Roboto text-sm transition-colors duration-300 hover:bg-gray-200",
-          isActive && "bg-white border-b-2 border-gray-900 text-black font-medium hover:bg-white"
+          "py-2 px-4 font-Roboto text-sm transition-colors duration-300 dark:hover:bg-white/10 hover:bg-gray-200",
+          isActive && "bg-white border-b-2 border-gray-900 text-black font-medium dark:hover:bg-white hover:bg-white"
         )
       }
       to={link}
