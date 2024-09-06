@@ -11,7 +11,7 @@ const MainLayout = ({ children }) => {
   const { pathname } = useLocation();
   const { isMenuOpen, isSmSidebarOpen } = useSelector((store) => store.app);
   return (
-    <div className="min-h-screen layout relative">
+    <div className="min-h-screen layout relative bg-primary-dark">
       <Header />
       <div className="">
         {noSidebarPaths.includes(pathname.split("/")[1]) ? (

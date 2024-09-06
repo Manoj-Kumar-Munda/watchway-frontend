@@ -12,7 +12,7 @@ const Searchbar = ({ className = "" }) => {
       <div className="w-full grow">
         <input
           type="text"
-          className="outline-none w-full pl-2 font-Roboto"
+          className="outline-none w-full pl-2 font-Roboto bg-transparent"
           placeholder="Search"
         />
       </div>

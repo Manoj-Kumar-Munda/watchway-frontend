@@ -27,7 +27,7 @@ const VideoList = () => {
         onClick={() => {
           dispatch(openModal("upload"));
         }}
-        className="block ml-auto font-Roboto text-sm my-1.5 mr-1.5 bg-themered-500 rounded-lg text-white py-1.5 px-3"
+        className="block ml-auto font-Roboto text-sm my-1.5 mr-1.5 bg-themered-500 dark:bg-white/10 rounded-lg text-white py-2 px-3"
       >
         +Upload
       </button>

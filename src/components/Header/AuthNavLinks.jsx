@@ -13,7 +13,7 @@ const AuthNavLinks = () => {
         <div className="flex gap-2 items-center">
           <Link
             to={"/login"}
-            className="px-6 py-1 border border-gray-300 rounded-2xl hover-effect"
+            className="px-6 py-1 border border-white/20 rounded-2xl hover-effect"
           >
             <span className="text-sm font-Roboto">Login</span>
           </Link>

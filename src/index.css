@@ -6,7 +6,6 @@
 
 :root, * {
   color-scheme: light dark;
-  background-color: #242424;
 }
 .layout {
   min-height: 100svh;
