@@ -5,14 +5,14 @@ import { useSelector } from "react-redux";
 const VerticalVideoCardContainer = ({ children }) => {
   const { isAuthorized } = useSelector((store) => store.channel);
   return (
-    <div className="flex justify-center md:block">
+    <div className="flex justify-center">
+
       <div
         className={cn(
-          "grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-x-4 gap-y-8 pt-2",
-          isAuthorized && "grid-cols-[repeat(auto-fit,minmax(320px,1fr))]"
+          "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2"
         )}
       >
-        {children}
+       {children}
       </div>
     </div>
   );

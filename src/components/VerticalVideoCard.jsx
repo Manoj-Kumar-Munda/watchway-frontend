@@ -13,10 +13,7 @@ const VerticalVideoCard = ({ video }) => {
 
   return (
     <div
-      className={cn(
-        "max-w-[450px] w-full pb-1 space-y-1",
-        isChannelPageVideo && "max-w-80"
-      )}
+      className={cn("max-w-96 w-full pb-1 space-y-1", isChannelPageVideo && "max-w-80")}
     >
       <div className="relative w-full aspect-video rounded-xl overflow-hidden">
         {!video?.isPublished && (
@@ -46,7 +43,9 @@ const VerticalVideoCard = ({ video }) => {
               {video?.title}
             </span>
           </Link>
-          <span className="text-sm font-medium text-gray-400">{video?.owner?.fullName}</span>
+          <span className="text-sm font-medium text-gray-400">
+            {video?.owner?.fullName}
+          </span>
           <div className="font-medium flex gap-2 text-sm text-gray-400">
             <span>{video?.views} views</span>
             <div className="w-1 h-1 bg-gray-500 self-center rounded-full"></div>
