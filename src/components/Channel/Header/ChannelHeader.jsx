@@ -2,7 +2,7 @@ import React from "react";
 import CoverPic from "./CoverPic";
 import ProfileCircle from "../../Header/ProfileCircle";
 import { useNavigate } from "react-router-dom";
-import { ChannelBtn } from "../../Button";
+import { ChannelBtn, SubscribeBtn } from "../../Button";
 import { FiEdit2 } from "react-icons/fi";
 
 const ChannelHeader = ({ isMyChannel, channelInfo }) => {
@@ -44,6 +44,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
 
         <div>
           {isMyChannel ? (
+            //change this btn
             <ChannelBtn onClick={() => navigate("./edit")}>
               <div className="bg-transparent mix-blend-color-dodge">
                 <FiEdit2 color="white" />
@@ -53,9 +54,9 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
               </span>
             </ChannelBtn>
           ) : (
-            <ChannelBtn className={"text-white"}>
+            <SubscribeBtn className={"text-white"} username={channelInfo?.username} >
               {isSubscribed ? "Subscribed " : "Subscribe"}
-            </ChannelBtn>
+            </SubscribeBtn>
           )}
         </div>
       </div>

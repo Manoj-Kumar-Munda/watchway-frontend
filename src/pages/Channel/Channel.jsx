@@ -15,7 +15,6 @@ const Channel = () => {
   const { data, isError, isLoading, error } = useChannel(username);
   const { user } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (data) {
       dispatch(setCurrentChannel(data?.data));
