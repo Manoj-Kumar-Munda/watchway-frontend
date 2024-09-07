@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import useSubscriptions from "../../hooks/useSubscriptions";
 import ProfileCircle from "../../components/Header/ProfileCircle";
 import HorizonatalChannelCard from "../../components/Channel/SubscribedChannels/HorizonatalChannelCard";
+import NoData from "../../components/errorPages/NoData";
 
 const Subscriptions = () => {
   const { currentChannel } = useSelector((store) => store.channel);
@@ -12,13 +13,10 @@ const Subscriptions = () => {
   if (status === "error") return <div>Error</div>;
 
   if (data?.data.length === 0) {
-    return <span>No subscribed channels</span>;
+    return <NoData message="No subscribers" />;
   }
-
-  console.log(data);
-
   const { subscribedChannels, subCount } = data?.data[0];
-  console.log(subscribedChannels);
+
 
   return (
     <div className="my-4 px-4">
