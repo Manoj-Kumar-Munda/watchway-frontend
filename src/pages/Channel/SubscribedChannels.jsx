@@ -11,14 +11,19 @@ const Subscriptions = () => {
   if (status === "pending" || !data) return <div>Loading...</div>;
   if (status === "error") return <div>Error</div>;
 
-  const { subscribedChannels, subCount } = data?.data;
-  
+  if (data?.data.length === 0) {
+    return <span>No subscribed channels</span>;
+  }
+
+  console.log(data);
+
+  const { subscribedChannels, subCount } = data?.data[0];
+  console.log(subscribedChannels);
 
   return (
     <div className="my-4 px-4">
       {subscribedChannels?.map((channel) => (
         <HorizonatalChannelCard channel={channel} key={channel?._id} />
-     
       ))}
     </div>
   );

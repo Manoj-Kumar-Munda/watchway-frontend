@@ -14,6 +14,7 @@ const useSubscribe = (username) => {
     mutationKey: ["subscribe"],
     mutationFn: subscribe,
     onSettled: () => {
+      queryClient.invalidateQueries("subscriptions");
       queryClient.invalidateQueries({
         queryKey: ["channel", username],
       });

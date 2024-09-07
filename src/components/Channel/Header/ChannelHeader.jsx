@@ -6,6 +6,8 @@ import { ChannelBtn, SubscribeBtn } from "../../Button";
 import { FiEdit2 } from "react-icons/fi";
 
 const ChannelHeader = ({ isMyChannel, channelInfo }) => {
+  console.log(channelInfo);
+  
   
   const {
     username,
@@ -54,7 +56,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
               </span>
             </ChannelBtn>
           ) : (
-            <SubscribeBtn className={"text-white"} username={channelInfo?.username} >
+            <SubscribeBtn className={"text-white"} channel={channelInfo} >
               {isSubscribed ? "Subscribed " : "Subscribe"}
             </SubscribeBtn>
           )}

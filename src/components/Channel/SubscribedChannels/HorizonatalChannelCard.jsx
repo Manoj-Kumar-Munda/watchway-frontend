@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileCircle from "../../Header/ProfileCircle";
-import { ChannelBtn, SubscribeBtn } from "../../Button";
+import { SubscribeBtn } from "../../Button";
 
 const HorizonatalChannelCard = ({ channel }) => {
   return (
@@ -14,7 +14,7 @@ const HorizonatalChannelCard = ({ channel }) => {
       </div>
 
       <div>
-        <SubscribeBtn username={channel?.username}>
+        <SubscribeBtn channel={channel}>
           {channel?.isSubscribed ? "Unsubscribe" : "Subscribe"}
         </SubscribeBtn>
       </div>
