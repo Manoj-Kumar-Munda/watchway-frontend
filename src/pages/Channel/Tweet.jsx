@@ -11,6 +11,7 @@ import { cn } from "../../utils/cn";
 import { calculateTimeDifferenceToNow } from "../../utils/helpers";
 import { useLikeTweet } from "../../hooks/useLikeTweet";
 import ProfileCircle from "../../components/Header/ProfileCircle";
+import DotLoader from "../../components/Loaders/DotLoader";
 
 const fetchChannelTweets = async (channelId) => {
   if (!channelId) {
@@ -24,12 +25,17 @@ const Tweets = () => {
     (store) => store.channel
   );
 
-  const { data: tweets, mutate, status: likeStatus } = useLikeTweet();
+  const { mutate } = useLikeTweet();
 
   const { data, status } = useQuery({
     queryKey: ["tweets"],
     queryFn: () => fetchChannelTweets(currentChannel?._id),
   });
+
+  if (status === "pending") {
+    return <div>Loading</div>;
+  }
+
   return (
     <div className="my-4">
       {isAuthorized && (

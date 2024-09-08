@@ -14,7 +14,7 @@ const VerticalVideoCard = ({ video }) => {
   
   return (
     <div
-      className={cn("max-w-96 w-full pb-1 space-y-1", isChannelPageVideo && "max-w-80")}
+      className={cn("max-w-96 sm:max-w-none w-full pb-1 space-y-1", isChannelPageVideo && " sm:max-w-80")}
     >
       <div className="relative w-full aspect-video rounded-xl overflow-hidden">
         {!video?.isPublished && (
@@ -33,7 +33,7 @@ const VerticalVideoCard = ({ video }) => {
       </div>
 
       <div className="flex gap-2">
-        <ProfileCircle imgSrc={video?.owner?.avatar} className="w-12 h-12 rounded-full overflow-hidden" />
+        <ProfileCircle imgSrc={video?.owner?.avatar} className="w-10 h-10 rounded-full overflow-hidden" />
 
         <div className="flex flex-col self-start pl-2">
           <Link to={`/watch/${video?._id}`}>
