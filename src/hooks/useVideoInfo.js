@@ -5,8 +5,6 @@ const getVideoInfo = async (videoId) => {
   if (!videoId) {
     return Promise.reject("Invalid videoId");
   }
-  console.log(videoId);
-  
   return await request({
     method: "GET",
     url: `/videos/${videoId}`,

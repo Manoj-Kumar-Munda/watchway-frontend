@@ -1,7 +1,6 @@
 import React from "react";
 import { cn } from "../utils/cn";
 import useSubscribe from "../hooks/useSubscribe";
-import { useSelector } from "react-redux";
 
 const Button = ({ children, className = "", ...props }) => {
   return (
@@ -20,7 +19,7 @@ export const SubscribeBtn = ({ children, className, channelId, ...props }) => {
     <button
       onClick={() => mutate(channelId)}
       className={cn(
-        " font-Poppins py-3 px-4 text-center rounded transition-colors dark:bg-white/20 text-sm bg-themered-500 inline-flex items-center gap-2 ",
+        " font-Poppins py-2 px-4 text-center rounded transition-colors dark:bg-white/20 text-sm bg-themered-500 inline-flex items-center gap-2 ",
         className
       )}
       {...props}

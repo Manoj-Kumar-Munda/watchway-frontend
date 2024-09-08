@@ -4,12 +4,9 @@ import ProfileCircle from "./Header/ProfileCircle";
 import { SubscribeBtn } from "./Button";
 
 const ChannelBar = ({ owner }) => {
-  console.log(owner);
   const { data, status } = useChannel(owner);
-  console.log(data);
-
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between gap-4 items-center">
       <div className="flex items-center gap-2">
         <ProfileCircle imgSrc={data?.data?.avatar} className="w-12 h-12" />
         <div>

@@ -23,8 +23,6 @@ export function formatTime(seconds) {
   }
 }
 
-
-
 export function calculateTimeDifferenceToNow(targetDate) {
   const targetDateTime = new Date(targetDate);
   const currentTime = Date.now();
@@ -55,5 +53,12 @@ export function calculateTimeDifferenceToNow(targetDate) {
 }
 
 export const extractVideoId = (url) => {
-  return url.split('/').at(-1).split('.')[0]
-}
+  return url.split("/").at(-1).split(".")[0];
+};
+
+export const formateDate = (timestamp) => {
+  const date = new Date(timestamp);
+  const options = { year: "numeric", month: "short", day: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+  return formattedDate;
+};
