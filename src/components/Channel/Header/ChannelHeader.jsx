@@ -56,7 +56,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
               </span>
             </ChannelBtn>
           ) : (
-            <SubscribeBtn className={"text-white"} channel={channelInfo} >
+            <SubscribeBtn className={"text-white"} channelId={channelInfo?._id} >
               {isSubscribed ? "Subscribed " : "Subscribe"}
             </SubscribeBtn>
           )}

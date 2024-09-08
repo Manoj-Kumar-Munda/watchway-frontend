@@ -9,14 +9,14 @@ const subscribe = async (channelId) => {
   });
 };
 
-const useSubscribe = (username) => {
+const useSubscribe = (id) => {
   return useMutation({
     mutationKey: ["subscribe"],
     mutationFn: subscribe,
     onSettled: () => {
       queryClient.invalidateQueries("subscriptions");
       queryClient.invalidateQueries({
-        queryKey: ["channel", username],
+        queryKey: ["channel",id],
       });
     },
   });

@@ -13,14 +13,14 @@ const VideoPlayer = ({videoId}) => {
   const myVideo = cld.video(videoId);
   myVideo.resize(fill()).roundCorners(byRadius(20));
   return (
-    <div className="w-full max-w-screen-md aspect-video border rounded-lg overflow-hidden">
+   
       <AdvancedVideo
         cldVid={myVideo}
         controls
         autoPlay
         plugins={[lazyload()]}
       />
-    </div>
+    
   );
 };
 

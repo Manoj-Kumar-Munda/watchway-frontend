@@ -14,12 +14,11 @@ const Button = ({ children, className = "", ...props }) => {
   );
 };
 
-export const SubscribeBtn = ({ children, className, channel, ...props }) => {
-  console.log(channel);
-  const { mutate, status } = useSubscribe(channel.username);
+export const SubscribeBtn = ({ children, className, channelId, ...props }) => {
+  const { mutate, status } = useSubscribe(channelId);
   return (
     <button
-      onClick={() => mutate(channel._id)}
+      onClick={() => mutate(channelId)}
       className={cn(
         " font-Poppins py-3 px-4 text-center rounded transition-colors dark:bg-white/20 text-sm bg-themered-500 inline-flex items-center gap-2 ",
         className

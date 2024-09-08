@@ -23,7 +23,7 @@ const SidebarItems = () => {
           <MdHistory size={24} />
         </SidebarLinks>
         {status && (
-          <SidebarLinks title={"My Content"} link={`/channel/${user.username}`}>
+          <SidebarLinks title={"My Content"} link={`/channel/${user._id}`}>
             <BiSolidVideos size={24} />
           </SidebarLinks>
         )}

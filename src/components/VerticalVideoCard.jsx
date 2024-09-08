@@ -11,6 +11,7 @@ import ProfileCircle from "./Header/ProfileCircle";
 const VerticalVideoCard = ({ video }) => {
   const { pathname } = useLocation();
   const isChannelPageVideo = pathname.includes("channel");
+  
   return (
     <div
       className={cn("max-w-96 w-full pb-1 space-y-1", isChannelPageVideo && "max-w-80")}
@@ -23,7 +24,7 @@ const VerticalVideoCard = ({ video }) => {
             </span>
           </div>
         )}
-        <Link to={`/watch/${extractVideoId(video?.videoFile)}`}>
+        <Link to={`/watch/${video?._id}`}>
           <img src={video?.thumbnail} className="w-full object-cover " />
         </Link>
         <div className="absolute z-10 bottom-1 right-1 text-xs py-1 font-bold rounded-md px-2 bg-black text-white">
@@ -41,7 +42,7 @@ const VerticalVideoCard = ({ video }) => {
             </span>
           </Link>
           <span className="text-sm font-medium text-gray-400">
-            <Link to={`/channel/${video?.owner?.username}`}>
+            <Link to={`/channel/${video?.owner?._id}`}>
             {video?.owner?.fullName}
             </Link>
           </span>
