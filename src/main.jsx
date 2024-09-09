@@ -29,6 +29,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import EditChannelLayout from "./components/Channel/Layouts/EditChannelLayout.jsx";
 import ChannelActivityLayout from "./components/Channel/Layouts/ChannelLayout.jsx";
 import Playlists from "./pages/Channel/Playlists.jsx";
+import SearchResults from "./pages/SearchResults.jsx";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "search",
+        element: <SearchResults />,
       },
       {
         path: "watch/:videoId",
