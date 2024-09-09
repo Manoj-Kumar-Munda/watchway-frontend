@@ -1,16 +1,16 @@
 import React from "react";
 import ProfileCircle from "./Header/ProfileCircle";
-import { IoEyeSharp } from "react-icons/io5";
 import { calculateTimeDifferenceToNow } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
-const HorizontalVideoCard = ({ video }) => {
-  console.log(video);
+const HorizontalVideoCard = ({ video, showAvatar }) => {
   return (
     <div className="max-w-80 sm:max-w-none mx-auto sm:mx-0">
       <div className="flex  flex-col sm:flex-row gap-x-4">
         <div className="max-w-80 w-full overflow-hidden shrink-0">
-          <img src={video?.thumbnail} className="w-full h-full rounded-xl" />
+          <Link to={`/watch/${video?._id}`}>
+            <img src={video?.thumbnail} className="w-full h-full rounded-xl" />
+          </Link>
         </div>
 
         <div className="inline-flex flex-col sm:gap-2 pt-1 px-2 sm:px-0 sm:pt-0 sm:py-2">
@@ -30,11 +30,15 @@ const HorizontalVideoCard = ({ video }) => {
             </div>
           </div>
 
-          {/* Add channel page link */}
+          <div className="flex items-center gap-2">
+            {showAvatar && <ProfileCircle imgSrc={video?.owner?.avatar} />}
 
-          <span className="text-sm text-gray-400 font-medium">
-            <Link to={`/channel/${video?.owner?._id}`}>{video?.owner?.fullName}</Link>
-          </span>
+            <span className="text-sm text-gray-400 font-medium">
+              <Link to={`/channel/${video?.owner?._id}`}>
+                {video?.owner?.fullName}
+              </Link>
+            </span>
+          </div>
         </div>
       </div>
     </div>

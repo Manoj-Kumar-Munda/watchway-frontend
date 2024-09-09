@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { cn } from "../../utils/cn";
+import { Link, useSearchParams } from "react-router-dom";
 const Searchbar = ({ className = "" }) => {
+  const [searchParams] = useSearchParams();
+  const [searchText, setSearchText] = useState(searchParams.get("search") || "");
+
   return (
     <div
       className={cn(
@@ -11,14 +15,22 @@ const Searchbar = ({ className = "" }) => {
     >
       <div className="w-full grow">
         <input
+          onChange={(e) => setSearchText(e.target.value)}
+          value={searchText}
           type="text"
           className="outline-none w-full pl-2 font-Roboto bg-transparent"
           placeholder="Search"
         />
       </div>
-      <button className="pr-4">
-        <IoIosSearch size={20} />
-      </button>
+      {searchText ? (
+        <Link className="pr-4" to={`/search?search=${searchText}`} >
+          <IoIosSearch size={20} />
+        </Link>
+      ) : (
+        <button className="pr-4">
+          <IoIosSearch size={20} />
+        </button>
+      )}
     </div>
   );
 };
