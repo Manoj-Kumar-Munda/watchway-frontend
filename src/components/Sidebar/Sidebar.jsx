@@ -1,7 +1,7 @@
 import Logo from "../Header/Logo";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { cn } from "../../utils/cn";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu, toggleSmSidebar } from "../../store/slices/appSlice";
 import SidebarItems from "./SidebarItems";
 import { memo } from "react";
@@ -40,6 +40,7 @@ const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
 
 export const LgSidebar = memo(({ isMenuOpen = true, className = "" }) => {
   const dispatch = useDispatch();
+  const { status } = useSelector( store => store.auth);
   const handleLgSidebar = () => {
     dispatch(toggleMenu());
   };
