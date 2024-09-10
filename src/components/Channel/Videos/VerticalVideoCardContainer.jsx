@@ -1,14 +1,9 @@
 import React from "react";
 import { cn } from "../../../utils/cn";
-import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const VerticalVideoCardContainer = ({ children }) => {
-  const { pathname } = useLocation();
   const { isMenuOpen } = useSelector( store => store.app);
-  console.log(isMenuOpen);
-  
-  const isChannelPage = pathname.includes("channel");
   return (
     <div className={cn("flex justify-center sm:justify-start")}>
 

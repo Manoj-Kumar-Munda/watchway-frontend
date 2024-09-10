@@ -23,10 +23,10 @@ const Header = () => {
           <Logo />
         </div>
         {showSearchBar && (
-          <div className="grow flex gap-1 items-center">
+          <div className="grow flex gap-0.5 sm:gap-1 items-center">
             <button
               onClick={() => setShowSearchBar(false)}
-              className="hover:bg-gray-200 inline-flex justify-center items-center w-12 h-12 rounded-full text-center"
+              className="hover:bg-gray-200 inline-flex justify-center items-center w-10 h-10 rounded-full text-center"
             >
               <FaArrowLeftLong size={20} />
             </button>

@@ -14,7 +14,7 @@ const Button = ({ children, className = "", ...props }) => {
 };
 
 export const SubscribeBtn = ({ children, className, channelId, ...props }) => {
-  const { mutate, status } = useSubscribe(channelId);
+  const { mutate } = useSubscribe(channelId);
   return (
     <button
       onClick={() => mutate(channelId)}

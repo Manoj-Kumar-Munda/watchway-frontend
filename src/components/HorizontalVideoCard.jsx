@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 
 const HorizontalVideoCard = ({ video, showAvatar }) => {
   return (
-    <div className="max-w-80 sm:max-w-none mx-auto sm:mx-0">
+    <div className="max-w-none xs:max-w-96  sm:max-w-none mx-auto sm:mx-0">
       <div className="flex  flex-col sm:flex-row gap-x-4">
-        <div className="max-w-80 w-full overflow-hidden shrink-0">
+        <div className=" xs:max-w-96 sm:max-w-80 w-full overflow-hidden shrink-0">
           <Link to={`/watch/${video?._id}`}>
             <img src={video?.thumbnail} className="w-full h-full rounded-xl" />
           </Link>
         </div>
 
-        <div className="inline-flex flex-col sm:gap-2 pt-1 px-2 sm:px-0 sm:pt-0 sm:py-2">
+        <div className="inline-flex flex-col gap-1 sm:gap-2 pt-1 px-2 sm:px-0 sm:pt-0 sm:py-2">
           <div>
-            <h2>{video?.title}</h2>
-            <p className="line-clamp-1 sm:line-clamp-2 text-xs font-medium text-gray-300">
+            <h2 className="font-medium font-Roboto">{video?.title}</h2>
+            <p className="line-clamp-1 sm:line-clamp-2 text-xs font-medium text-gray-400">
               {video?.description}
             </p>
           </div>

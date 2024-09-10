@@ -1,8 +1,4 @@
 import React from "react";
-import { AdvancedVideo, lazyload } from "@cloudinary/react";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/VideoPlayer";
 import useVideoInfo from "../hooks/useVideoInfo";
@@ -49,6 +45,7 @@ const Watch = () => {
             <span className="font-semibold">
               Posted On {formateDate(video?.createdAt)}
             </span>
+            //create readMore button
             <p className="line-clamp-6">{video?.description}</p>
           </div>
         </div>
