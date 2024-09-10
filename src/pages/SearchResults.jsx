@@ -1,11 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { useSearchParams } from "react-router-dom";
 import HorizontalVideoCard from "../components/HorizontalVideoCard";
 import NotFound from "../components/errorPages/NotFound";
-import { useDispatch, useSelector } from "react-redux";
-import { addVideos, updateResults } from "../store/slices/videosSlice";
-import { request } from "../utils/axiosConfig";
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import useSearch from "../hooks/useSearch";
 
@@ -22,6 +18,13 @@ const SearchResults = () => {
   return (
     <div className="flex flex-col gap-4">
       {data?.pages?.map((page) => {
+        if (page?.data?.docs?.length === 0) {
+          return (
+            <div className="my-8">
+              <NotFound errorMsg={"No Video found"} />
+            </div>
+          );
+        }
         return page?.data?.docs?.map((video) => (
           <HorizontalVideoCard
             key={video?._id}
@@ -41,7 +44,7 @@ const SearchResults = () => {
             ? "Loading more..."
             : hasNextPage
             ? "Load Newer"
-            : "Nothing more to load"}
+            : ""}
         </button>
       </div>
     </div>

@@ -11,7 +11,7 @@ const getSearchResults = async ({ search, sortOrder, sortBy, page, limit }) => {
 
 const useSearch = (search ) => {
   return useInfiniteQuery({
-    queryKey: ["SearchResults"],
+    queryKey: ["SearchResults", search],
     queryFn: async ({ pageParam }) => {
       console.log(pageParam);
 
