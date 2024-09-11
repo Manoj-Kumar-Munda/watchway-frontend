@@ -19,7 +19,7 @@ export const SubscribeBtn = ({ children, className, channelId, ...props }) => {
     <button
       onClick={() => mutate(channelId)}
       className={cn(
-        " font-Poppins py-2 px-4 text-center rounded transition-colors dark:bg-white/20 text-sm bg-themered-500 inline-flex items-center gap-2 ",
+        "text-xs bg-white text-black xs:text-white  font-Poppins py-2 px-2 xs:px-4 text-center rounded-full xs:rounded transition-colors xs:dark:bg-white/20 xs:text-sm xs:bg-themered-500 inline-flex items-center gap-2 ",
         className
       )}
       {...props}

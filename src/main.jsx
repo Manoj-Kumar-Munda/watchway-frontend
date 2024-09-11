@@ -25,7 +25,6 @@ import MyContent from "./pages/MyContent.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import EditChannelLayout from "./components/Channel/Layouts/EditChannelLayout.jsx";
 import ChannelActivityLayout from "./components/Channel/Layouts/ChannelLayout.jsx";
 import Playlists from "./pages/Channel/Playlists.jsx";
@@ -146,7 +145,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
-    <ReactQueryDevtools initialIsOpen={false} />
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>

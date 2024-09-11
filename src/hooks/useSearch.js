@@ -13,10 +13,8 @@ const useSearch = (search ) => {
   return useInfiniteQuery({
     queryKey: ["SearchResults", search],
     queryFn: async ({ pageParam }) => {
-      console.log(pageParam);
-
       return await request({
-        url: `/videos/search?query=${search}&page=${pageParam}&limit=1`,
+        url: `/videos/search?query=${search}&page=${pageParam}`,
         method: "GET",
       });
     },

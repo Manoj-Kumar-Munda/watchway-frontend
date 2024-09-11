@@ -21,7 +21,7 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
   return (
     <div>
       <CoverPic cover={coverImage} />
-      <div className="my-4 flex justify-between px-2 items-center md:px-6">
+      <div className="my-4 flex justify-between xs:px-2 items-center md:px-6">
         <div className="flex items-center gap-4">
           <ProfileCircle
             imgSrc={avatar}
@@ -53,8 +53,8 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
               </span>
             </ChannelBtn>
           ) : (
-            <SubscribeBtn className={"text-white text-xs xs:text-sm"} channelId={channelInfo?._id} >
-              {isSubscribed ? "Subscribed " : "Subscribe"}
+            <SubscribeBtn className={""} channelId={channelInfo?._id} >
+              {isSubscribed ? "Unsubscribe " : "Subscribe"}
             </SubscribeBtn>
           )}
         </div>
