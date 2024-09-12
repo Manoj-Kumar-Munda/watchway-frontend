@@ -1,12 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "../../utils/cn";
 
 const SidebarLinks = ({ children, title, link }) => {
+  const { pathname } = useLocation();
   return (
-    <div className="sidebar-link">
-      <div className="px-2 bg-transparent dark:mix-blend-color-dodge">{children}</div>
+    <div className={cn("sidebar-link", pathname === link && "bg-gray-300/30")}>
+      <div className="px-2 bg-transparent dark:mix-blend-color-dodge">
+        {children}
+      </div>
       <Link to={link} className="bg-transparent hover:bg-transparent">
-        <span className="font-Roboto font-medium text-gray-600  dark:text-white   bg-transparent hover:bg-transparent">{title}</span>
+        <span className="font-Roboto font-medium text-gray-600  dark:text-white   bg-transparent hover:bg-transparent">
+          {title}
+        </span>
       </Link>
     </div>
   );
