@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/VideoPlayer";
 import useVideoInfo from "../hooks/useVideoInfo";
@@ -7,19 +7,22 @@ import ChannelBar from "../components/ChannelBar";
 import DotLoader from "../components/Loaders/DotLoader";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import useLikeVideo from "../hooks/useLikeVideo";
+import useUpdateWatchHistory from "../hooks/useUpdateWatchHistory";
 
 const Watch = () => {
   const { videoId } = useParams();
   const { data, status } = useVideoInfo(videoId);
   const { mutate } = useLikeVideo();
+  const { mutate: updateWatchHistory } = useUpdateWatchHistory(videoId);
 
-  console.log(status);
-  console.log(data);
+  useEffect(() => {
+    updateWatchHistory(videoId);
+  }, []);
 
+  
   if (status === "pending") return <DotLoader />;
   if (status === "error") return <div>Error</div>;
   const video = data?.data[0];
-  console.log(video);
 
   return (
     <div className="max-w-screen-xl mx-auto flex">
@@ -45,7 +48,7 @@ const Watch = () => {
             <span className="font-semibold">
               Posted On {formateDate(video?.createdAt)}
             </span>
-            //create readMore button
+            {/* create readMore button */}
             <p className="line-clamp-6">{video?.description}</p>
           </div>
         </div>
