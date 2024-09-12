@@ -19,7 +19,6 @@ const Watch = () => {
     updateWatchHistory(videoId);
   }, []);
 
-  
   if (status === "pending") return <DotLoader />;
   if (status === "error") return <div>Error</div>;
   const video = data?.data[0];
@@ -45,9 +44,11 @@ const Watch = () => {
           </div>
 
           <div className="bg-white/10 p-3 rounded-xl">
-            <span className="font-semibold">
-              Posted On {formateDate(video?.createdAt)}
-            </span>
+            <div className="flex gap-2">
+              <span>{video?.views} views |</span>
+              <span className="font-semibold">Posted On {formateDate(video?.createdAt)}
+              </span>
+            </div>
             {/* create readMore button */}
             <p className="line-clamp-6">{video?.description}</p>
           </div>

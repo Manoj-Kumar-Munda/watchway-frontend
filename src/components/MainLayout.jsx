@@ -25,7 +25,7 @@ const MainLayout = ({ children }) => {
             <div
               className={cn(
                 "ml-0 transition-all duration-300 px-2 md:px-4 relative h-full",
-                isMenuOpen && " md:ml-56"
+                isMenuOpen && "md:ml-56"
               )}
             >
               {children}

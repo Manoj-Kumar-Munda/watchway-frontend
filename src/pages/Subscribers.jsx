@@ -3,9 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import { request } from "../utils/axiosConfig";
 import { useSelector } from "react-redux";
 import HorizonatalChannelCard from "../components/Channel/SubscribedChannels/HorizonatalChannelCard";
+import NotFound from "../components/errorPages/NotFound";
+import StatusContainer from "../components/Channel/Layouts/StatusContainer";
 
 const fetchSubscribers = async (channelId) => {
-  console.log(channelId);
   if (!channelId) {
     return;
   }
@@ -25,7 +26,6 @@ const useSubscribers = (channelId) => {
 const Subscribers = () => {
   const { user } = useSelector((state) => state.auth);
   const { data, status } = useSubscribers(user?._id);
-  console.log(user);
 
   if (status === "pending") {
     return <div>Loading...</div>;
@@ -35,7 +35,11 @@ const Subscribers = () => {
   }
 
   if (data?.data.length === 0) {
-    return <div>No subscribers</div>;
+    return (
+      <StatusContainer>
+        <NotFound errorMsg={"No subscribers"} />
+      </StatusContainer>
+    );
   }
 
   const { subscribers } = data?.data[0];
