@@ -5,7 +5,7 @@ import useSubscribe from "../hooks/useSubscribe";
 const Button = ({ children, className = "", ...props }) => {
   return (
     <button
-      className={cn("py-2 px-4 text-center rounded", className)}
+      className={cn("py-2 px-4 text-center rounded border border-white/10", className)}
       {...props}
     >
       {children}
@@ -19,7 +19,7 @@ export const SubscribeBtn = ({ children, className, channelId, ...props }) => {
     <button
       onClick={() => mutate(channelId)}
       className={cn(
-        "text-xs bg-white text-black xs:text-white  font-Poppins py-2 px-2 xs:px-4 text-center rounded-full xs:rounded transition-colors xs:dark:bg-white/20 xs:text-sm xs:bg-themered-500 inline-flex items-center gap-2 ",
+        "border border-white/10 text-xs bg-white text-black xs:text-white  font-Poppins py-2 px-2 xs:px-4 text-center rounded-full xs:rounded transition-colors xs:dark:bg-white/20 xs:text-sm xs:bg-themered-500 inline-flex items-center gap-2 ",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ export const ChannelBtn = ({ children, className, channel, ...props }) => {
   return (
     <button
       className={cn(
-        "font-Poppins py-3 px-4 text-center rounded transition-colors dark:bg-white/20 text-sm bg-themered-500 inline-flex items-center gap-2 ",
+        "border border-white/10 font-Poppins py-3 px-4 text-center rounded transition-colors dark:bg-white/20 text-sm bg-themered-500 inline-flex items-center gap-2 ",
         className
       )}
       {...props}

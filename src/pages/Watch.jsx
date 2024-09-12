@@ -8,6 +8,7 @@ import DotLoader from "../components/Loaders/DotLoader";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import useLikeVideo from "../hooks/useLikeVideo";
 import useUpdateWatchHistory from "../hooks/useUpdateWatchHistory";
+import Comments from "../components/Comments/Comments";
 
 const Watch = () => {
   const { videoId } = useParams();
@@ -53,6 +54,10 @@ const Watch = () => {
             <p className="line-clamp-6">{video?.description}</p>
           </div>
         </div>
+
+        <Comments video={video?._id} />
+
+
       </div>
     </div>
   );
