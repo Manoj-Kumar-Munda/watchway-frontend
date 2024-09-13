@@ -21,11 +21,11 @@ const HorizontalVideoCard = ({ video, showAvatar }) => {
             </p>
           </div>
           <div className="hidden sm:flex gap-2 items-center">
-            <span className="text-sm text-gray-300">{video?.views} views</span>
+            <span className="text-xs text-gray-300 font-medium">{video?.views} views</span>
 
             <span className="text-gray-300 text-lg">&middot;</span>
 
-            <div className="text-gray-300 text-sm">
+            <div className="text-gray-300 text-xs font-medium">
               {calculateTimeDifferenceToNow(video?.createdAt)} ago
             </div>
           </div>
