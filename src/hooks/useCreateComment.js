@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { request } from "../utils/axiosConfig";
-
+import { queryClient } from "../main";
 const createComment = async ({ video, content }) => {
   return await request({
     url: `/comments/${video}`,
@@ -9,10 +9,13 @@ const createComment = async ({ video, content }) => {
   });
 };
 
-const useCreateComment = () => {
+const useCreateComment = (video) => {
   return useMutation({
     mutationKey: ["createComment"],
     mutationFn: createComment,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comments", video] });
+    },
   });
 };
 
