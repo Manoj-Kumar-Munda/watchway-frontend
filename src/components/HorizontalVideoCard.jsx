@@ -13,7 +13,7 @@ const HorizontalVideoCard = ({ video, showAvatar }) => {
           </Link>
         </div>
 
-        <div className="inline-flex flex-col gap-1 sm:gap-2 pt-1 px-2 sm:px-0 sm:pt-0 sm:py-2">
+        <div className="inline-flex flex-col gap-1.5 pt-1 px-2 sm:px-0 sm:pt-0 sm:py-2">
           <div>
             <h2 className="font-medium font-Roboto">{video?.title}</h2>
             <p className="line-clamp-1 sm:line-clamp-2 text-xs font-medium text-gray-400">
