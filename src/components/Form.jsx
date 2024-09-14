@@ -10,11 +10,11 @@ import ErrorText from "./ErrorText";
 import useLogin from "../hooks/Auth/useLogin";
 
 const Form = () => {
-  const { mutate, data, status } = useLogin();
+  const { mutate, data, status, error } = useLogin();
   const navigate = useNavigate();
 
-  if(status === "error"){
-    toast.error("Failed to login. Try again")
+  if (status === "error") {
+    toast.error(error?.data?.message || "Failed to login. Try again");
   }
   useEffect(() => {
     let timer;
