@@ -9,6 +9,7 @@ import { BiLike, BiSolidLike } from "react-icons/bi";
 import useLikeVideo from "../hooks/useLikeVideo";
 import useUpdateWatchHistory from "../hooks/useUpdateWatchHistory";
 import Comments from "../components/Comments/Comments";
+import { MdOutlineSaveAlt } from "react-icons/md";
 
 const Watch = () => {
   const { videoId } = useParams();
@@ -36,18 +37,28 @@ const Watch = () => {
 
           <div className="flex justify-between">
             <ChannelBar owner={video?.owner} />
-            <div className="inline-flex items-center gap-2">
-              <button onClick={() => mutate(video?._id)}>
-                {video?.isLiked ? <BiSolidLike /> : <BiLike />}
-              </button>
-              <span>{video?.likesCount}</span>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <div>
+                <button className="border border-white/10 py-1.5 px-4 rounded-md bg-slate-200 inline-flex items-center gap-2">
+                  <MdOutlineSaveAlt color="black" />
+
+                  <span className="text-sm text-black hidden sm:inline">Save</span>
+                </button>
+              </div>
+              <div className="inline-flex items-center gap-2">
+                <button onClick={() => mutate(video?._id)}>
+                  {video?.isLiked ? <BiSolidLike /> : <BiLike />}
+                </button>
+                <span>{video?.likesCount}</span>
+              </div>
             </div>
           </div>
 
           <div className="bg-white/10 p-3 rounded-xl">
             <div className="flex gap-2">
               <span>{video?.views} views |</span>
-              <span className="font-semibold">Posted On {formateDate(video?.createdAt)}
+              <span className="font-semibold">
+                Posted On {formateDate(video?.createdAt)}
               </span>
             </div>
             {/* create readMore button */}
@@ -56,8 +67,6 @@ const Watch = () => {
         </div>
 
         <Comments video={video?._id} />
-
-
       </div>
     </div>
   );
