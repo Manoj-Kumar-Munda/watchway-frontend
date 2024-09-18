@@ -45,9 +45,6 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
           {isMyChannel ? (
             //change this btn
             <ChannelBtn onClick={() => navigate("./edit")}>
-              <div className="bg-transparent mix-blend-color-dodge">
-                <FiEdit2 color="white" />
-              </div>
               <span className="text-white font-Roboto font-semibold bg-transparent">
                 Edit
               </span>
