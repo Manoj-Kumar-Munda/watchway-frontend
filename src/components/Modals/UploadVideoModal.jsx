@@ -28,8 +28,6 @@ const UploadVideoModal = () => {
   useEffect(() => {
     let timer;
     if (status === "success") {
-      toast.success("Video uploaded");
-
       timer = setTimeout(() => {
         dispatch(closeModal("upload"));
       }, 2200);

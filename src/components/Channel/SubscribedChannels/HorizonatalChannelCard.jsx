@@ -3,6 +3,8 @@ import ProfileCircle from "../../Header/ProfileCircle";
 import { SubscribeBtn } from "../../Button";
 
 const HorizonatalChannelCard = ({ channel }) => {
+  console.log(channel);
+  
   return (
     <div className="flex justify-between items-center px-1">
       <div className="flex items-center gap-4">

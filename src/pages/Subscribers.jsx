@@ -42,12 +42,10 @@ const Subscribers = () => {
     );
   }
 
-  const { subscribers } = data?.data[0];
-
   return (
-    <div className="max-w-screen-md mx-auto my-4">
-      {subscribers?.map((subscriber) => (
-        <HorizonatalChannelCard channel={subscriber} />
+    <div className="max-w-screen-md mx-auto my-4 space-y-2">
+      {data?.data?.map((subscriber) => (
+        <HorizonatalChannelCard channel={subscriber?.subscriberInfo} />
       ))}
     </div>
   );

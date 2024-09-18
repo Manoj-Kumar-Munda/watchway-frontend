@@ -31,7 +31,7 @@ const Input = React.forwardRef(
         <input
           type={type}
           className={twMerge(
-            "px-3 py-2 rounded-lg dark:bg-white/60  bg-white text-black outline-none focus:ring-2 focus:ring-gray-700 focus:bg-gray-50 duration-200 border border-gray-200 w-full",
+            "px-3 py-2 rounded-lg dark:bg-white/60  bg-white dark:bg-slate-200 text-black outline-none focus:ring-1 focus:ring-blue-500 focus:bg-gray-50 duration-200 border border-gray-200 w-full",
             className
           )}
           ref={ref}
