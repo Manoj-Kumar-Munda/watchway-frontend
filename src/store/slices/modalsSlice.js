@@ -4,6 +4,7 @@ const initialState = {
   delete: false,
   upload: false,
   edit: false,
+  playlist: false,
 };
 
 const modalSlice = createSlice({

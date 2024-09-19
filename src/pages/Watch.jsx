@@ -38,7 +38,7 @@ const Watch = () => {
 
           <div className="flex justify-between">
             <ChannelBar owner={video?.owner} />
-            <div className="flex items-center gap-2 sm:gap-4">
+            <div className="relative flex items-center gap-2 sm:gap-4">
               <PlaylistBtn />
              
               <div className="inline-flex items-center gap-2">
