@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { request } from "../utils/axiosConfig";
+import { useSelector } from "react-redux";
 
 const fetchPlaylists = async (userId) => {
   if (!userId) {
@@ -8,10 +9,11 @@ const fetchPlaylists = async (userId) => {
   return request({ url: `/playlist/user/${userId}`, method: "GET" });
 };
 
-const useGetPlaylist = (userId) => {
+const useGetPlaylist = () => {
+  const { user } = useSelector((store) => store.auth);
   return useQuery({
-    queryKey: ["playlist", userId],
-    queryFn: () => fetchPlaylists(userId),
+    queryKey: ["playlist", user?._id],
+    queryFn: () => fetchPlaylists(user?._id),
   });
 };
 
