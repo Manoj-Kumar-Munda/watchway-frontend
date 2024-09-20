@@ -1,5 +1,4 @@
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
 import { cn } from '../utils/cn'
 
 const Button = ({ children,type='button', className=''}) => {
