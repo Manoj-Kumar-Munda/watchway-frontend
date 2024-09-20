@@ -6,7 +6,7 @@ import PlaylistBox from "./PlaylistBox";
 import { AnimatePresence, motion } from "framer-motion";
 
 const PlaylistBtn = () => {
-  const [showPlaylists, setShowPlaylists] = useState(true);
+  const [showPlaylists, setShowPlaylists] = useState(false);
 
   return (
     <>

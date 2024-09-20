@@ -3,17 +3,16 @@ import { useDispatch } from "react-redux";
 import { openModal } from "../../store/slices/modalsSlice";
 import useGetPlaylist from "../../hooks/useGetPlaylists";
 import { cn } from "../../utils/cn";
+import PlaylistItem from "./PlaylistItem";
 
 const PlaylistBox = () => {
   const dispatch = useDispatch();
-  const { data, status } = useGetPlaylist();
-
-  
+  const { data } = useGetPlaylist();
 
   return (
     <div className="flex flex-col gap-1 text-center ">
       {data?.data?.map((playlist) => (
-        <div>{playlist?.name}</div>
+        <PlaylistItem key={playlist?._id} playlist={playlist} />
       ))}
       <button
         onClick={() => dispatch(openModal("playlist"))}
