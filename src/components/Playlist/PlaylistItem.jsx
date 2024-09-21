@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAddToPlaylist from "../../hooks/useAddToPlaylist";
-import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { closeModal } from "../../store/slices/modalsSlice";
 const PlaylistItem = ({ playlist }) => {
+  const dispatch = useDispatch();
   const { videoId } = useParams();
-
-  console.log(playlist);
-
   const { mutate, data, status } = useAddToPlaylist();
 
   const addToPlaylistHandler = () => {
-    console.log(playlist?._id);
-
     mutate({ videoId, playlistId: playlist?._id });
   };
+
+  useEffect(() => {
+    let timer;
+    if (status === "success" || status === "error") {
+      timer = setTimeout(() => {
+        dispatch(closeModal("playlist"));
+      }, 1000);
+    }
+
+    return () => clearTimeout(timer);
+  }, [status]);
 
   return (
     <>

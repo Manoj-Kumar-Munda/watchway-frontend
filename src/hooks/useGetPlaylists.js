@@ -12,7 +12,7 @@ const fetchPlaylists = async (userId) => {
 const useGetPlaylist = () => {
   const { user } = useSelector((store) => store.auth);
   return useQuery({
-    queryKey: ["playlist", user?._id],
+    queryKey: ["playlist"],
     queryFn: () => fetchPlaylists(user?._id),
   });
 };

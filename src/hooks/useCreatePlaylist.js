@@ -1,10 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { request } from "../utils/axiosConfig";
+import { queryClient } from "../main";
 
 const createPlaylist = async (userId, data) => {
   if (!userId) return;
-  return request({ url: "/playlist", method: "POST", data });
+  return await request({ url: "/playlist", method: "POST", data });
 };
 
 const useCreatePlaylist = () => {
@@ -12,6 +13,9 @@ const useCreatePlaylist = () => {
   return useMutation({
     mutationKey: ["create-playlist"],
     mutationFn: (data) => createPlaylist(user?._id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["playlist"] });
+    },
   });
 };
 

@@ -12,6 +12,9 @@ const useAddToPlaylist = () => {
   return useMutation({
     mutationKey: ["add-to-playlist"],
     mutationFn: addToPlaylist,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["playlist"] });
+    },
   });
 };
 
