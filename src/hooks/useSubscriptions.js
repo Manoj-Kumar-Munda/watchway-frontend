@@ -12,8 +12,6 @@ const getSubscriptions = async (id) => {
 };
 
 const useSubscriptions = (id) => {
- 
-
   return useQuery({
     queryKey: ["subscriptions"],
     queryFn: () => getSubscriptions(id),
