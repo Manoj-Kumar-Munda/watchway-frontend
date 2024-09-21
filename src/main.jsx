@@ -29,6 +29,7 @@ import EditChannelLayout from "./components/Channel/Layouts/EditChannelLayout.js
 import ChannelActivityLayout from "./components/Channel/Layouts/ChannelLayout.jsx";
 import Playlists from "./pages/Channel/Playlists.jsx";
 import SearchResults from "./pages/SearchResults.jsx";
+import Playlist from "./pages/Playlist.jsx";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -130,6 +131,10 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "playlist/:playlistId",
+        element: <Playlist />,
       },
       {
         path: "policy",
