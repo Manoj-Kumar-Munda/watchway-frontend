@@ -4,7 +4,7 @@ import { TbPlaylist } from 'react-icons/tb'
 
 const PlaylistCard = ({playlist}) => {
   return (
-    <div className="border aspect-video w-full h-full relative">
+    <div className="aspect-video w-full h-full relative">
     {playlist?.coverImage ? (
       <img src={playlist?.coverImage} alt="cover" className='' />
     ) : (
