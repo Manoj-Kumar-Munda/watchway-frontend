@@ -4,6 +4,7 @@ import { LuListVideo } from "react-icons/lu";
 import { MdDelete, MdDeleteSweep } from "react-icons/md";
 import { randomColor } from "../../utils/helpers";
 import { useSelector } from "react-redux";
+import DeletePlaylist from "./DeletePlaylist";
 
 const PlaylistHeader = () => {
   const { currentPlaylist, isAuthorized } = useSelector(
@@ -11,7 +12,7 @@ const PlaylistHeader = () => {
   );
 
   console.log(currentPlaylist);
-  
+
   return (
     <div
       style={{ backgroundColor: randomColor() }}
@@ -61,12 +62,7 @@ const PlaylistHeader = () => {
         </div>
       </div>
 
-      <button
-        title="Delete playlist"
-        className="absolute top-4 right-4 w-10 h-10 rounded-full transition-colors hover:bg-white/20 flex justify-center items-center"
-      >
-        <MdDelete size={20} />
-      </button>
+      <DeletePlaylist />
     </div>
   );
 };

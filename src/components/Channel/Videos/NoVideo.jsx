@@ -14,7 +14,7 @@ const NoVideo = () => {
 
   return (
     <div className="absolute inset-0 flex flex-col gap-2 justify-center items-center">
-      <Modal>
+      <Modal className="max-w-screen-sm">
         <UploadVideoModal />
       </Modal>
       <NoData message="No Video uploaded" imgSrc={NoVideoImg} className="" />

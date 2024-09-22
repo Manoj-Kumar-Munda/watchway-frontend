@@ -20,7 +20,7 @@ const VideoList = () => {
 
   return (
     <>
-      <Modal>
+      <Modal className="max-w-screen-sm">
         <UploadVideoModal />
       </Modal>
       <button

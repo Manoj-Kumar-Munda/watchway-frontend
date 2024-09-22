@@ -22,7 +22,7 @@ const PlaylistBtn = () => {
         </button>
       </div>
 
-      <Modal modalId={"playlist"}>
+      <Modal className="max-w-screen-sm">
         <CreatePlaylistModal />
       </Modal>
 

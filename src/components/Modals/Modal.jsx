@@ -4,7 +4,7 @@ import { cn } from "../../utils/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import { closeModal } from "../../store/slices/modalsSlice";
 
-const Modal = ({ children }) => {
+const Modal = ({ children, className = "" }) => {
   const { isOpen } = useSelector((store) => store.modals);
   const modalRef = useRef();
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const Modal = ({ children }) => {
   return (
     <div
       className={cn(
-        "invisible fixed inset-0 bg-black/60 z-50 flex justify-center items-center",
+        "invisible fixed inset-0 bg-black/60 z-50 flex justify-center  items-center ",
         isOpen && "visible"
       )}
     >
@@ -36,7 +36,7 @@ const Modal = ({ children }) => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="max-w-screen-sm w-full"
+            className={cn(" w-full", className)}
             ref={modalRef}
           >
             {children}
