@@ -10,6 +10,7 @@ const Input = React.forwardRef(
       required,
       error = "",
       className = "",
+      defaultValue="",
       ...props
     },
     ref
@@ -29,6 +30,7 @@ const Input = React.forwardRef(
           </>
         )}
         <input
+          defaultValue={defaultValue}
           type={type}
           className={twMerge(
             "px-3 py-2 rounded-lg bg-white dark:bg-slate-100 text-black outline-none  duration-200 border border-gray-200 w-full placeholder:text-primary-dark/60 placeholder:text-sm",
