@@ -7,6 +7,7 @@ import DotLoader from "../components/Loaders/DotLoader";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { cn } from "../utils/cn";
+import { randomColor } from "../utils/helpers";
 
 const Playlist = () => {
   const { playlistId } = useParams();
@@ -44,7 +45,7 @@ const Playlist = () => {
 
   return (
     <div className=" max-w-screen-lg mx-auto mb-4">
-      <div className="bg-themered-800 rounded-xl py-4 px-3  bg-gradient-to-t sm:bg-gradient-to-tl from-black/80 to-transparent">
+      <div style={{backgroundColor:randomColor()}} className={` rounded-xl py-4 px-3  bg-gradient-to-t sm:bg-gradient-to-tl from-black/80 to-transparent`}>
         <div className="space-y-1">
           <div className=" sm:max-w-60 aspect-video w-full h-full mx-auto sm:mx-0 ">
             <img
@@ -67,7 +68,7 @@ const Playlist = () => {
           <div className="flex items-center gap-1 text-sm">
             <LuListVideo size={20} />
             <span className="text-sm font-semibold">
-              {data?.data?.videos?.length}
+              {data?.data?.videos?.length} Videos
             </span>
           </div>
 
@@ -104,7 +105,10 @@ const Playlist = () => {
 
       {isEditPlaylist && (
         <div className="flex justify-end">
-          <button className="bg-themered-700 font-Roboto py-2 px-8 rounded-lg">
+          <button
+           disabled={videosToBeRemoved.length === 0}
+            className={cn("bg-themered-700 font-Poppins text-sm py-2.5 px-8 rounded-lg disabled:bg-themered-900/40 disabled:text-gray-400")}
+          >
             Remove
           </button>
         </div>
