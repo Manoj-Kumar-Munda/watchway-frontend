@@ -68,3 +68,8 @@ export const registerValidation = yup.object().shape({
     ),
   coverImage: yup.mixed().optional(),
 });
+
+export const playlistFormValidation = yup.object().shape({
+  name: yup.string().required("Playlist name is required"),
+  description: yup.string().required("Description is required"),
+});

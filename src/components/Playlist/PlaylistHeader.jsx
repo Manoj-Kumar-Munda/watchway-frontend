@@ -5,6 +5,7 @@ import { MdDelete, MdDeleteSweep } from "react-icons/md";
 import { randomColor } from "../../utils/helpers";
 import { useSelector } from "react-redux";
 import DeletePlaylist from "./DeletePlaylist";
+import UpdatePlaylist from "./UpdatePlaylist";
 
 const PlaylistHeader = () => {
   const { currentPlaylist, isAuthorized } = useSelector(
@@ -45,13 +46,7 @@ const PlaylistHeader = () => {
         </div>
 
         <div className="flex items-center">
-          <button
-            title="Edit playlist"
-            className="w-10 h-10 rounded-full transition-colors hover:bg-white/20 flex justify-center items-center"
-            // onClick={() => setIsEditPlaylist(!isEditPlaylist)}
-          >
-            <FaEdit color="#eee" size={16} />
-          </button>
+          <UpdatePlaylist />
 
           <button
             title="Remove videos"
