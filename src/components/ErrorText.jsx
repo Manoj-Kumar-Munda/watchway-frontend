@@ -5,7 +5,7 @@ const ErrorText = ({ children, className = "" }) => {
   return (
     <p
       className={cn(
-        "text-xs text-red-400 pl-2 font-Roboto font-medium lowercase",
+        "text-xs text-themered-400 pl-2 font-Roboto font-medium lowercase",
         className
       )}
     >
