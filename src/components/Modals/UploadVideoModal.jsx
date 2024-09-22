@@ -21,7 +21,7 @@ const UploadVideoModal = () => {
   const dispatch = useDispatch();
 
   if (status === "success" || status === "error") {
-    dispatch(closeModal("upload"));
+    dispatch(closeModal());
     dispatch(setUploadStatus(status));
   }
 
@@ -29,7 +29,7 @@ const UploadVideoModal = () => {
     let timer;
     if (status === "success") {
       timer = setTimeout(() => {
-        dispatch(closeModal("upload"));
+        dispatch(closeModal());
       }, 2200);
     }
     return () => clearTimeout(timer);
@@ -51,14 +51,17 @@ const UploadVideoModal = () => {
   };
   return (
     <>
-      <Toaster position="top-center" containerStyle={{ background: "transparent"}} />
+      <Toaster
+        position="top-center"
+        containerStyle={{ background: "transparent" }}
+      />
       {isUploading ? (
         <UploadingVideoModalPopup data={uploadingVideoData} />
       ) : (
         <div className="bg-white dark:text-black dark:bg-white/40 dark:backdrop-blur-2xl max-w-screen-sm w-full rounded-md py-3 space-y-2 px-4 relative">
           <CloseModalBtn
             handleClose={() => {
-              dispatch(closeModal("upload"));
+              dispatch(closeModal());
             }}
           />
           <div className="">
