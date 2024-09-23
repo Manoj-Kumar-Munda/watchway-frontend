@@ -26,7 +26,7 @@ const DeletePlaylist = () => {
     <>
       {isShowModal && (
         <Modal className="max-w-screen-xs">
-          <div className="font-Poppins bg-white/10 backdrop-blur-xl rounded-xl flex flex-col gap-4 py-4 items-center">
+          <div className="font-Poppins bg-white/30 backdrop-blur-xl rounded-xl flex flex-col gap-4 py-4 items-center">
             <h1 className="text-xl font-bold ">Delete Playlist</h1>
             <p>Are you sure you want to delete this playlist? </p>
             <div className="inline-flex gap-4">

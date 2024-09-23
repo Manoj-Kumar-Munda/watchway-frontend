@@ -5,7 +5,7 @@ const playlistSlice = createSlice({
   initialState: {
     currentPlaylist: null,
     isAuthorized: false,
-    
+    isUpdatePlaylist: false,
   },
   reducers: {
     setCurrentPlaylist: (state, action) => {
@@ -19,8 +19,12 @@ const playlistSlice = createSlice({
       state.currentPlaylist = null;
       state.isAuthorized = null;
     },
+    toggleIsUpdatePlaylist: (state, action) => {
+      state.isUpdatePlaylist = !state.isUpdatePlaylist;
+    }
   },
 });
 
-export const { setCurrentPlaylist, setIsAuthorized, setToDefault } = playlistSlice.actions;
+export const { setCurrentPlaylist, setIsAuthorized, setToDefault, toggleIsUpdatePlaylist } =
+  playlistSlice.actions;
 export default playlistSlice.reducer;

@@ -1,25 +1,21 @@
-import React from "react";
-import { FaEdit } from "react-icons/fa";
+import React, { useMemo } from "react";
 import { LuListVideo } from "react-icons/lu";
-import { MdDelete, MdDeleteSweep } from "react-icons/md";
+import { MdDeleteSweep } from "react-icons/md";
 import { randomColor } from "../../utils/helpers";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DeletePlaylist from "./DeletePlaylist";
 import UpdatePlaylist from "./UpdatePlaylist";
+import { toggleIsUpdatePlaylist } from "../../store/slices/playlistSlice";
 
 const PlaylistHeader = () => {
   const { currentPlaylist, isAuthorized } = useSelector(
     (store) => store.playlist
   );
-
-  console.log(currentPlaylist);
-  
-
-  console.log(currentPlaylist);
-
+  const dispatch = useDispatch();
+  const headerBgColor = useMemo(() => randomColor(), []);
   return (
     <div
-      style={{ backgroundColor: randomColor() }}
+      style={{ backgroundColor: headerBgColor }}
       className={`relative rounded-xl py-4 px-3  bg-gradient-to-t sm:bg-gradient-to-tl from-primary-dark to-transparent`}
     >
       <div className="space-y-1">
@@ -48,21 +44,24 @@ const PlaylistHeader = () => {
           </span>
         </div>
 
-        <div className="flex items-center">
-          <UpdatePlaylist />
+        {isAuthorized && (
+          <div className="flex items-center">
+            <UpdatePlaylist />
 
-          <button
-            title="Remove videos"
-            className="w-10 h-10 rounded-full transition-colors hover:bg-white/20 flex justify-center items-center"
-          >
-            <MdDeleteSweep color="#eee" size={20} />
-          </button>
-        </div>
+            <button
+              title="Remove videos"
+              className="w-10 h-10 rounded-full transition-colors hover:bg-white/20 flex justify-center items-center"
+              onClick={() => dispatch(toggleIsUpdatePlaylist())}
+            >
+              <MdDeleteSweep color="#eee" size={20} />
+            </button>
+          </div>
+        )}
       </div>
 
-      <DeletePlaylist />
+      {isAuthorized && <DeletePlaylist />}
     </div>
   );
 };
 
-export default PlaylistHeader;
+export default React.memo(PlaylistHeader);
