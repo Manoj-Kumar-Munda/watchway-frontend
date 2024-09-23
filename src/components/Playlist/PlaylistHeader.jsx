@@ -13,6 +13,9 @@ const PlaylistHeader = () => {
   );
 
   console.log(currentPlaylist);
+  
+
+  console.log(currentPlaylist);
 
   return (
     <div

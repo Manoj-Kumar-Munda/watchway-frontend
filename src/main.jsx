@@ -30,6 +30,7 @@ import ChannelActivityLayout from "./components/Channel/Layouts/ChannelLayout.js
 import Playlists from "./pages/Channel/Playlists.jsx";
 import SearchResults from "./pages/SearchResults.jsx";
 import Playlist from "./pages/Playlist.jsx";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -150,6 +151,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
+    {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>

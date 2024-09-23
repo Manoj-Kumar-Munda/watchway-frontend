@@ -8,11 +8,10 @@ import ErrorText from "../ErrorText";
 import useUpdatePlaylist from "../../hooks/useUpdatePlaylist";
 import Textarea from "../Textarea";
 import { closeModal } from "../../store/slices/modalsSlice";
-import { AnimatePresence, motion } from "framer-motion";
 
 const UpdatePlaylistForm = () => {
   const { currentPlaylist } = useSelector((store) => store.playlist);
-  const { mutate, status } = useUpdatePlaylist();
+  const { mutate, status, data } = useUpdatePlaylist();
   const dispatch = useDispatch();
   const {
     register,
@@ -29,6 +28,8 @@ const UpdatePlaylistForm = () => {
   useEffect(() => {
     let timer;
     if (status === "success") {
+      console.log(data);
+      
       timer = setTimeout(() => {
         dispatch(closeModal());
       }, 1500);

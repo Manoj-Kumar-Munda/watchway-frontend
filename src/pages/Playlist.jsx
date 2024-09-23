@@ -1,14 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useGetPlaylist from "../hooks/useGetPlaylist";
-import { LuListVideo } from "react-icons/lu";
 import HorizontalVideoCard from "../components/HorizontalVideoCard";
 import DotLoader from "../components/Loaders/DotLoader";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { cn } from "../utils/cn";
-import { randomColor } from "../utils/helpers";
-import { MdDeleteSweep } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentPlaylist,
@@ -27,13 +22,12 @@ const Playlist = () => {
 
   useEffect(() => {
     if (status === "success") {
-      console.log(data?.data?.owner === user._id);
       dispatch(setCurrentPlaylist(data?.data));
       dispatch(setIsAuthorized(data?.data?.owner === user._id));
     }
 
     return () => dispatch(setToDefault());
-  }, [status]);
+  }, [data]);
 
   const checkIsVideoExists = useCallback(
     (videoId) => {
@@ -54,7 +48,6 @@ const Playlist = () => {
       if (index > -1) {
         const arr = [...videosToBeRemoved];
         arr.splice(index, 1);
-        console.log(arr);
         setVideosToBeRemoved(arr);
       }
     }
@@ -68,7 +61,7 @@ const Playlist = () => {
 
       <div className="flex flex-col gap-4 my-4 sm:bg-white/5 backdrop-blur-lg  rounded-xl px-3 py-4">
         {data?.data?.videos?.map((video) => (
-          <div className={cn(isEditPlaylist && "flex gap-2")}>
+          <div key={video?._id} className={cn(isEditPlaylist && "flex gap-2")}>
             {isEditPlaylist && (
               <input
                 type="checkbox"
