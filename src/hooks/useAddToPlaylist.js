@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { request } from "../utils/axiosConfig";
+import { useSelector } from "react-redux";
 
 const addToPlaylist = async ({ videoId, playlistId }) => {
   return request({
@@ -9,11 +10,12 @@ const addToPlaylist = async ({ videoId, playlistId }) => {
 };
 
 const useAddToPlaylist = () => {
+  const { currentPlaylist } = useSelector((store) => store.playlist);
   return useMutation({
     mutationKey: ["add-to-playlist"],
     mutationFn: addToPlaylist,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["playlist"] });
+      queryClient.invalidateQueries({ queryKey: ["playlist", currentPlaylist?._id] });
     },
   });
 };
