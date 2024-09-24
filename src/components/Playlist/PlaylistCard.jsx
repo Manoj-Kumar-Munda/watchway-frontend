@@ -10,7 +10,7 @@ const PlaylistCard = ({ playlist }) => {
         {playlist?.coverImage ? (
           <img src={playlist?.coverImage} alt="cover" className="" />
         ) : (
-          <div className="flex justify-center items-center w-full h-full">
+          <div className="flex justify-center items-center w-full h-full border border-white/10">
             No cover image
           </div>
         )}
