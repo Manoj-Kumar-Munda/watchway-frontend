@@ -13,7 +13,7 @@ const useCurrentUser = () => {
   return useQuery({
     queryKey: ["current-user"],
     queryFn: fetchCurrentUser,
-    staleTime: 24 * 60 * 60 * 1000,
+    retry: 1,
   });
 };
 

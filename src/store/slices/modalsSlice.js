@@ -6,7 +6,7 @@ const initialState = {
   createPlaylist: false,
   updatePlaylist: false,
   deletePlaylist: false,
-  updateBackground: false
+  updateCover: false
 };
 
 const modalSlice = createSlice({
