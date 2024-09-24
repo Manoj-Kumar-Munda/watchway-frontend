@@ -20,12 +20,12 @@ const VideoList = () => {
 
   return (
     <>
-      <Modal>
+      <Modal modalId={"upload"}>
         <UploadVideoModal />
       </Modal>
       <button
         onClick={() => {
-          dispatch(openModal());
+          dispatch(openModal("upload"));
         }}
         className="block ml-auto font-Roboto text-sm my-1.5 mr-1.5 bg-themered-500 dark:bg-white/10 rounded-lg text-white py-2 px-3"
       >
