@@ -18,7 +18,7 @@ const CreatePlaylistModal = () => {
     }
     if (status === "success") {
       toast.success("Playlist created!");
-      timer = setTimeout(() => dispatch(closeModal("playlist")), 700);
+      timer = setTimeout(() => dispatch(closeModal("createPlaylist")), 1000);
     }
 
     return () => clearTimeout(timer);
@@ -36,7 +36,7 @@ const CreatePlaylistModal = () => {
       <Toaster position="top-center" />
       <div className="relative max-w-screen-sm w-full text-start flex flex-col gap-2 bg-white/30 backdrop-blur-lg rounded-lg px-4 py-6">
         <div className="absolute top-3 right-3">
-          <button onClick={() => dispatch(closeModal("playlist"))}>
+          <button onClick={() => dispatch(closeModal("createPlaylist"))}>
             <ImCross />
           </button>
         </div>

@@ -8,47 +8,40 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const DeletePlaylist = () => {
-  const { isOpen } = useSelector((store) => store.modals);
+
   const navigate = useNavigate();
   const { currentPlaylist } = useSelector((store) => store.playlist);
   const { mutate, status } = useDeletePlaylist();
-  const [isShowModal, setIsShowModal] = useState(false);
+  // const [isShowModal, setIsShowModal] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!isOpen) {
-      setIsShowModal(false);
-      dispatch(closeModal());
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     let timer;
     if (status === "success") {
       toast.success("Playlist deleted");
       timer = setTimeout(() => {
-        dispatch(closeModal());
+        dispatch(closeModal("deletePlaylist"));
         navigate(-1);
       }, 800);
     }
     if (status === "error") {
       toast.error("Failed to delete");
-      timer = setTimeout(() => dispatch(closeModal()), 800);
+      timer = setTimeout(() => dispatch(closeModal("deletePlaylist")), 800);
     }
 
     return () => clearTimeout(timer);
   }, [status]);
 
   const clickHandler = () => {
-    setIsShowModal(true);
-    dispatch(openModal());
+    dispatch(openModal("deletePlaylist"));
   };
 
   return (
     <>
       <Toaster />
-      {isShowModal && (
-        <Modal className="max-w-screen-xs">
+      
+        <Modal className="max-w-screen-xs" modalId={"deletePlaylist"}>
           <div className="font-Poppins bg-white/30 backdrop-blur-xl rounded-xl flex flex-col gap-4 py-4 items-center">
             <h1 className="text-xl font-bold ">Delete Playlist</h1>
             <p>Are you sure you want to delete this playlist? </p>
@@ -60,7 +53,7 @@ const DeletePlaylist = () => {
                 Delete
               </button>
               <button
-                onClick={() => dispatch(closeModal())}
+                onClick={() => dispatch(closeModal("deletePlaylist"))}
                 className="bg-white text-primary-dark py-2 px-6 text-sm rounded-lg font-medium"
               >
                 Cancel
@@ -68,7 +61,7 @@ const DeletePlaylist = () => {
             </div>
           </div>
         </Modal>
-      )}
+      
 
       <button
         onClick={() => clickHandler()}

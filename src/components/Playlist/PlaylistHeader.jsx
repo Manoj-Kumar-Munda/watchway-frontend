@@ -48,13 +48,15 @@ const PlaylistHeader = () => {
           <div className="flex items-center">
             <UpdatePlaylist />
 
-            <button
-              title="Remove videos"
-              className="w-10 h-10 rounded-full transition-colors hover:bg-white/20 flex justify-center items-center"
-              onClick={() => dispatch(toggleIsUpdatePlaylist())}
-            >
-              <MdDeleteSweep color="#eee" size={20} />
-            </button>
+            {currentPlaylist?.videos?.length > 0 && (
+              <button
+                title="Remove videos"
+                className="w-10 h-10 rounded-full transition-colors hover:bg-white/20 flex justify-center items-center"
+                onClick={() => dispatch(toggleIsUpdatePlaylist())}
+              >
+                <MdDeleteSweep color="#eee" size={20} />
+              </button>
+            )}
           </div>
         )}
       </div>

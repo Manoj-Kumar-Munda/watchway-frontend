@@ -6,7 +6,6 @@ import { cn } from "../../utils/cn";
 
 const SmSidebar = () => {
   const isSmSidebarOpen = useSelector((store) => store.app.isSmSidebarOpen);
-  console.log(isSmSidebarOpen);
   const dispatch = useDispatch();
 
   const handleSidebar = () => {

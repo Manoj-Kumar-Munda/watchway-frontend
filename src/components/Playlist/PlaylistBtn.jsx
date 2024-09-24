@@ -21,11 +21,9 @@ const PlaylistBtn = () => {
           </span>
         </button>
       </div>
-
-      <Modal className="max-w-screen-sm">
+      <Modal className="max-w-screen-sm" modalId={"createPlaylist"}>
         <CreatePlaylistModal />
       </Modal>
-
       {showPlaylists && (
         <AnimatePresence>
           <motion.div

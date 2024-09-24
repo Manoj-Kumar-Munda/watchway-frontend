@@ -14,7 +14,7 @@ const useCreatePlaylist = () => {
     mutationKey: ["create-playlist"],
     mutationFn: (data) => createPlaylist(user?._id, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["playlist"] });
+      queryClient.invalidateQueries({ queryKey: ["playlists"] });
     },
   });
 };

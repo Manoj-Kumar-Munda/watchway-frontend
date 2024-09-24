@@ -7,31 +7,22 @@ import UpdatePlaylistForm from "./UpdatePlaylistForm";
 
 const UpdatePlaylist = () => {
   const dispatch = useDispatch();
-  const { isOpen } = useSelector((store) => store.modals);
-  console.log(isOpen);
-
-  const [isShowModal, setIsShowModal] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen) {
-      setIsShowModal(false);
-    }
-  }, [isOpen]);
 
   const showModalHandler = () => {
-    setIsShowModal(true);
-    dispatch(openModal());
+    dispatch(openModal("updatePlaylist"));
   };
   return (
     <>
-      {isShowModal && (
-        <Modal className="max-w-screen-sm font-Poppins">
-          <div className="w-full bg-white/30 backdrop-blur-lg px-3 rounded-xl py-3">
-            <h1 className="text-lg font-semibold"> Update Playlist</h1>
-                <UpdatePlaylistForm />
-          </div>
-        </Modal>
-      )}
+      <Modal
+        className="max-w-screen-sm font-Poppins"
+        modalId={"updatePlaylist"}
+      >
+        <div className="w-full bg-white/30 backdrop-blur-lg px-3 rounded-xl py-3">
+          <h1 className="text-lg font-semibold"> Update Playlist</h1>
+          <UpdatePlaylistForm />
+        </div>
+      </Modal>
+
       <div>
         <button
           onClick={() => showModalHandler()}

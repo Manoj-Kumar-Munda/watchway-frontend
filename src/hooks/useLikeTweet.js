@@ -3,8 +3,6 @@ import { request } from "../utils/axiosConfig";
 import { queryClient } from "../main";
 
 const likeTweet = async (tweetId) => {
-    console.log(tweetId);
-    
   return await request({ url: `/like/toggle/t/${tweetId}`, method: "post" });
 };
 

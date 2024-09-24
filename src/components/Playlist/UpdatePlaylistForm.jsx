@@ -28,8 +28,6 @@ const UpdatePlaylistForm = () => {
   useEffect(() => {
     let timer;
     if (status === "success") {
-      console.log(data);
-      
       timer = setTimeout(() => {
         dispatch(closeModal());
       }, 1500);

@@ -2,8 +2,6 @@ import { useMutation } from "@tanstack/react-query"
 import { request } from "../utils/axiosConfig"
 
 const updateWatchHistory = async (videoId) => {
-    console.log(videoId);
-    
     if(!videoId) return;
     return await request({url:"/users/update-history",method:"POST", data:{videoId}})
 }

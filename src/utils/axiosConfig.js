@@ -27,7 +27,6 @@ export const request = async ({ ...options }) => {
     return response?.data;
   };
   const onError = async (error) => {
-    // console.log(error.response);
     return Promise.reject(error.response);
   };
   return client(options).then(onSuccess).catch(onError);

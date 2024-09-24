@@ -4,8 +4,8 @@ import { cn } from "../../utils/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import { closeModal } from "../../store/slices/modalsSlice";
 
-const Modal = ({ children, className = "" }) => {
-  const { isOpen } = useSelector((store) => store.modals);
+const Modal = ({ modalId, children, className }) => {
+  const isOpen = useSelector((store) => store.modals[modalId]);
   const modalRef = useRef();
   const dispatch = useDispatch();
 
@@ -14,8 +14,9 @@ const Modal = ({ children, className = "" }) => {
       if (!modalRef.current || modalRef.current.contains(event.target)) {
         return;
       }
+
       if (!modalRef.current.contains(event.target)) {
-        dispatch(closeModal());
+        dispatch(closeModal(modalId));
       }
     };
     document.addEventListener("click", handler, true);
