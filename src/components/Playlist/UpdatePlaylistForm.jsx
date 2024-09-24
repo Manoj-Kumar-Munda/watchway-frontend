@@ -29,7 +29,7 @@ const UpdatePlaylistForm = () => {
     let timer;
     if (status === "success") {
       timer = setTimeout(() => {
-        dispatch(closeModal());
+        dispatch(closeModal("updatePlaylist"));
       }, 1500);
     }
     return () => clearTimeout(timer);
