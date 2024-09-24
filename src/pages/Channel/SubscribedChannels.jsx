@@ -16,7 +16,7 @@ const Subscriptions = () => {
   }
 
   return (
-    <div className="my-4 px-4">
+    <div className="my-4 px-4 space-y-2">
       {data?.data?.map((channel) => (
         <HorizonatalChannelCard
           channel={channel?.channelInfo}
