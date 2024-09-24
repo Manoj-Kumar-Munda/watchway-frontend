@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../store/slices/modalsSlice";
 import useGetPlaylist from "../../hooks/useGetPlaylists";
 import { cn } from "../../utils/cn";
@@ -7,7 +7,8 @@ import PlaylistItem from "./PlaylistItem";
 
 const PlaylistBox = () => {
   const dispatch = useDispatch();
-  const { data } = useGetPlaylist();
+  const {user} = useSelector(store => store.auth);
+  const { data } = useGetPlaylist(user?._id);
 
   return (
     <div className="flex flex-col gap-1 text-center ">
