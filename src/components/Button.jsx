@@ -36,7 +36,7 @@ export const ChannelBtn = ({ children, className, channel, ...props }) => {
   return (
     <button
       className={cn(
-        "border border-white/10 font-Poppins py-2 px-4 text-center rounded transition-colors dark:bg-white/10 text-sm bg-themered-500 inline-flex items-center gap-2 ",
+        " bg-white text-black rounded-full px-3 text-xs font-medium py-1.5 ",
         className
       )}
       {...props}

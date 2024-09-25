@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import CoverPic from "./CoverPic";
 import ProfileCircle from "../../Header/ProfileCircle";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ChannelBtn, SubscribeBtn } from "../../Button";
-import { FiEdit2 } from "react-icons/fi";
 
 const ChannelHeader = ({ isMyChannel, channelInfo }) => {
   const {
@@ -15,6 +14,8 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
     channelsSubscribedToCount,
     isSubscribed,
   } = channelInfo;
+  const { pathname } = useLocation();
+  const isEditPage = useMemo(() => pathname.includes("edit"), [pathname]);
 
   const navigate = useNavigate();
 
@@ -44,13 +45,17 @@ const ChannelHeader = ({ isMyChannel, channelInfo }) => {
         <div>
           {isMyChannel ? (
             //change this btn
-            <ChannelBtn onClick={() => navigate("./edit")}>
-              <span className="text-white font-Roboto font-semibold bg-transparent">
-                Edit
-              </span>
-            </ChannelBtn>
+            isEditPage ? (
+              <ChannelBtn
+                onClick={() => navigate(`/channel/${channelInfo?._id}`)}
+              >
+                Go to channel
+              </ChannelBtn>
+            ) : (
+              <ChannelBtn onClick={() => navigate("./edit")}>Edit</ChannelBtn>
+            )
           ) : (
-            <SubscribeBtn className={""} channelId={channelInfo?._id} >
+            <SubscribeBtn channelId={channelInfo?._id}>
               {isSubscribed ? "Unsubscribe " : "Subscribe"}
             </SubscribeBtn>
           )}
