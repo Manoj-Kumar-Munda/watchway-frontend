@@ -74,8 +74,18 @@ export const playlistFormValidation = yup.object().shape({
   description: yup.string().required("Description is required"),
 });
 
-
 export const updatePersonalInfoValidation = yup.object().shape({
   fullName: yup.string().required("Fullname is required"),
-  email: yup.string().required("Email is required")
-})
+  email: yup.string().required("Email is required"),
+});
+
+export const changePasswordValidationSchema = yup.object({
+  oldPassword: yup.string().required("Old password is required"),
+  newPassword: yup
+    .string()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters long"),
+  confPassword: yup
+    .string()
+    .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
+});

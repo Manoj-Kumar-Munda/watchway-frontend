@@ -8,7 +8,6 @@ import Watch from "./pages/Watch.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Channel from "./pages/Channel/Channel.jsx";
-import EditChannelInfo from "./pages/Channel/Edit/EditChannelInfo.jsx";
 import ChangePassword from "./pages/Channel/Edit/ChangePassword.jsx";
 import EditProfile from "./pages/Channel/Edit/EditProfile.jsx";
 import Videos from "./pages/Channel/Videos.jsx";
@@ -95,10 +94,6 @@ const router = createBrowserRouter([
             path: "edit",
             element: <EditChannelLayout />,
             children: [
-              {
-                path: "channel-info",
-                element: <EditChannelInfo />,
-              },
               {
                 path: "change-password",
                 element: <ChangePassword />,

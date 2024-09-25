@@ -9,7 +9,6 @@ export const noSidebarPaths = [
 
 export const editTabs = [
   { title: "Profile", link: "" },
-  { title: "Channel", link: "./channel-info" },
   { title: "Change Password", link: "./change-password" },
 ];
 
