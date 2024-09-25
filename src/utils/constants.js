@@ -8,8 +8,8 @@ export const noSidebarPaths = [
 ];
 
 export const editTabs = [
-  { title: "Personal Information", link: "" },
-  { title: "Channel Information", link: "./channel-info" },
+  { title: "Profile", link: "" },
+  { title: "Channel", link: "./channel-info" },
   { title: "Change Password", link: "./change-password" },
 ];
 

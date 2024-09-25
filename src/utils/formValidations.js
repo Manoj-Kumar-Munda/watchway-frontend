@@ -73,3 +73,9 @@ export const playlistFormValidation = yup.object().shape({
   name: yup.string().required("Playlist name is required"),
   description: yup.string().required("Description is required"),
 });
+
+
+export const updatePersonalInfoValidation = yup.object().shape({
+  fullName: yup.string().required("Fullname is required"),
+  email: yup.string().required("Email is required")
+})
