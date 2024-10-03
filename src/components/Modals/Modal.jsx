@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cn } from "../../utils/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import { closeModal } from "../../store/slices/modalsSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 const Modal = ({ modalId, children, className }) => {
   const isOpen = useSelector((store) => store.modals[modalId]);
@@ -38,6 +39,7 @@ const Modal = ({ modalId, children, className }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             className={cn(" w-full px-2", className)}
+            key={nanoid()}
             ref={modalRef}
           >
             {children}
