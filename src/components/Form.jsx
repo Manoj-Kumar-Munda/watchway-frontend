@@ -10,12 +10,12 @@ import ErrorText from "./ErrorText";
 import useLogin from "../hooks/Auth/useLogin";
 
 const Form = () => {
-  const { mutate, data, error } = useLogin();
+  const { mutate, data, status, error } = useLogin();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     let timer;
-    if (data && data?.data) {
+    if (status === "success") {
       toast.success("Logged in");
       timer = setTimeout(() => {
         navigate("/");
@@ -61,9 +61,7 @@ const Form = () => {
         </div>
 
         {error && error?.data && (
-          <ErrorText className="text-sm">
-            {error.data.message}
-          </ErrorText>
+          <ErrorText className="text-sm">{error.data.message}</ErrorText>
         )}
 
         <Button type="submit" className="mt-4">
