@@ -13,7 +13,7 @@ const MainLayout = ({ children }) => {
   return (
     <div className="min-h-screen layout relative bg-white dark:bg-primary-dark">
       <Header />
-      <div className="">
+      <div className="min-w-0">
         {noSidebarPaths.includes(pathname.split("/")[1]) ? (
           <SidebarOverLayout isSmMenuOpen={isSmSidebarOpen}>
             {children}
