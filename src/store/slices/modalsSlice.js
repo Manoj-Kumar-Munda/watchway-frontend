@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   upload: false,
-  edit: false,
+  editVideo: false,
   createPlaylist: false,
   updatePlaylist: false,
   deletePlaylist: false,
-  updateCover: false
+  updateCover: false,
+  deleteVideo: false
 };
 
 const modalSlice = createSlice({

@@ -2,9 +2,7 @@ import React from "react";
 import useDashboardStats from "../../hooks/useDashboarsStats";
 
 const Metrics = () => {
-  const { data, status } = useDashboardStats();
-  console.log(data);
-
+  const { data } = useDashboardStats();
   return (
     <div className="flex mt-8 gap-2 sm:gap-4 items-center">
       <div className="flex-1 dashboard-card inline-flex flex-col w-full text-black px-2 py-6">

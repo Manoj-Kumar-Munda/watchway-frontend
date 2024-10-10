@@ -6,7 +6,7 @@ import DeleteBtn from "./DeleteBtn";
 
 const DashboardRow = ({ videos }) => {
   return (
-    <>
+    <tbody>
       {videos?.map((video) => (
         <tr
           key={nanoid()}
@@ -15,7 +15,9 @@ const DashboardRow = ({ videos }) => {
           <td className="py-2.5  text-nowrap whitespace-nowrap px-2">
             <ToggleBtn video={video} />
           </td>
-          <td className="py-2.5 text-nowrap whitespace-nowrap px-2">Published</td>
+          <td className="py-2.5 text-nowrap whitespace-nowrap px-2">
+            Published
+          </td>
 
           <td className="py-2.5 text-nowrap whitespace-nowrap px-2">
             {video?.title}
@@ -28,11 +30,11 @@ const DashboardRow = ({ videos }) => {
           </td>
 
           <td className="flex gap-1 items-center whitespace-nowrap px-2 py-2.5">
-            <DeleteBtn />
+            <DeleteBtn videoId={video?._id} />
           </td>
         </tr>
       ))}
-    </>
+    </tbody>
   );
 };
 

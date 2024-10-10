@@ -15,8 +15,10 @@ const UpdateCoverModal = () => {
     console.log(data);
     if (status === "success") {
       toast.success(data?.message);
-      setTimeout(() => dispatch(closeModal("updateCover")), 1000);
+      timer = setTimeout(() => dispatch(closeModal("updateCover")), 1000);
     }
+
+    return () => clearTimeout(timer)
   }, [status]);
 
   const handleImageChange = (e) => {
