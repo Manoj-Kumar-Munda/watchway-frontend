@@ -89,3 +89,8 @@ export const changePasswordValidationSchema = yup.object({
     .string()
     .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
 });
+
+export const editVideoFormValidation = yup.object({
+  title: yup.string().required("Title required"),
+  description: yup.string().required("Description required"),
+});

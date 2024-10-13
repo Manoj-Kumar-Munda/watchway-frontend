@@ -8,9 +8,6 @@ const DeleteVideoPopup = ({ videoId }) => {
   const { mutate, status } = useDeleteVideo();
   const dispatch = useDispatch();
 
-  console.log(videoId);
-  
-
   const deleteVideo = () => {
     mutate(videoId);
   };
@@ -28,7 +25,7 @@ const DeleteVideoPopup = ({ videoId }) => {
   }, [status]);
 
   return (
-    <div className="bg-white/10  text-center backdrop-blur-xl py-2 rounded-xl max-w-screen-xs w-full mx-auto">
+    <div className=" bg-white/10  text-center backdrop-blur-xl py-2 rounded-xl max-w-screen-xs w-full mx-auto">
       <Toaster />
       <h1 className="text-white text-2xl font-bold font-Poppins">Delete</h1>
 

@@ -3,6 +3,7 @@ import ToggleBtn from "./ToggleBtn";
 import { nanoid } from "@reduxjs/toolkit";
 import { formateDate } from "../../utils/helpers";
 import DeleteBtn from "./DeleteBtn";
+import EditBtn from "./EditBtn";
 
 const DashboardRow = ({ videos }) => {
   return (
@@ -29,8 +30,9 @@ const DashboardRow = ({ videos }) => {
             {formateDate(video?.createdAt)}
           </td>
 
-          <td className="flex gap-1 items-center whitespace-nowrap px-2 py-2.5">
+          <td className="flex gap-3 items-center whitespace-nowrap px-2 py-2.5">
             <DeleteBtn videoId={video?._id} />
+            <EditBtn videoId={video?._id}  />
           </td>
         </tr>
       ))}

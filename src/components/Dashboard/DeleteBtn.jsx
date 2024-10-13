@@ -9,7 +9,7 @@ const DeleteBtn = ({ videoId }) => {
   const dispatch = useDispatch();
   return (
     <>
-      <Modal modalId={"deleteVideo"}>
+      <Modal modalId={"deleteVideo"} className={"max-w-screen-sm w-full"}>
         <DeleteVideoPopup videoId={videoId} />
       </Modal>
 

@@ -17,11 +17,11 @@ const Input = React.forwardRef(
   ) => {
     const id = useId();
     return (
-      <div className="w-full">
+      <div className="min-w-0 w-full">
         {label && (
           <>
             <label
-              className="dark:text-white inline-block mb-1 pl-1 font-Poppins text-sm  text-gray-500"
+              className="dark:text-white block mb-1 pl-1 font-Poppins text-sm  text-gray-500"
               htmlFor={id}
             >
               {label}
