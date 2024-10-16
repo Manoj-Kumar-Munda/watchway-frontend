@@ -15,6 +15,7 @@ const useVideoInfo = (videoId) => {
   return useQuery({
     queryKey: ["videoInfo", videoId],
     queryFn: () => getVideoInfo(videoId),
+    enabled: !!videoId
   });
 };
 

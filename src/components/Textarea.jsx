@@ -11,7 +11,7 @@ const Textarea = React.forwardRef(
           id={id}
           rows={rows}
           className={cn(
-            "rounded-lg bg-white dark:bg-slate-100 text-sm  p-1 text-black outline-none  duration-200 border border-gray-200 w-full placeholder:text-primary-dark/60 placeholder:text-sm",
+            "rounded-lg bg-white dark:bg-slate-100 text-sm resize-none  p-1 text-black outline-none  duration-200 border-none w-full placeholder:text-primary-dark/60 placeholder:text-sm",
             className
           )}
           defaultValue={defaultValue}

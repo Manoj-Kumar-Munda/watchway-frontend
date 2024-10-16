@@ -7,14 +7,19 @@ import DeleteVideoPopup from "../Modals/DeleteVideoPopup";
 
 const DeleteBtn = ({ videoId }) => {
   const dispatch = useDispatch();
+
+  const deleteBtnHandler = () => {
+    dispatch(openModal("deleteVideo"));
+    dispatch(setCurrentVideo(videoId));
+  };
   return (
     <>
       <Modal modalId={"deleteVideo"} className={"max-w-screen-sm w-full"}>
-        <DeleteVideoPopup videoId={videoId} />
+        <DeleteVideoPopup />
       </Modal>
 
       <button
-        onClick={() => dispatch(openModal("deleteVideo"))}
+        onClick={deleteBtnHandler}
         className="rounded-full transition-all hover:bg-themered-500 w-8 h-8 flex justify-center items-center"
       >
         <RiDeleteBin6Fill />

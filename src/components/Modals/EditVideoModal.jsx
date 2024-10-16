@@ -18,7 +18,7 @@ const EditVideoModal = () => {
     }
   }, [activeTabIndex]);
   return (
-    <div className="max-w-screen-sm mx-auto w-full rounded-md overflow-hidden bg-white/10 backdrop-blur-xl h-72">
+    <div className="max-w-screen-sm mx-auto w-full rounded-md overflow-hidden bg-white/10 backdrop-blur-xl h-80">
       <div className="relative py-2 flex mb-4 border-b border-white/10">
         {tabs?.map((tab, index) => (
           <span
