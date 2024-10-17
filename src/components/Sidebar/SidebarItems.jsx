@@ -6,10 +6,10 @@ import { MdHistory, MdHomeFilled } from "react-icons/md";
 import SidebarLinks from "./SidebarLinks";
 import { useSelector } from "react-redux";
 import LogoutBtn from "./LogoutBtn";
-
+import { TfiDashboard } from "react-icons/tfi";
 
 const SidebarItems = () => {
-  const { user, status } = useSelector( store => store.auth);
+  const { user, status } = useSelector((store) => store.auth);
   return (
     <>
       <div className="flex flex-col gap-2 w-full">
@@ -33,6 +33,9 @@ const SidebarItems = () => {
         </SidebarLinks>
         <SidebarLinks title={"Subscribers"} link={"/subscribers"}>
           <FaUsers size={24} />
+        </SidebarLinks>
+        <SidebarLinks title={"Dashboard"} link={"/dashboard"}>
+          <TfiDashboard size={24} />
         </SidebarLinks>
       </div>
 
