@@ -12,7 +12,6 @@ const UpdateCoverModal = () => {
 
   useEffect(() => {
     let timer;
-    console.log(data);
     if (status === "success") {
       toast.success(data?.message);
       timer = setTimeout(() => dispatch(closeModal("updateCover")), 1000);
