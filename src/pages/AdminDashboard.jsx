@@ -26,7 +26,7 @@ const AdminDashboard = () => {
 
           <button
             onClick={() => dispatch(openModal("upload"))}
-            className="bg-themered-500 inline-flex gap-1 items-center px-3 py-2 rounded-xl"
+            className="sticky bg-themered-500 inline-flex gap-1 items-center px-3 py-2 rounded-xl"
           >
             <BiPlus color="#fff" />
             <span className="font-Roboto text-white text-sm font-semibold">
