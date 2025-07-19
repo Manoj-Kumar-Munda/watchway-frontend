@@ -1,4 +1,3 @@
-import React from "react";
 import { BiLike, BiSolidVideos } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
 import { IoFolderOpen } from "react-icons/io5";

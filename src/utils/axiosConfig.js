@@ -1,6 +1,11 @@
 import axios from "axios";
 
-const client = axios.create({ baseURL: "/api/v1" });
+const baseURL =
+  import.meta.env.VITE_ENV === "development"
+    ? import.meta.env.VITE_LOCAL_BASE_URL
+    : import.meta.env.VITE_PROD_BASE_URL;
+
+const client = axios.create({ baseURL, withCredentials: true });
 
 client.interceptors.response.use(
   (response) => {
