@@ -21,7 +21,7 @@ const Input = React.forwardRef(
         {label && (
           <>
             <label
-              className="dark:text-white block mb-1 pl-1 font-Poppins text-sm  text-gray-500"
+              className="dark:text-white mb-1 pl-1 font-Poppins text-sm  text-gray-500"
               htmlFor={id}
             >
               {label}
