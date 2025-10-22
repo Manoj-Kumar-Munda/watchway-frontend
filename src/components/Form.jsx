@@ -8,22 +8,28 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ErrorText from "./ErrorText";
 import useLogin from "../hooks/Auth/useLogin";
+import { useAuth } from "../context/authContext";
 
 const Form = () => {
   const { mutate, data, status, error } = useLogin();
+  const { login, logout } = useAuth();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     let timer;
     if (status === "success") {
+      login(data.data.accessToken, data.data.refreshToken);
       toast.success("Logged in");
       timer = setTimeout(() => {
         navigate("/");
       }, 2200);
+    } else if (status === "error") {
+      toast.error("Login failed. Please check your credentials.");
+      logout();
     }
 
     return () => clearTimeout(timer);
-  }, [data]);
+  }, [data, status]);
 
   const {
     register,
@@ -35,6 +41,13 @@ const Form = () => {
 
   const submitHandler = (data) => {
     mutate(data);
+  };
+
+  const loginAsGuest = () => {
+    mutate({
+      userId: process.env.GUEST_USER_ID,
+      password: process.env.GUEST_PASSWORD,
+    });
   };
   return (
     <>
@@ -66,6 +79,13 @@ const Form = () => {
 
         <Button type="submit" className="mt-4">
           Submit
+        </Button>
+
+        <Button
+          onClick={loginAsGuest}
+          className="bg-stone-700 hover:bg-stone-600"
+        >
+          Login as Guest
         </Button>
       </form>
     </>

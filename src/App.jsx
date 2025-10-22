@@ -5,16 +5,17 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./store/slices/authSlice";
 import { setSidebarsToDefault } from "./store/slices/appSlice";
-
+import { useAuth } from "./context/authContext";
 
 function App() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { data, status } = useCurrentUser();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (status === "success") {
+    if (isAuthenticated && status === "success") {
       dispatch(login(data.data));
     } else {
       dispatch(logout());
@@ -22,7 +23,7 @@ function App() {
         navigate("/login");
       }
     }
-  }, [status]);
+  }, [status, isAuthenticated]);
 
   useEffect(() => {
     dispatch(setSidebarsToDefault());

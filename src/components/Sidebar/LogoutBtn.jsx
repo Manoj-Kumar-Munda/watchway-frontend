@@ -1,13 +1,21 @@
-import React from "react";
 import { FiLogOut } from "react-icons/fi";
-import useLogout from "../../hooks/Auth/useLogout"
+import useLogout from "../../hooks/Auth/useLogout";
+import { useEffect } from "react";
+import { useAuth } from "../../context/authContext";
 const LogoutBtn = () => {
-  const { mutate } = useLogout();
+  const { mutate, status } = useLogout();
+  const { logout } = useAuth();
 
   const logoutUser = () => {
     mutate();
   };
 
+  useEffect(() => {
+    if (status === "success") {
+      console.log("Logged out successfully");
+      logout();
+    }
+  }, [status]);
   return (
     <button
       onClick={logoutUser}

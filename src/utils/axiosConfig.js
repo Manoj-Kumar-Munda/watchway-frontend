@@ -5,7 +5,14 @@ const baseURL =
     ? import.meta.env.VITE_LOCAL_BASE_URL
     : import.meta.env.VITE_PROD_BASE_URL;
 
-const client = axios.create({ baseURL, withCredentials: true });
+const client = axios.create({
+  baseURL,
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  },
+});
 
 client.interceptors.response.use(
   (response) => {
@@ -13,14 +20,15 @@ client.interceptors.response.use(
   },
   async (error) => {
     if (error?.response.status === 401) {
-      await axios
-        .post("/api/v1/users/refresh-token", {
-          withCredentials: true,
-        })
+      await client
+        .post(
+          "/api/v1/users/refresh-token",
+          localStorage.getItem("refreshToken")
+        )
         .catch((refrehTokenAPIError) => {
           return Promise.reject(refrehTokenAPIError);
         });
-      return axios(error.config);
+      return client(error.config);
     }
 
     return Promise.reject(error);
