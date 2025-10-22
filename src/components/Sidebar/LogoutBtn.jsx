@@ -2,9 +2,11 @@ import { FiLogOut } from "react-icons/fi";
 import useLogout from "../../hooks/Auth/useLogout";
 import { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 const LogoutBtn = () => {
   const { mutate, status } = useLogout();
   const { logout } = useAuth();
+  const navigate = useNavigate();
 
   const logoutUser = () => {
     mutate();
@@ -14,6 +16,7 @@ const LogoutBtn = () => {
     if (status === "success") {
       console.log("Logged out successfully");
       logout();
+      navigate("/login");
     }
   }, [status]);
   return (

@@ -7,6 +7,7 @@ import {
   useCallback,
 } from "react";
 import { jwtDecode } from "jwt-decode";
+import { queryClient } from "../main";
 
 const AuthContext = createContext({
   token: null,
@@ -84,7 +85,7 @@ export const AuthProvider = ({ children }) => {
     if (refreshToken) {
       setRefreshToken(refreshToken);
     }
-
+    window.location.href = "/";
     return true;
   }, []);
 
@@ -93,6 +94,9 @@ export const AuthProvider = ({ children }) => {
     setRefreshToken(null);
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+
+    queryClient.clear();
+    window.location.href = "/login";
   }, []);
 
   const value = useMemo(

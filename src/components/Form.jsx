@@ -18,17 +18,13 @@ const Form = () => {
   useEffect(() => {
     let timer;
     if (status === "success") {
-      login(data.data.accessToken, data.data.refreshToken);
       toast.success("Logged in");
-      timer = setTimeout(() => {
-        navigate("/");
-      }, 2200);
+      login(data.data.accessToken, data.data.refreshToken);
+      // navigate("/");
     } else if (status === "error") {
       toast.error("Login failed. Please check your credentials.");
       logout();
     }
-
-    return () => clearTimeout(timer);
   }, [data, status]);
 
   const {
