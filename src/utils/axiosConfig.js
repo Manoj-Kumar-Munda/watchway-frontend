@@ -21,10 +21,13 @@ client.interceptors.response.use(
   async (error) => {
     if (error?.response.status === 401) {
       await client
-        .post(
-          "/api/v1/users/refresh-token",
-          localStorage.getItem("refreshToken")
-        )
+        .post("/api/v1/users/refresh-token", {
+          refreshToken: localStorage.getItem("refreshToken"),
+        })
+        .then((response) => {
+          localStorage.setItem("accessToken", response.data.accessToken);
+          localStorage.setItem("refreshToken", response.data.refreshToken);
+        })
         .catch((refrehTokenAPIError) => {
           return Promise.reject(refrehTokenAPIError);
         });
