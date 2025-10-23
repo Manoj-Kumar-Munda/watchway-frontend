@@ -9,7 +9,7 @@ const useGetPlaylist = (userId) => {
   return useQuery({
     queryKey: ["playlists"],
     queryFn: () => fetchPlaylists(userId),
-    enabled: !!userId,
+    // enabled: !!userId,
   });
 };
 

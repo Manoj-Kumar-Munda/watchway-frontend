@@ -1,4 +1,3 @@
-import React from "react";
 import useGetPlaylist from "../hooks/useGetPlaylists";
 import PlaylistCard from "../components/Playlist/PlaylistCard";
 import DotLoader from "../components/Loaders/DotLoader";
@@ -6,8 +5,9 @@ import { useSelector } from "react-redux";
 
 const MyCollections = () => {
   const { user } = useSelector((store) => store.auth);
+  
   const { data, status } = useGetPlaylist(user?._id);
-
+  
   if (status === "pending") return <DotLoader />;
   // if(data?.data?.length === 0) return
 

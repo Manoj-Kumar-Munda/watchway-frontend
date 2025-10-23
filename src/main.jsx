@@ -34,7 +34,7 @@ import { AuthProvider } from "./context/authContext.jsx";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
-    retry: 2,
+    retry: 1,
   },
 });
 
@@ -147,11 +147,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
+    {/* <AuthProvider> */}
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
-    </AuthProvider>
+    {/* </AuthProvider> */}
   </QueryClientProvider>
 );

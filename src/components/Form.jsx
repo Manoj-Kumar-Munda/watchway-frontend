@@ -8,23 +8,33 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ErrorText from "./ErrorText";
 import useLogin from "../hooks/Auth/useLogin";
-import { useAuth } from "../context/authContext";
+// import { useAuth } from "../context/authContext";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../store/slices/authSlice";
 
 const Form = () => {
   const { mutate, data, status, error } = useLogin();
-  const { login, logout } = useAuth();
+  // const { login, logout } = useAuth();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     let timer;
     if (status === "success") {
       toast.success("Logged in");
-      login(data.data.accessToken, data.data.refreshToken);
+      // login(data.data.accessToken, data.data.refreshToken);
+      dispatch(login(data?.data));
+      timer = setTimeout(() => {
+        navigate("/");
+      }, 1500);
       // navigate("/");
     } else if (status === "error") {
       toast.error("Login failed. Please check your credentials.");
-      logout();
+      // logout();
+      dispatch(logout());
     }
+
+    return () => clearTimeout(timer);
   }, [data, status]);
 
   const {

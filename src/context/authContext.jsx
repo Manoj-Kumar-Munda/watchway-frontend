@@ -8,6 +8,7 @@ import {
 } from "react";
 import { jwtDecode } from "jwt-decode";
 import { queryClient } from "../main";
+import { useSelector } from "react-redux";
 
 const AuthContext = createContext({
   token: null,
@@ -47,67 +48,47 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(() => {
-    const storedToken = localStorage.getItem("accessToken");
-    return storedToken && isTokenValid(storedToken) ? storedToken : null;
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
   });
 
-  const [refreshToken, setRefreshToken] = useState(() => {
-    return localStorage.getItem("refreshToken") || null;
-  });
-
-  useEffect(() => {
-    if (token && isTokenValid(token)) {
-      localStorage.setItem("accessToken", token);
-    } else {
-      localStorage.removeItem("accessToken");
-      if (token) {
-        setToken(null);
-      }
-    }
-  }, [token]);
-
-  useEffect(() => {
-    if (refreshToken) {
-      localStorage.setItem("refreshToken", refreshToken);
-    } else {
-      localStorage.removeItem("refreshToken");
-    }
-  }, [refreshToken]);
-
-  const login = useCallback((accessToken, refreshToken) => {
-    if (!accessToken || !isTokenValid(accessToken)) {
+  const login = useCallback((userInfo) => {
+    if (!userInfo || !isTokenValid(userInfo.accessToken)) {
       console.error("Invalid or expired token provided to login");
       return false;
     }
-    setToken(accessToken);
 
-    if (refreshToken) {
-      setRefreshToken(refreshToken);
-    }
+    localStorage.setItem("accessToken", userInfo.accessToken);
+    localStorage.setItem("refreshToken", userInfo.refreshToken);
+    localStorage.setItem("user", JSON.stringify(userInfo));
+    setUser(userInfo);
     window.location.href = "/";
     return true;
   }, []);
 
   const logout = useCallback(() => {
     setToken(null);
-    setRefreshToken(null);
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
 
     queryClient.clear();
     window.location.href = "/login";
   }, []);
 
+  // const isAuthenticated = useMemo(() => {
+  //   const token = localStorage.getItem("accessToken");
+  //   return isTokenValid(token);
+  // }, [user]);
   const value = useMemo(
     () => ({
-      token,
-      refreshToken,
-      isAuthenticated: !!token,
+      // isAuthenticated,
       login,
       logout,
+      user,
     }),
-    [token, refreshToken, login, logout]
+    [login, logout, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

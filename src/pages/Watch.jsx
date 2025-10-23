@@ -27,8 +27,8 @@ const Watch = () => {
   const video = data?.data[0];
 
   return (
-    <div className="max-w-screen-xl mx-auto flex">
-      <div className="max-w-screen-md">
+    <div className="max-w-screen-xl mx-auto p-4 ">
+      <div className="w-full">
         <div className="w-full aspect-video rounded-lg overflow-hidden ">
           <VideoPlayer videoId={extractVideoId(video?.videoFile)} />
         </div>

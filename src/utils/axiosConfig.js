@@ -10,16 +10,30 @@ const client = axios.create({
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   },
 });
 
+// Add access token to each request
+client.interceptors.request.use((config) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+  return config;
+});
+
+// Handle 401 errors
 client.interceptors.response.use(
   (response) => {
     return response;
   },
   async (error) => {
     if (error?.response.status === 401) {
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (!refreshToken) {
+        window.location.href = "/login";
+        return Promise.reject(error);
+      }
       await client
         .post("/api/v1/users/refresh-token", {
           refreshToken: localStorage.getItem("refreshToken"),
@@ -43,6 +57,9 @@ export const request = async ({ ...options }) => {
     return response?.data;
   };
   const onError = async (error) => {
+    console.log(error?.response?.status);
+    if (error?.response?.status === 401) {
+    }
     return Promise.reject(error.response);
   };
   return client(options).then(onSuccess).catch(onError);
