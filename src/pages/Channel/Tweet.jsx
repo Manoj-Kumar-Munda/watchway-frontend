@@ -39,7 +39,7 @@ const Tweets = () => {
   return (
     <div className="my-4">
       {isAuthorized && (
-        <div className="border  border-gray-500 dark:border-white/10 rounded-md py-1 px-1 space-y-2 text-center">
+        <div className="border border-white/10 rounded-md py-1 px-1 space-y-2 text-center">
           <CreateTweet />
         </div>
       )}
@@ -66,7 +66,7 @@ const Tweets = () => {
                       <span className="font-medium">
                         {tweet?.owner?.fullName}
                       </span>
-                      <span className="text-sm text-gray-600 dark:text-gray-300 tracking-tight">
+                      <span className="text-sm text-gray-300 tracking-tight">
                         {calculateTimeDifferenceToNow(tweet?.createdAt)} ago
                       </span>
                     </div>

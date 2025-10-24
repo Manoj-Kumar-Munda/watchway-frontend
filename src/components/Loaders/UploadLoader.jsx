@@ -7,7 +7,7 @@ const UploadLoader = ({ text, className = "" }) => {
       role="status"
       class="flex items-center space-x-2"
     >
-      <svg class="h-8 w-8 animate-spin dark:stroke-gray-900 stroke-gray-500" viewBox="0 0 256 256">
+      <svg class="h-8 w-8 animate-spin stroke-gray-900" viewBox="0 0 256 256">
         <line
           x1="128"
           y1="32"

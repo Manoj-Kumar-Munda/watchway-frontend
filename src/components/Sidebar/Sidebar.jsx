@@ -21,7 +21,7 @@ const Sidebar = ({ isSmMenuOpen = false, className = "" }) => {
     >
       <div
         className={cn(
-          "bg-white dark:bg-[#242424]  fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 flex flex-col gap-2 w-full",
+          "bg-[#242424]  fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 flex flex-col gap-2 w-full",
           isSmMenuOpen && "left-0"
         )}
       >
@@ -47,7 +47,7 @@ export const LgSidebar = memo(({ isMenuOpen = true, className = "" }) => {
   return (
     <div
       className={cn(
-        "hidden   bg-white dark:bg-inherit fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
+        "hidden  bg-inherit fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
         isMenuOpen && "md:left-0"
       )}
     >

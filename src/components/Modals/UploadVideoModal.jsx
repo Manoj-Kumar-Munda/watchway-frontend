@@ -58,14 +58,14 @@ const UploadVideoModal = () => {
       {isUploading ? (
         <UploadingVideoModalPopup data={uploadingVideoData} />
       ) : (
-        <div className="bg-white dark:text-black dark:bg-white/40 dark:backdrop-blur-2xl max-w-screen-sm w-full rounded-md py-3 space-y-2 px-4 relative">
+        <div className=" text-black bg-white/40 backdrop-blur-2xl max-w-screen-sm w-full rounded-md py-3 space-y-2 px-4 relative">
           <CloseModalBtn
             handleClose={() => {
               dispatch(closeModal("upload"));
             }}
           />
           <div className="">
-            <h1 className="font-semibold dark:text-black text-lg font-Poppins bg-transparent">
+            <h1 className="font-semibold text-black text-lg font-Poppins bg-transparent">
               Upload Videos
             </h1>
           </div>
