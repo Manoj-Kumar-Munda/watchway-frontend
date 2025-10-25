@@ -51,8 +51,8 @@ const Form = () => {
 
   const loginAsGuest = () => {
     mutate({
-      userId: process.env.GUEST_USER_ID,
-      password: process.env.GUEST_PASSWORD,
+      userId: import.meta.env.VITE_GUEST_USER_ID,
+      password: import.meta.env.VITE_GUEST_PASSWORD,
     });
   };
   return (
@@ -86,14 +86,13 @@ const Form = () => {
         <Button type="submit" className="mt-4">
           Submit
         </Button>
-
-        <Button
-          onClick={loginAsGuest}
-          className="bg-stone-700 hover:bg-stone-600"
-        >
-          Login as Guest
-        </Button>
       </form>
+      <button
+        onClick={loginAsGuest}
+        className="text-center w-full border py-2  transition font-Poppins text-sm rounded-lg border-white/20 text-white bg-stone-700 hover:bg-stone-600"
+      >
+        Login as Guest
+      </button>
     </>
   );
 };
