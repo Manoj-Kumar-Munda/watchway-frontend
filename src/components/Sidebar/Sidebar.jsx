@@ -47,8 +47,8 @@ export const LgSidebar = memo(({ isMenuOpen = true, className = "" }) => {
   return (
     <div
       className={cn(
-        "hidden  bg-inherit fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
-        isMenuOpen && "md:left-0"
+        "hidden  bg-primary-dark fixed top-0 bottom-0 z-50 transition-all duration-500 -left-full  max-w-56 px-2 sm:px-4 md:flex flex-col gap-2 w-full",
+        isMenuOpen && "md:left-0 "
       )}
     >
       <div className="inline-flex items-center gap-4 py-3">
