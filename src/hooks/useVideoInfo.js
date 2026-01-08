@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 
 const getVideoInfo = async (videoId) => {
   if (!videoId) {
@@ -15,7 +15,7 @@ const useVideoInfo = (videoId) => {
   return useQuery({
     queryKey: ["videoInfo", videoId],
     queryFn: () => getVideoInfo(videoId),
-    enabled: !!videoId
+    enabled: !!videoId,
   });
 };
 

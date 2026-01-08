@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import CreateTweet from "../../components/CreateTweet";
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../../utils/axiosConfig";
+import { request } from "../../utils/axios";
 import NoTweetImg from "../../assets/svg/notweet.svg";
 import NoData from "../../components/errorPages/NoData";
 import { BiLike } from "react-icons/bi";

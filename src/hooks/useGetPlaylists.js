@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 
 const fetchPlaylists = async (userId) => {
   return request({ url: `/playlist/user/${userId}`, method: "GET" });

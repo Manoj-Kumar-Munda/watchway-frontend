@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../../utils/axiosConfig";
+import { request } from "../../utils/axios";
 
 const changePassword = async (data) => {
   return await request({

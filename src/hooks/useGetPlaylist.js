@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 
 const getPlaylist = async (playlistId) => {
   return request({ url: `/playlist/${playlistId}`, method: "GET" });

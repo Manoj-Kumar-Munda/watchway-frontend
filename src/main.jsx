@@ -29,129 +29,132 @@ import ChannelActivityLayout from "./components/Channel/Layouts/ChannelLayout.js
 import Playlists from "./pages/Channel/Playlists.jsx";
 import SearchResults from "./pages/SearchResults.jsx";
 import Playlist from "./pages/Playlist.jsx";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { AuthProvider } from "./context/authContext.jsx";
+import router from "./routes/router.jsx";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
-    retry: 1,
+    queries: {
+      staleTime: 60 * 1000,
+      retry: 1,
+    },
   },
 });
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "search",
-        element: <SearchResults />,
-      },
-      {
-        path: "watch/:videoId",
-        element: <Watch />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
-      {
-        path: "dashboard",
-        element: <AdminDashboard />,
-      },
-      {
-        path: "liked",
-        element: <LikedVideos />,
-      },
-      {
-        path: "history",
-        element: <WatchHistory />,
-      },
-      {
-        path: "collection",
-        element: <MyCollections />,
-      },
-      {
-        path: "content",
-        element: <MyContent />,
-      },
-      {
-        path: "subscribers",
-        element: <Subscribers />,
-      },
-      {
-        path: "channel/:username",
-        element: <Channel />,
-        children: [
-          {
-            path: "edit",
-            element: <EditChannelLayout />,
-            children: [
-              {
-                path: "change-password",
-                element: <ChangePassword />,
-              },
-              {
-                path: "",
-                element: <EditProfile />,
-              },
-            ],
-          },
-          {
-            path: "",
-            element: <ChannelActivityLayout />,
-            children: [
-              {
-                path: "subscribed-channels",
-                element: <Subscriptions />,
-              },
-              {
-                path: "tweets",
-                element: <Tweets />,
-              },
-              {
-                path: "playlists",
-                element: <Playlists />,
-              },
-              {
-                path: "",
-                element: <Videos />,
-              },
-            ],
-          },
-        ],
-      },
-      {
-        path: "playlist/:playlistId",
-        element: <Playlist />,
-      },
-      {
-        path: "policy",
-        element: <Policy />,
-      },
-      {
-        path: "terms",
-        element: <Terms />,
-      },
-    ],
-  },
-]);
+// export const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <Home />,
+//         index: true,
+//       },
+//       {
+//         path: "search",
+//         element: <SearchResults />,
+//       },
+//       {
+//         path: "watch/:videoId",
+//         element: <Watch />,
+//       },
+//       {
+//         path: "login",
+//         element: <Login />,
+//       },
+//       {
+//         path: "register",
+//         element: <Register />,
+//       },
+//       {
+//         path: "dashboard",
+//         element: <AdminDashboard />,
+//       },
+//       {
+//         path: "liked",
+//         element: <LikedVideos />,
+//       },
+//       {
+//         path: "history",
+//         element: <WatchHistory />,
+//       },
+//       {
+//         path: "collection",
+//         element: <MyCollections />,
+//       },
+//       {
+//         path: "content",
+//         element: <MyContent />,
+//       },
+//       {
+//         path: "subscribers",
+//         element: <Subscribers />,
+//       },
+//       {
+//         path: "channel/:username",
+//         element: <Channel />,
+//         children: [
+//           {
+//             path: "edit",
+//             element: <EditChannelLayout />,
+//             children: [
+//               {
+//                 path: "change-password",
+//                 element: <ChangePassword />,
+//               },
+//               {
+//                 path: "",
+//                 element: <EditProfile />,
+//               },
+//             ],
+//           },
+//           {
+//             path: "",
+//             element: <ChannelActivityLayout />,
+//             children: [
+//               {
+//                 path: "subscribed-channels",
+//                 element: <Subscriptions />,
+//               },
+//               {
+//                 path: "tweets",
+//                 element: <Tweets />,
+//               },
+//               {
+//                 path: "playlists",
+//                 element: <Playlists />,
+//               },
+//               {
+//                 path: "",
+//                 element: <Videos />,
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//       {
+//         path: "playlist/:playlistId",
+//         element: <Playlist />,
+//       },
+//       {
+//         path: "policy",
+//         element: <Policy />,
+//       },
+//       {
+//         path: "terms",
+//         element: <Terms />,
+//       },
+//     ],
+//   },
+// ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
     {/* <AuthProvider> */}
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
+    {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
     {/* </AuthProvider> */}
   </QueryClientProvider>
 );

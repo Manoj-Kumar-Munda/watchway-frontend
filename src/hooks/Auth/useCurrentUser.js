@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../../utils/axiosConfig";
+import { request } from "../../utils/axios";
 
 const fetchCurrentUser = async () => {
   return await request({
@@ -14,6 +14,7 @@ const useCurrentUser = () => {
     queryKey: ["current-user"],
     queryFn: fetchCurrentUser,
     retry: 1,
+    staleTime: 5 * 60 * 1000,
   });
 };
 

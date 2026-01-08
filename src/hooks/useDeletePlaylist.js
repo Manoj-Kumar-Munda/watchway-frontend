@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 
 const deletePlaylist = async (playlistId) => {
   return await request({ url: `/playlist/${playlistId}`, method: "DELETE" });

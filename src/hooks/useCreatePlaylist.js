@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 import { queryClient } from "../main";
 
 const createPlaylist = async (userId, data) => {

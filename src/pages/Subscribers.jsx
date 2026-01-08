@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 import { useSelector } from "react-redux";
 import HorizonatalChannelCard from "../components/Channel/SubscribedChannels/HorizonatalChannelCard";
 import NotFound from "../components/errorPages/NotFound";

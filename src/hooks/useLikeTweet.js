@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 import { queryClient } from "../main";
 
 const likeTweet = async (tweetId) => {
@@ -11,9 +11,9 @@ export const useLikeTweet = () => {
     mutationKey: ["like"],
     mutationFn: likeTweet,
     onSuccess: () => {
-        queryClient.invalidateQueries({
-            queryKey: ["tweets"]
-        })
-    }
+      queryClient.invalidateQueries({
+        queryKey: ["tweets"],
+      });
+    },
   });
 };

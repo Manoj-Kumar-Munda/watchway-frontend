@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 
 const likeComment = async (commentId) => {
   if (!commentId) return;
@@ -11,7 +11,7 @@ const useLikeComment = (comment) => {
     mutationKey: ["like-comment"],
     mutationFn: likeComment,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comments",comment?.video] });
+      queryClient.invalidateQueries({ queryKey: ["comments", comment?.video] });
     },
   });
 };

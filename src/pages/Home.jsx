@@ -1,4 +1,3 @@
-import React from "react";
 import { useVideos } from "../hooks/useVideos";
 import VerticalVideoCardContainer from "../components/Channel/Videos/VerticalVideoCardContainer";
 import VerticalVideoCard from "../components/VerticalVideoCard";

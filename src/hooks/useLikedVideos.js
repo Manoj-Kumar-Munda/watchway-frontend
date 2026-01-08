@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
-
+import { request } from "../utils/axios";
 
 const getLikedVideos = async () => {
   return await request({ method: "GET", url: "/like/videos" });
