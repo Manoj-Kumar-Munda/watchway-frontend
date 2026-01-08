@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 
-const useSearch = (search ) => {
+const useSearch = (search) => {
   return useInfiniteQuery({
     queryKey: ["SearchResults", search],
     queryFn: async ({ pageParam }) => {

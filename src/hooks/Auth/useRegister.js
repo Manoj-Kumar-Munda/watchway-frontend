@@ -1,6 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { request } from "../../utils/axiosConfig";
-
+import { request } from "../../utils/axios";
 
 const signup = async (data) => {
   return await request({
@@ -11,7 +10,6 @@ const signup = async (data) => {
       "Content-Type": "multipart/form-data",
     },
   });
-
 };
 
 const useRegister = () => {

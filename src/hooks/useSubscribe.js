@@ -1,5 +1,5 @@
 import { queryClient } from "../main";
-import { request } from "../utils/axiosConfig";
+import { request } from "../utils/axios";
 import { useMutation } from "@tanstack/react-query";
 
 const subscribe = async (channelId) => {
@@ -16,7 +16,7 @@ const useSubscribe = (id) => {
     onSettled: () => {
       queryClient.invalidateQueries("subscriptions");
       queryClient.invalidateQueries({
-        queryKey: ["channel",id],
+        queryKey: ["channel", id],
       });
     },
   });
