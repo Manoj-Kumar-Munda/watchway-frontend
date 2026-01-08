@@ -8,13 +8,11 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ErrorText from "./ErrorText";
 import useLogin from "../hooks/Auth/useLogin";
-// import { useAuth } from "../context/authContext";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../store/slices/authSlice";
+import { setUser, logout } from "../store/slices/authSlice";
 
 const Form = () => {
   const { mutate, data, status, error } = useLogin();
-  // const { login, logout } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,15 +20,13 @@ const Form = () => {
     let timer;
     if (status === "success") {
       toast.success("Logged in");
-      // login(data.data.accessToken, data.data.refreshToken);
-      dispatch(login(data?.data));
+      // Server sets httpOnly cookies, we just store user data in Redux
+      dispatch(setUser(data?.data?.loggedInUser));
       timer = setTimeout(() => {
         navigate("/");
       }, 1500);
-      // navigate("/");
     } else if (status === "error") {
       toast.error("Login failed. Please check your credentials.");
-      // logout();
       dispatch(logout());
     }
 

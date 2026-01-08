@@ -1,10 +1,24 @@
-import React from 'react'
+import React from "react";
+import { useAuth } from "../hooks/useAuth";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoutes = ({channel}) => {
+const ProtectedRoutesLayout = ({ children }) => {
+  const { user, isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
   return (
-    <div>ProtectedRoutes</div>
-  )
-}
+    <>
+      {children}
+      <Outlet />
+    </>
+  );
+};
 
-export default ProtectedRoutes
+export default ProtectedRoutesLayout;

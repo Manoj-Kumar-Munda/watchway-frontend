@@ -3,12 +3,13 @@ import { FaUsers } from "react-icons/fa";
 import { IoFolderOpen } from "react-icons/io5";
 import { MdHistory, MdHomeFilled } from "react-icons/md";
 import SidebarLinks from "./SidebarLinks";
-import { useSelector } from "react-redux";
+
 import LogoutBtn from "./LogoutBtn";
 import { TfiDashboard } from "react-icons/tfi";
+import { useAuth } from "../../hooks/useAuth";
 
 const SidebarItems = () => {
-  const { user, status } = useSelector((store) => store.auth);
+  const { user, isAuthenticated } = useAuth();
   return (
     <>
       <div className="flex flex-col gap-2 w-full">
@@ -38,7 +39,7 @@ const SidebarItems = () => {
         </SidebarLinks>
       </div>
 
-      {status && <LogoutBtn />}
+      {isAuthenticated && <LogoutBtn />}
     </>
   );
 };

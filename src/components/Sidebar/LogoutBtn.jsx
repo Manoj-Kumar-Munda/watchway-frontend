@@ -6,7 +6,6 @@ import { logout } from "../../store/slices/authSlice";
 import { useDispatch } from "react-redux";
 const LogoutBtn = () => {
   const { mutate, status } = useLogout();
-  // const { logout } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

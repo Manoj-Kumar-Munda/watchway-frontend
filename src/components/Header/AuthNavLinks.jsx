@@ -1,13 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ProfileCircle from "./ProfileCircle";
+import { useAuth } from "../../hooks/useAuth";
 
 const AuthNavLinks = () => {
-  const { user ,status} = useSelector((store) => store.auth);
+  const { user , isAuthenticated} = useAuth();
+ 
   return (
     <>
-      {status ? (
+      {isAuthenticated ? (
         <ProfileCircle className="w-12 h-12" imgSrc={user.avatar} />
       ) : (
         <div className="flex gap-2 items-center">
