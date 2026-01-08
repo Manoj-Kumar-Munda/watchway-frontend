@@ -37,8 +37,6 @@ axiosInstance.interceptors.response.use(
         await axiosInstance.post("/users/refresh-token");
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        console.log({ error });
-
         if (!isPublicRoute()) {
           router.navigate("/login");
         }

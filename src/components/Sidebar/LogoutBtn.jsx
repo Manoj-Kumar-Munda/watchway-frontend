@@ -15,7 +15,6 @@ const LogoutBtn = () => {
 
   useEffect(() => {
     if (status === "success") {
-      console.log("Logged out successfully");
       dispatch(logout());
       navigate("/login");
     }
